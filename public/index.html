@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarot of Today · Synskflicka – Three Cards, One Sitcom Sticker</title>
+  <meta name="description" content="Pick three tarot cards and get a witty, lighthearted reading about your energy today, plus the sitcom sticker that sums it up. For entertainment only." />
+  <meta name="theme-color" content="#0d0a1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="aurora aurora--a"></div>
+    <div class="aurora aurora--b"></div>
+    <div class="aurora aurora--c"></div>
+    <div class="stars stars--small"></div>
+    <div class="stars stars--big"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Synskflicka home">
+      <span class="brand__glyph" aria-hidden="true">☾</span>
+      <span class="brand__name">Synskflicka</span>
+    </a>
+    <button id="motion-toggle" class="chip-btn" type="button" aria-pressed="false">
+      <span aria-hidden="true">✧</span> <span class="motion-toggle__label">Reduce motion</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- INTRO -->
+    <section id="stage-intro" class="stage stage--intro is-active" aria-labelledby="title">
+      <p class="eyebrow">The cards know. The sitcoms confirm.</p>
+      <h1 id="title" class="title">Tarot <em>of</em> Today</h1>
+      <p class="lede">Choose three cards. Get a short, slightly unhinged reading of your energy today and the sitcom sticker that sums it up.</p>
+      <button id="start-btn" class="btn btn--primary" type="button" disabled>
+        <span class="btn__shine" aria-hidden="true"></span>
+        Shuffle the deck
+      </button>
+      <p class="fineprint">For entertainment only. The cards are funny, not prophetic.</p>
+    </section>
+
+    <!-- PICKING -->
+    <section id="stage-pick" class="stage stage--pick" aria-labelledby="pick-title" hidden>
+      <div class="pick-head">
+        <h2 id="pick-title" class="stage-title">Trust your fingertips</h2>
+        <p class="pick-sub">Pick <strong>three</strong> cards from the spread.</p>
+        <ol class="slots" aria-label="Your chosen cards">
+          <li class="slot" data-slot="0"><span>I</span></li>
+          <li class="slot" data-slot="1"><span>II</span></li>
+          <li class="slot" data-slot="2"><span>III</span></li>
+        </ol>
+      </div>
+      <div id="spread" class="spread" role="group" aria-label="Face-down tarot cards"></div>
+    </section>
+
+    <!-- READING -->
+    <section id="stage-reading" class="stage stage--reading" aria-labelledby="reading-title" hidden>
+      <h2 id="reading-title" class="stage-title">Your three cards</h2>
+      <div id="drawn" class="drawn"></div>
+
+      <div id="loader" class="loader" hidden>
+        <div class="orb" aria-hidden="true">
+          <div class="orb__glass"><div class="orb__swirl"></div><div class="orb__glint"></div></div>
+          <div class="orb__stand"></div>
+        </div>
+        <p id="loader-text" class="loader__text" role="status" aria-live="polite">Consulting the spirits…</p>
+      </div>
+
+      <div id="error" class="panel panel--error" hidden role="alert">
+        <p class="panel__title">The crystal ball fogged up.</p>
+        <p id="error-text" class="panel__text">Something went wrong. Shall we try again?</p>
+        <div class="panel__actions">
+          <button id="retry-btn" class="btn btn--primary" type="button">Try again</button>
+          <button id="error-new-btn" class="btn btn--ghost" type="button">New draw</button>
+        </div>
+      </div>
+
+      <article id="result" class="result" hidden aria-live="polite">
+        <div class="result__reading panel">
+          <p class="result__kicker">Today’s energy</p>
+          <p id="reading-text" class="reading-text"></p>
+        </div>
+
+        <figure id="sticker" class="sticker">
+          <div class="sticker__frame">
+            <div class="sticker__holo" aria-hidden="true"></div>
+            <img id="sticker-img" class="sticker__img" alt="" />
+            <div id="sticker-fallback" class="sticker__fallback" hidden>
+              <span class="sticker__fallback-glyph" aria-hidden="true">🔮</span>
+              <span id="sticker-fallback-text" class="sticker__fallback-text"></span>
+            </div>
+          </div>
+          <figcaption class="sticker__caption">
+            <span id="category-badge" class="badge"></span>
+            <span id="sticker-credit" class="sticker__credit"></span>
+          </figcaption>
+        </figure>
+
+        <div class="result__actions">
+          <button id="replay-btn" class="btn btn--primary" type="button">
+            <span class="btn__shine" aria-hidden="true"></span>
+            Draw again
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Readings are generated for fun. No fortunes, no advice, just vibes.</p>
+  </footer>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

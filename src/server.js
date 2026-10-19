@@ -1,0 +1,93 @@
+'use strict';
+const path = require('path');
+const express = require('express');
+const config = require('./config');
+const { loadCatalog } = require('./catalog');
+const { createProvider } = require('./llm');
+const { createReadingService } = require('./readingService');
+
+/** Tiny fixed-window in-memory rate limiter (per IP). Fine for a single-instance kiosk/festival deployment. */
+function rateLimit({ perMinute }) {
+  const hits = new Map();
+  setInterval(() => hits.clear(), 60_000).unref();
+  return (req, res, next) => {
+    const key = req.ip;
+    const n = (hits.get(key) || 0) + 1;
+    hits.set(key, n);
+    if (n > perMinute) return res.status(429).json({ error: 'The spirits need a breather. Try again in a minute.' });
+    next();
+  };
+}
+
+function createApp({ catalog, provider, logger = console } = {}) {
+  catalog = catalog || loadCatalog();
+  provider = provider || createProvider(config.llm);
+  const readings = createReadingService({ catalog, provider, limits: config.reading, logger });
+
+  const app = express();
+  app.disable('x-powered-by');
+  app.set('trust proxy', 'loopback');
+  app.use((req, res, next) => {
+    res.set('X-Content-Type-Options', 'nosniff');
+    next();
+  });
+
+  // Public deck list: IDs and display info only. Meanings stay server-side.
+  const publicDeck = catalog.deck.map(({ id, name, arcana, suit, rank }) => ({ id, name, arcana, suit, rank }));
+  app.get('/api/deck', (req, res) => res.json({ cards: publicDeck }));
+
+  app.get('/api/health', (req, res) =>
+    res.json({ ok: true, provider: provider.name, eligible_stickers: catalog.eligibleStickers.length })
+  );
+
+  app.post(
+    '/api/generate-reading',
+    rateLimit({ perMinute: config.rateLimitPerMinute }),
+    express.json({ limit: '2kb' }),
+    async (req, res) => {
+      const started = Date.now();
+      try {
+        const result = await readings.generate(req.body);
+        logger.info(
+          JSON.stringify({ event: 'reading', source: result.source, category: result.category_id, sticker: result.sticker.id, ms: Date.now() - started })
+        );
+        res.json(result);
+      } catch (err) {
+        if (err.status === 400) return res.status(400).json({ error: err.message });
+        logger.error(JSON.stringify({ event: 'reading_error', message: err.message }));
+        res.status(500).json({ error: 'Something went wrong in the crystal ball.' });
+      }
+    }
+  );
+
+  // Malformed JSON / oversized bodies from express.json
+  app.use('/api', (err, req, res, next) => {
+    if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Request too large.' });
+    if (err.type === 'entity.parse.failed') return res.status(400).json({ error: 'Invalid JSON.' });
+    next(err);
+  });
+  app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
+
+  app.use('/stickers', express.static(path.join(config.root, 'stickers'), { maxAge: '1h' }));
+  app.use('/stickers', (req, res) => res.status(404).end());
+  app.use(express.static(config.paths.public, { maxAge: config.isProduction ? '1h' : 0 }));
+
+  return app;
+}
+
+if (require.main === module) {
+  let catalog;
+  try {
+    catalog = loadCatalog();
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
+  }
+  catalog.warnings.forEach((w) => console.warn(`[data] ${w}`));
+  const app = createApp({ catalog });
+  app.listen(config.port, () => {
+    console.log(`Tarot Sticker Game on http://localhost:${config.port}  (LLM: ${config.llm.provider}, strict assets: ${config.strictAssets})`);
+  });
+}
+
+module.exports = { createApp };

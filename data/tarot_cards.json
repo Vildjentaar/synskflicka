@@ -1,0 +1,1455 @@
+[
+  {
+    "id": "the_fool",
+    "name": "The Fool",
+    "arcana": "major",
+    "suit": null,
+    "rank": 0,
+    "upright_meaning": [
+      "new beginnings",
+      "spontaneity",
+      "leap of faith",
+      "innocence"
+    ],
+    "reversed_meaning": [
+      "recklessness",
+      "hesitation",
+      "naivety",
+      "poor judgment"
+    ]
+  },
+  {
+    "id": "the_magician",
+    "name": "The Magician",
+    "arcana": "major",
+    "suit": null,
+    "rank": 1,
+    "upright_meaning": [
+      "willpower",
+      "resourcefulness",
+      "skill",
+      "manifestation"
+    ],
+    "reversed_meaning": [
+      "manipulation",
+      "untapped talent",
+      "trickery",
+      "scattered focus"
+    ]
+  },
+  {
+    "id": "the_high_priestess",
+    "name": "The High Priestess",
+    "arcana": "major",
+    "suit": null,
+    "rank": 2,
+    "upright_meaning": [
+      "intuition",
+      "mystery",
+      "inner voice",
+      "subconscious"
+    ],
+    "reversed_meaning": [
+      "secrets",
+      "ignoring intuition",
+      "withdrawal",
+      "confusion"
+    ]
+  },
+  {
+    "id": "the_empress",
+    "name": "The Empress",
+    "arcana": "major",
+    "suit": null,
+    "rank": 3,
+    "upright_meaning": [
+      "abundance",
+      "nurturing",
+      "comfort",
+      "creativity"
+    ],
+    "reversed_meaning": [
+      "smothering",
+      "creative block",
+      "dependence",
+      "neglecting self-care"
+    ]
+  },
+  {
+    "id": "the_emperor",
+    "name": "The Emperor",
+    "arcana": "major",
+    "suit": null,
+    "rank": 4,
+    "upright_meaning": [
+      "structure",
+      "authority",
+      "control",
+      "stability"
+    ],
+    "reversed_meaning": [
+      "rigidity",
+      "domineering",
+      "lack of discipline",
+      "power struggles"
+    ]
+  },
+  {
+    "id": "the_hierophant",
+    "name": "The Hierophant",
+    "arcana": "major",
+    "suit": null,
+    "rank": 5,
+    "upright_meaning": [
+      "tradition",
+      "conformity",
+      "guidance",
+      "established rules"
+    ],
+    "reversed_meaning": [
+      "rebellion",
+      "unconventional choices",
+      "questioning rules",
+      "freedom"
+    ]
+  },
+  {
+    "id": "the_lovers",
+    "name": "The Lovers",
+    "arcana": "major",
+    "suit": null,
+    "rank": 6,
+    "upright_meaning": [
+      "harmony",
+      "connection",
+      "choices",
+      "alignment of values"
+    ],
+    "reversed_meaning": [
+      "imbalance",
+      "disharmony",
+      "indecision",
+      "misalignment"
+    ]
+  },
+  {
+    "id": "the_chariot",
+    "name": "The Chariot",
+    "arcana": "major",
+    "suit": null,
+    "rank": 7,
+    "upright_meaning": [
+      "determination",
+      "momentum",
+      "victory",
+      "willpower"
+    ],
+    "reversed_meaning": [
+      "lack of direction",
+      "losing control",
+      "aggression",
+      "scattered drive"
+    ]
+  },
+  {
+    "id": "strength",
+    "name": "Strength",
+    "arcana": "major",
+    "suit": null,
+    "rank": 8,
+    "upright_meaning": [
+      "courage",
+      "patience",
+      "gentle confidence",
+      "composure"
+    ],
+    "reversed_meaning": [
+      "self-doubt",
+      "impatience",
+      "short temper",
+      "low energy"
+    ]
+  },
+  {
+    "id": "the_hermit",
+    "name": "The Hermit",
+    "arcana": "major",
+    "suit": null,
+    "rank": 9,
+    "upright_meaning": [
+      "introspection",
+      "solitude",
+      "seeking wisdom",
+      "quiet"
+    ],
+    "reversed_meaning": [
+      "isolation",
+      "loneliness",
+      "withdrawal",
+      "avoiding people"
+    ]
+  },
+  {
+    "id": "wheel_of_fortune",
+    "name": "Wheel of Fortune",
+    "arcana": "major",
+    "suit": null,
+    "rank": 10,
+    "upright_meaning": [
+      "luck",
+      "cycles",
+      "turning points",
+      "change"
+    ],
+    "reversed_meaning": [
+      "bad luck",
+      "resisting change",
+      "unexpected setbacks",
+      "repetition"
+    ]
+  },
+  {
+    "id": "justice",
+    "name": "Justice",
+    "arcana": "major",
+    "suit": null,
+    "rank": 11,
+    "upright_meaning": [
+      "fairness",
+      "truth",
+      "cause and effect",
+      "accountability"
+    ],
+    "reversed_meaning": [
+      "unfairness",
+      "dodging accountability",
+      "bias",
+      "dishonesty"
+    ]
+  },
+  {
+    "id": "the_hanged_man",
+    "name": "The Hanged Man",
+    "arcana": "major",
+    "suit": null,
+    "rank": 12,
+    "upright_meaning": [
+      "pause",
+      "surrender",
+      "new perspective",
+      "waiting"
+    ],
+    "reversed_meaning": [
+      "stalling",
+      "indecision",
+      "resistance",
+      "pointless sacrifice"
+    ]
+  },
+  {
+    "id": "death",
+    "name": "Death",
+    "arcana": "major",
+    "suit": null,
+    "rank": 13,
+    "upright_meaning": [
+      "endings",
+      "transformation",
+      "transition",
+      "letting go"
+    ],
+    "reversed_meaning": [
+      "resisting change",
+      "stagnation",
+      "clinging to the past",
+      "slow transition"
+    ]
+  },
+  {
+    "id": "temperance",
+    "name": "Temperance",
+    "arcana": "major",
+    "suit": null,
+    "rank": 14,
+    "upright_meaning": [
+      "balance",
+      "moderation",
+      "patience",
+      "calm blending"
+    ],
+    "reversed_meaning": [
+      "excess",
+      "imbalance",
+      "impatience",
+      "overindulgence"
+    ]
+  },
+  {
+    "id": "the_devil",
+    "name": "The Devil",
+    "arcana": "major",
+    "suit": null,
+    "rank": 15,
+    "upright_meaning": [
+      "temptation",
+      "attachment",
+      "indulgence",
+      "playful vice"
+    ],
+    "reversed_meaning": [
+      "breaking free",
+      "releasing habits",
+      "reclaiming control",
+      "awareness"
+    ]
+  },
+  {
+    "id": "the_tower",
+    "name": "The Tower",
+    "arcana": "major",
+    "suit": null,
+    "rank": 16,
+    "upright_meaning": [
+      "sudden upheaval",
+      "revelation",
+      "chaos",
+      "shake-up"
+    ],
+    "reversed_meaning": [
+      "narrowly avoided disaster",
+      "delayed chaos",
+      "fear of change"
+    ]
+  },
+  {
+    "id": "the_star",
+    "name": "The Star",
+    "arcana": "major",
+    "suit": null,
+    "rank": 17,
+    "upright_meaning": [
+      "hope",
+      "renewal",
+      "inspiration",
+      "serenity"
+    ],
+    "reversed_meaning": [
+      "discouragement",
+      "lack of faith",
+      "disconnection",
+      "low motivation"
+    ]
+  },
+  {
+    "id": "the_moon",
+    "name": "The Moon",
+    "arcana": "major",
+    "suit": null,
+    "rank": 18,
+    "upright_meaning": [
+      "illusion",
+      "uncertainty",
+      "dreams",
+      "intuition"
+    ],
+    "reversed_meaning": [
+      "clarity emerging",
+      "confusion lifting",
+      "unease",
+      "released fears"
+    ]
+  },
+  {
+    "id": "the_sun",
+    "name": "The Sun",
+    "arcana": "major",
+    "suit": null,
+    "rank": 19,
+    "upright_meaning": [
+      "joy",
+      "success",
+      "positivity",
+      "vitality"
+    ],
+    "reversed_meaning": [
+      "temporary gloom",
+      "overexcitement",
+      "dimmed enthusiasm",
+      "ego"
+    ]
+  },
+  {
+    "id": "judgement",
+    "name": "Judgement",
+    "arcana": "major",
+    "suit": null,
+    "rank": 20,
+    "upright_meaning": [
+      "reflection",
+      "awakening",
+      "reckoning",
+      "a calling"
+    ],
+    "reversed_meaning": [
+      "self-doubt",
+      "harsh self-criticism",
+      "ignoring the call",
+      "avoidance"
+    ]
+  },
+  {
+    "id": "the_world",
+    "name": "The World",
+    "arcana": "major",
+    "suit": null,
+    "rank": 21,
+    "upright_meaning": [
+      "completion",
+      "accomplishment",
+      "wholeness",
+      "closure"
+    ],
+    "reversed_meaning": [
+      "loose ends",
+      "incompletion",
+      "shortcuts",
+      "almost-there feeling"
+    ]
+  },
+  {
+    "id": "ace_of_wands",
+    "name": "Ace of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 1,
+    "upright_meaning": [
+      "inspiration",
+      "new spark",
+      "creative energy",
+      "enthusiasm"
+    ],
+    "reversed_meaning": [
+      "delays",
+      "lack of motivation",
+      "false starts",
+      "fizzling ideas"
+    ]
+  },
+  {
+    "id": "two_of_wands",
+    "name": "Two of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 2,
+    "upright_meaning": [
+      "planning",
+      "future vision",
+      "bold decisions",
+      "ambition"
+    ],
+    "reversed_meaning": [
+      "fear of the unknown",
+      "poor planning",
+      "playing it safe"
+    ]
+  },
+  {
+    "id": "three_of_wands",
+    "name": "Three of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 3,
+    "upright_meaning": [
+      "expansion",
+      "foresight",
+      "progress",
+      "looking ahead"
+    ],
+    "reversed_meaning": [
+      "obstacles",
+      "delays",
+      "frustration",
+      "lack of foresight"
+    ]
+  },
+  {
+    "id": "four_of_wands",
+    "name": "Four of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 4,
+    "upright_meaning": [
+      "celebration",
+      "homecoming",
+      "harmony",
+      "milestone"
+    ],
+    "reversed_meaning": [
+      "tension at home",
+      "cancelled plans",
+      "lack of support"
+    ]
+  },
+  {
+    "id": "five_of_wands",
+    "name": "Five of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 5,
+    "upright_meaning": [
+      "competition",
+      "conflict",
+      "rivalry",
+      "friendly chaos"
+    ],
+    "reversed_meaning": [
+      "avoiding conflict",
+      "truce",
+      "inner tension",
+      "petty squabbles"
+    ]
+  },
+  {
+    "id": "six_of_wands",
+    "name": "Six of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 6,
+    "upright_meaning": [
+      "victory",
+      "recognition",
+      "praise",
+      "public success"
+    ],
+    "reversed_meaning": [
+      "ego",
+      "fall from grace",
+      "lack of recognition",
+      "self-doubt"
+    ]
+  },
+  {
+    "id": "seven_of_wands",
+    "name": "Seven of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 7,
+    "upright_meaning": [
+      "standing your ground",
+      "defensiveness",
+      "perseverance"
+    ],
+    "reversed_meaning": [
+      "giving up",
+      "overwhelm",
+      "exhaustion",
+      "feeling attacked"
+    ]
+  },
+  {
+    "id": "eight_of_wands",
+    "name": "Eight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 8,
+    "upright_meaning": [
+      "speed",
+      "rapid action",
+      "movement",
+      "swift news"
+    ],
+    "reversed_meaning": [
+      "delays",
+      "frustration",
+      "slowing down",
+      "scattered energy"
+    ]
+  },
+  {
+    "id": "nine_of_wands",
+    "name": "Nine of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 9,
+    "upright_meaning": [
+      "resilience",
+      "persistence",
+      "last stand",
+      "guarded"
+    ],
+    "reversed_meaning": [
+      "paranoia",
+      "exhaustion",
+      "stubbornness",
+      "burnout"
+    ]
+  },
+  {
+    "id": "ten_of_wands",
+    "name": "Ten of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": 10,
+    "upright_meaning": [
+      "burden",
+      "overcommitment",
+      "responsibility",
+      "hard work"
+    ],
+    "reversed_meaning": [
+      "delegating",
+      "dropping the load",
+      "release",
+      "collapse"
+    ]
+  },
+  {
+    "id": "page_of_wands",
+    "name": "Page of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": "page",
+    "upright_meaning": [
+      "curiosity",
+      "enthusiasm",
+      "exploration",
+      "free spirit"
+    ],
+    "reversed_meaning": [
+      "impatience",
+      "lack of direction",
+      "hasty ideas",
+      "distraction"
+    ]
+  },
+  {
+    "id": "knight_of_wands",
+    "name": "Knight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": "knight",
+    "upright_meaning": [
+      "energy",
+      "passion",
+      "adventure",
+      "impulsiveness"
+    ],
+    "reversed_meaning": [
+      "recklessness",
+      "haste",
+      "scattered energy",
+      "frustration"
+    ]
+  },
+  {
+    "id": "queen_of_wands",
+    "name": "Queen of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": "queen",
+    "upright_meaning": [
+      "confidence",
+      "charisma",
+      "determination",
+      "warmth"
+    ],
+    "reversed_meaning": [
+      "jealousy",
+      "insecurity",
+      "demanding",
+      "temperamental"
+    ]
+  },
+  {
+    "id": "king_of_wands",
+    "name": "King of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "rank": "king",
+    "upright_meaning": [
+      "leadership",
+      "vision",
+      "boldness",
+      "big ideas"
+    ],
+    "reversed_meaning": [
+      "impulsiveness",
+      "arrogance",
+      "overbearing",
+      "unrealistic expectations"
+    ]
+  },
+  {
+    "id": "ace_of_cups",
+    "name": "Ace of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 1,
+    "upright_meaning": [
+      "new feelings",
+      "emotional openness",
+      "joy",
+      "compassion"
+    ],
+    "reversed_meaning": [
+      "blocked emotions",
+      "emptiness",
+      "repressed feelings"
+    ]
+  },
+  {
+    "id": "two_of_cups",
+    "name": "Two of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 2,
+    "upright_meaning": [
+      "partnership",
+      "mutual attraction",
+      "connection",
+      "unity"
+    ],
+    "reversed_meaning": [
+      "imbalance",
+      "broken communication",
+      "tension",
+      "mismatch"
+    ]
+  },
+  {
+    "id": "three_of_cups",
+    "name": "Three of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 3,
+    "upright_meaning": [
+      "friendship",
+      "celebration",
+      "community",
+      "fun"
+    ],
+    "reversed_meaning": [
+      "overindulgence",
+      "gossip",
+      "isolation",
+      "third-wheel energy"
+    ]
+  },
+  {
+    "id": "four_of_cups",
+    "name": "Four of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 4,
+    "upright_meaning": [
+      "apathy",
+      "contemplation",
+      "boredom",
+      "missed offers"
+    ],
+    "reversed_meaning": [
+      "renewed interest",
+      "seizing opportunity",
+      "awareness"
+    ]
+  },
+  {
+    "id": "five_of_cups",
+    "name": "Five of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 5,
+    "upright_meaning": [
+      "disappointment",
+      "regret",
+      "dwelling on loss",
+      "sulking"
+    ],
+    "reversed_meaning": [
+      "acceptance",
+      "moving on",
+      "forgiveness",
+      "recovery"
+    ]
+  },
+  {
+    "id": "six_of_cups",
+    "name": "Six of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 6,
+    "upright_meaning": [
+      "nostalgia",
+      "childhood memories",
+      "innocence",
+      "kindness"
+    ],
+    "reversed_meaning": [
+      "stuck in the past",
+      "unrealistic nostalgia",
+      "moving forward"
+    ]
+  },
+  {
+    "id": "seven_of_cups",
+    "name": "Seven of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 7,
+    "upright_meaning": [
+      "choices",
+      "daydreaming",
+      "illusion",
+      "wishful thinking"
+    ],
+    "reversed_meaning": [
+      "clarity",
+      "decisiveness",
+      "reality check",
+      "focus"
+    ]
+  },
+  {
+    "id": "eight_of_cups",
+    "name": "Eight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 8,
+    "upright_meaning": [
+      "walking away",
+      "seeking more",
+      "disillusionment"
+    ],
+    "reversed_meaning": [
+      "fear of change",
+      "stagnation",
+      "aimless drifting"
+    ]
+  },
+  {
+    "id": "nine_of_cups",
+    "name": "Nine of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 9,
+    "upright_meaning": [
+      "wish fulfilment",
+      "satisfaction",
+      "contentment",
+      "indulgence"
+    ],
+    "reversed_meaning": [
+      "smugness",
+      "dissatisfaction",
+      "materialism",
+      "unmet wishes"
+    ]
+  },
+  {
+    "id": "ten_of_cups",
+    "name": "Ten of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": 10,
+    "upright_meaning": [
+      "harmony",
+      "happiness",
+      "emotional fulfilment",
+      "belonging"
+    ],
+    "reversed_meaning": [
+      "disconnection",
+      "misaligned values",
+      "domestic friction"
+    ]
+  },
+  {
+    "id": "page_of_cups",
+    "name": "Page of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": "page",
+    "upright_meaning": [
+      "creative opportunity",
+      "intuitive message",
+      "sweetness",
+      "whimsy"
+    ],
+    "reversed_meaning": [
+      "emotional immaturity",
+      "creative block",
+      "moodiness"
+    ]
+  },
+  {
+    "id": "knight_of_cups",
+    "name": "Knight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": "knight",
+    "upright_meaning": [
+      "romance",
+      "charm",
+      "following the heart",
+      "idealism"
+    ],
+    "reversed_meaning": [
+      "moodiness",
+      "unrealistic expectations",
+      "jealousy",
+      "flakiness"
+    ]
+  },
+  {
+    "id": "queen_of_cups",
+    "name": "Queen of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": "queen",
+    "upright_meaning": [
+      "compassion",
+      "emotional security",
+      "intuition",
+      "calm"
+    ],
+    "reversed_meaning": [
+      "emotional overwhelm",
+      "codependence",
+      "insecurity"
+    ]
+  },
+  {
+    "id": "king_of_cups",
+    "name": "King of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "rank": "king",
+    "upright_meaning": [
+      "emotional balance",
+      "diplomacy",
+      "composure",
+      "generosity"
+    ],
+    "reversed_meaning": [
+      "moodiness",
+      "manipulation",
+      "emotional volatility"
+    ]
+  },
+  {
+    "id": "ace_of_swords",
+    "name": "Ace of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 1,
+    "upright_meaning": [
+      "clarity",
+      "breakthrough",
+      "sharp mind",
+      "truth"
+    ],
+    "reversed_meaning": [
+      "confusion",
+      "miscommunication",
+      "clouded judgment"
+    ]
+  },
+  {
+    "id": "two_of_swords",
+    "name": "Two of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 2,
+    "upright_meaning": [
+      "indecision",
+      "stalemate",
+      "avoidance",
+      "difficult choices"
+    ],
+    "reversed_meaning": [
+      "information overload",
+      "lesser of two evils",
+      "release"
+    ]
+  },
+  {
+    "id": "three_of_swords",
+    "name": "Three of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 3,
+    "upright_meaning": [
+      "heartache",
+      "painful truth",
+      "disappointment",
+      "sorrow"
+    ],
+    "reversed_meaning": [
+      "recovery",
+      "forgiveness",
+      "releasing pain",
+      "healing"
+    ]
+  },
+  {
+    "id": "four_of_swords",
+    "name": "Four of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 4,
+    "upright_meaning": [
+      "rest",
+      "recovery",
+      "contemplation",
+      "recharging"
+    ],
+    "reversed_meaning": [
+      "restlessness",
+      "burnout",
+      "stagnation",
+      "refusing to rest"
+    ]
+  },
+  {
+    "id": "five_of_swords",
+    "name": "Five of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 5,
+    "upright_meaning": [
+      "conflict",
+      "winning at all costs",
+      "tension",
+      "pettiness"
+    ],
+    "reversed_meaning": [
+      "reconciliation",
+      "making amends",
+      "letting it go"
+    ]
+  },
+  {
+    "id": "six_of_swords",
+    "name": "Six of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 6,
+    "upright_meaning": [
+      "transition",
+      "moving on",
+      "calmer waters",
+      "leaving behind"
+    ],
+    "reversed_meaning": [
+      "resistance to change",
+      "unfinished business",
+      "baggage"
+    ]
+  },
+  {
+    "id": "seven_of_swords",
+    "name": "Seven of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 7,
+    "upright_meaning": [
+      "sneakiness",
+      "strategy",
+      "getting away with something"
+    ],
+    "reversed_meaning": [
+      "confession",
+      "getting caught",
+      "conscience",
+      "rethinking"
+    ]
+  },
+  {
+    "id": "eight_of_swords",
+    "name": "Eight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 8,
+    "upright_meaning": [
+      "feeling trapped",
+      "self-imposed limits",
+      "overthinking"
+    ],
+    "reversed_meaning": [
+      "release",
+      "new perspective",
+      "freedom",
+      "self-acceptance"
+    ]
+  },
+  {
+    "id": "nine_of_swords",
+    "name": "Nine of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 9,
+    "upright_meaning": [
+      "anxiety",
+      "worry",
+      "overthinking",
+      "sleepless thoughts"
+    ],
+    "reversed_meaning": [
+      "hope",
+      "reaching out",
+      "fears easing",
+      "perspective"
+    ]
+  },
+  {
+    "id": "ten_of_swords",
+    "name": "Ten of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": 10,
+    "upright_meaning": [
+      "rock bottom",
+      "dramatic ending",
+      "exhaustion",
+      "over it"
+    ],
+    "reversed_meaning": [
+      "recovery",
+      "regeneration",
+      "surviving the worst"
+    ]
+  },
+  {
+    "id": "page_of_swords",
+    "name": "Page of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": "page",
+    "upright_meaning": [
+      "curiosity",
+      "new ideas",
+      "vigilance",
+      "mental energy"
+    ],
+    "reversed_meaning": [
+      "gossip",
+      "all talk",
+      "scattered thoughts",
+      "hasty words"
+    ]
+  },
+  {
+    "id": "knight_of_swords",
+    "name": "Knight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": "knight",
+    "upright_meaning": [
+      "ambition",
+      "fast thinking",
+      "action",
+      "charging ahead"
+    ],
+    "reversed_meaning": [
+      "impulsiveness",
+      "tactlessness",
+      "burnout",
+      "no plan"
+    ]
+  },
+  {
+    "id": "queen_of_swords",
+    "name": "Queen of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": "queen",
+    "upright_meaning": [
+      "independence",
+      "clear boundaries",
+      "honesty",
+      "sharp wit"
+    ],
+    "reversed_meaning": [
+      "coldness",
+      "bitterness",
+      "harsh criticism",
+      "cattiness"
+    ]
+  },
+  {
+    "id": "king_of_swords",
+    "name": "King of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "rank": "king",
+    "upright_meaning": [
+      "intellect",
+      "authority",
+      "truth",
+      "logical thinking"
+    ],
+    "reversed_meaning": [
+      "manipulation",
+      "cruelty",
+      "abuse of power",
+      "overanalysis"
+    ]
+  },
+  {
+    "id": "ace_of_pentacles",
+    "name": "Ace of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 1,
+    "upright_meaning": [
+      "opportunity",
+      "prosperity",
+      "new venture",
+      "grounded start"
+    ],
+    "reversed_meaning": [
+      "missed chance",
+      "poor planning",
+      "scarcity mindset"
+    ]
+  },
+  {
+    "id": "two_of_pentacles",
+    "name": "Two of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 2,
+    "upright_meaning": [
+      "juggling priorities",
+      "adaptability",
+      "balance",
+      "multitasking"
+    ],
+    "reversed_meaning": [
+      "overwhelm",
+      "disorganization",
+      "dropping the ball"
+    ]
+  },
+  {
+    "id": "three_of_pentacles",
+    "name": "Three of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 3,
+    "upright_meaning": [
+      "teamwork",
+      "collaboration",
+      "craftsmanship",
+      "learning"
+    ],
+    "reversed_meaning": [
+      "disharmony",
+      "poor teamwork",
+      "misalignment",
+      "mediocrity"
+    ]
+  },
+  {
+    "id": "four_of_pentacles",
+    "name": "Four of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 4,
+    "upright_meaning": [
+      "control",
+      "security",
+      "holding on",
+      "conservatism"
+    ],
+    "reversed_meaning": [
+      "letting go",
+      "generosity",
+      "overspending",
+      "loosening up"
+    ]
+  },
+  {
+    "id": "five_of_pentacles",
+    "name": "Five of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 5,
+    "upright_meaning": [
+      "hardship",
+      "feeling left out",
+      "worry",
+      "struggle"
+    ],
+    "reversed_meaning": [
+      "recovery",
+      "improvement",
+      "finding help",
+      "warmth returning"
+    ]
+  },
+  {
+    "id": "six_of_pentacles",
+    "name": "Six of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 6,
+    "upright_meaning": [
+      "generosity",
+      "giving and receiving",
+      "sharing",
+      "fairness"
+    ],
+    "reversed_meaning": [
+      "strings attached",
+      "imbalance",
+      "one-sided giving"
+    ]
+  },
+  {
+    "id": "seven_of_pentacles",
+    "name": "Seven of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 7,
+    "upright_meaning": [
+      "patience",
+      "long-term view",
+      "evaluation",
+      "waiting"
+    ],
+    "reversed_meaning": [
+      "impatience",
+      "wasted effort",
+      "lack of reward"
+    ]
+  },
+  {
+    "id": "eight_of_pentacles",
+    "name": "Eight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 8,
+    "upright_meaning": [
+      "diligence",
+      "mastery",
+      "skill",
+      "focused work"
+    ],
+    "reversed_meaning": [
+      "perfectionism",
+      "lack of focus",
+      "repetitive grind"
+    ]
+  },
+  {
+    "id": "nine_of_pentacles",
+    "name": "Nine of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 9,
+    "upright_meaning": [
+      "self-sufficiency",
+      "luxury",
+      "independence",
+      "reward"
+    ],
+    "reversed_meaning": [
+      "overworking",
+      "superficiality",
+      "self-worth issues"
+    ]
+  },
+  {
+    "id": "ten_of_pentacles",
+    "name": "Ten of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": 10,
+    "upright_meaning": [
+      "legacy",
+      "stability",
+      "family",
+      "long-term success"
+    ],
+    "reversed_meaning": [
+      "instability",
+      "family friction",
+      "short-term focus"
+    ]
+  },
+  {
+    "id": "page_of_pentacles",
+    "name": "Page of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": "page",
+    "upright_meaning": [
+      "ambition",
+      "desire to learn",
+      "new skill",
+      "diligence"
+    ],
+    "reversed_meaning": [
+      "procrastination",
+      "lack of progress",
+      "laziness"
+    ]
+  },
+  {
+    "id": "knight_of_pentacles",
+    "name": "Knight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": "knight",
+    "upright_meaning": [
+      "routine",
+      "reliability",
+      "hard work",
+      "steady progress"
+    ],
+    "reversed_meaning": [
+      "boredom",
+      "stagnation",
+      "laziness",
+      "being stuck"
+    ]
+  },
+  {
+    "id": "queen_of_pentacles",
+    "name": "Queen of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": "queen",
+    "upright_meaning": [
+      "practicality",
+      "nurturing",
+      "comfort",
+      "down-to-earth"
+    ],
+    "reversed_meaning": [
+      "self-neglect",
+      "work-life imbalance",
+      "smothering"
+    ]
+  },
+  {
+    "id": "king_of_pentacles",
+    "name": "King of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "rank": "king",
+    "upright_meaning": [
+      "abundance",
+      "security",
+      "discipline",
+      "success"
+    ],
+    "reversed_meaning": [
+      "greed",
+      "stubbornness",
+      "materialism",
+      "rigidity"
+    ]
+  }
+]

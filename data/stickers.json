@@ -1,0 +1,668 @@
+[
+    {
+        "id": "kevin_malone_smirk",
+        "asset_path": "/stickers/kevin_malone_smirk.png",
+        "franchise": "The Office",
+        "character": "Kevin Malone",
+        "visual_description": "A zoomed-in close-up of Kevin Malone's face with a smirking expression.",
+        "expression": [
+            "smug",
+            "mischievous"
+        ],
+        "action": [
+            "smirking"
+        ],
+        "vibe_tags": [
+            "smug",
+            "unbothered",
+            "false_confidence",
+            "mischievous"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "getting away with something questionable",
+            "quietly enjoying someone else's misfortune",
+            "acting as though you know something others do not",
+            "reacting smugly to a questionable decision"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "barney_stinson_loving_napkin_pouch",
+        "asset_path": "/stickers/barney_stinson_loving_napkin_pouch.png",
+        "franchise": "How I Met Your Mother",
+        "character": "Barney Stinson",
+        "visual_description": "Barney Stinson sits on a couch, lovingly hugging a napkin pouch with an affectionate expression.",
+        "expression": [
+            "happy",
+            "smiling",
+            "dramatic"
+        ],
+        "action": [
+            "hugging",
+            "sitting"
+        ],
+        "vibe_tags": [
+            "dramatic",
+            "emotionally_excessive",
+            "absurd",
+            "performative"
+        ],
+        "primary_category": "dramatic_flair",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "becoming emotionally attached to something insignificant",
+            "treating a trivial possession like a treasured loved one",
+            "finding comfort in an unexpected object",
+            "reacting with excessive affection to a minor success"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ray_holt_confused_old_woman",
+        "asset_path": "/stickers/ray_holt_confused_old_woman.png",
+        "franchise": "Brooklyn Nine-Nine",
+        "character": "Raymond Holt",
+        "visual_description": "Raymond Holt wears a whiteboard displaying the words \"Confused Old Woman\" while maintaining a bored expression.",
+        "expression": [
+            "bored",
+            "deadpan",
+            "unimpressed"
+        ],
+        "action": [
+            "wearing_a_sign"
+        ],
+        "vibe_tags": [
+            "deadpan",
+            "unimpressed",
+            "absurd",
+            "skeptical",
+            "exasperated"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [],
+        "match_cues": [
+            "dealing with an absurd situation without showing emotion",
+            "being confused by something unnecessarily complicated",
+            "having nonsense happen around you while remaining unimpressed",
+            "being assigned a ridiculous label with complete indifference"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "claire_dunphy_messy_hair_mug_scoff",
+        "asset_path": "/stickers/claire_dunphy_messy_hair_mug_scoff.png",
+        "franchise": "Modern Family",
+        "character": "Claire Dunphy",
+        "visual_description": "Claire Dunphy has messy hair and holds a mug while making a scoffing expression.",
+        "expression": [
+            "unimpressed",
+            "smug",
+            "annoyed"
+        ],
+        "action": [
+            "holding",
+            "making_a_face"
+        ],
+        "vibe_tags": [
+            "dismissive",
+            "judgmental",
+            "exasperated",
+            "sarcastic",
+            "unimpressed"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "hearing an idea that clearly will not work",
+            "silently judging someone's questionable decision",
+            "responding with disbelief to an obvious mistake",
+            "being too tired to entertain someone else's nonsense"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ed_truck_michael_scott_handshake_logo",
+        "asset_path": "/stickers/ed_truck_michael_scott_handshake_logo.png",
+        "franchise": "The Office",
+        "character": "Ed Truck and Michael Scott",
+        "visual_description": "Ed Truck and Michael Scott shake hands in a scene from The Office, with the event logo positioned over Ed Truck's head.",
+        "expression": [],
+        "action": [
+            "handshaking"
+        ],
+        "vibe_tags": [
+            "absurd",
+            "awkward",
+            "dark_humor"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "an awkward or uncomfortable introduction",
+            "a darkly ironic situation",
+            "greeting someone in an absurd context",
+            "using a familiar scene reference as an unexpected punchline"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "burhan_altintop_office_skincare_magazine",
+        "asset_path": "/stickers/burhan_altintop_office_skincare_magazine.png",
+        "franchise": "Avrupa Yakası",
+        "character": "Burhan Altıntop",
+        "visual_description": "Burhan Altıntop sits in an office wearing a suit, with skincare products applied to his face, while reading a magazine in an elegant, composed manner.",
+        "expression": [],
+        "action": [
+            "sitting",
+            "reading",
+            "wearing"
+        ],
+        "vibe_tags": [
+            "self_important",
+            "performative",
+            "dramatic",
+            "meticulous",
+            "absurd"
+        ],
+        "primary_category": "dramatic_flair",
+        "secondary_categories": [],
+        "match_cues": [
+            "maintaining an air of sophistication in an absurd situation",
+            "prioritizing personal upkeep despite other responsibilities",
+            "acting exceptionally refined over something mundane",
+            "treating an ordinary workday like a luxury experience"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "leonard_hofstadter_sarcasm_sign",
+        "asset_path": "/stickers/leonard_hofstadter_sarcasm_sign.png",
+        "franchise": "The Big Bang Theory",
+        "character": "Leonard Hofstadter",
+        "visual_description": "Leonard Hofstadter holds a piece of paper displaying the word \"SARCASM\" while wearing a bored expression.",
+        "expression": [
+            "bored",
+            "deadpan",
+            "unimpressed"
+        ],
+        "action": [
+            "holding",
+            "staring"
+        ],
+        "vibe_tags": [
+            "sarcastic",
+            "deadpan",
+            "dismissive",
+            "exasperated",
+            "absurd"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [],
+        "match_cues": [
+            "having to explain an obvious joke",
+            "dealing with someone who cannot recognize sarcasm",
+            "responding to an unnecessarily literal interpretation",
+            "making a painfully obvious point to someone who missed it"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "rachel_sleeping_under_comforter",
+        "asset_path": "/stickers/rachel_sleeping_under_comforter.png",
+        "franchise": "Friends",
+        "character": "Rachel Green",
+        "visual_description": "Rachel Green is sleeping in bed with a large comforter pulled over her face.",
+        "expression": [],
+        "action": [
+            "sleeping",
+            "lying_down",
+            "covering_face"
+        ],
+        "vibe_tags": [
+            "unbothered",
+            "carefree",
+            "passive",
+            "relatable"
+        ],
+        "primary_category": "blissful_ignorance",
+        "secondary_categories": [
+            "cynical_observer"
+        ],
+        "match_cues": [
+            "avoiding responsibilities by staying in bed",
+            "refusing to face an inconvenient situation",
+            "choosing sleep over dealing with problems",
+            "mentally checking out of a stressful day"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ferhunde_tekin_sobe_affair_photo",
+        "asset_path": "/stickers/ferhunde_tekin_sobe_affair_photo.png",
+        "franchise": "Yaprak Dökümü",
+        "character": "Ferhunde Tekin",
+        "visual_description": "Ferhunde Tekin smiles while taking a picture with a digital camera and holding a cellphone to her ear. She has just caught someone having an affair and is about to say, \"Sobe!\"",
+        "expression": [
+            "smiling",
+            "mischievous",
+            "excited"
+        ],
+        "action": [
+            "taking_a_photo",
+            "holding"
+        ],
+        "vibe_tags": [
+            "mischievous",
+            "triumphant",
+            "unpredictable",
+            "dramatic",
+            "smug"
+        ],
+        "primary_category": "chaotic_energy",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "catching someone red-handed",
+            "uncovering a juicy secret",
+            "having undeniable evidence of someone's wrongdoing",
+            "delightedly exposing a scandal",
+            "saying \"Sobe!\" after catching someone in the act"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ai_female_kitten_armored_sword_flat_face",
+        "asset_path": "/stickers/ai_female_kitten_armored_sword_flat_face.png",
+        "franchise": null,
+        "character": null,
+        "visual_description": "An AI-generated female kitten wearing armor and holding a sword, with a flat, expressionless face.",
+        "expression": [
+            "deadpan",
+            "neutral",
+            "stoic"
+        ],
+        "action": [
+            "holding",
+            "standing",
+            "wearing"
+        ],
+        "vibe_tags": [
+            "deadpan",
+            "absurd",
+            "unbothered",
+            "aggressive"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "facing a ridiculous situation with no visible reaction",
+            "being prepared for battle over something trivial",
+            "responding to chaos with a completely blank expression",
+            "looking intimidating without appearing emotionally invested"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "nurhayat_karakas_pajamas_reading_newspaper",
+        "asset_path": "/stickers/nurhayat_karakas_pajamas_reading_newspaper.png",
+        "franchise": "Yalan Dünya",
+        "character": "Nurhayat Karakaş",
+        "visual_description": "Nurhayat Karakaş wears pyjamas while reading a newspaper with an expression of ennui.",
+        "expression": [
+            "bored",
+            "indifferent",
+            "deadpan"
+        ],
+        "action": [
+            "reading",
+            "wearing"
+        ],
+        "vibe_tags": [
+            "unimpressed",
+            "unbothered",
+            "passive",
+            "relatable"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "being completely unimpressed by the day's events",
+            "having nothing interesting to do",
+            "waiting for something to happen while feeling bored",
+            "choosing a quiet, unproductive day over dealing with responsibilities"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "jake_peralta_this_is_killing_me",
+        "asset_path": "/stickers/jake_peralta_this_is_killing_me.png",
+        "franchise": "Brooklyn Nine-Nine",
+        "character": "Jake Peralta",
+        "visual_description": "Jake Peralta reacts with shock, stress, and despair while saying, \"This is killing me.\"",
+        "expression": [
+            "shocked",
+            "stressed",
+            "desperate"
+        ],
+        "action": [
+            "talking",
+            "reacting_in_shock"
+        ],
+        "vibe_tags": [
+            "overwhelmed",
+            "dramatic",
+            "desperate",
+            "emotionally_excessive",
+            "frantic"
+        ],
+        "primary_category": "dramatic_flair",
+        "secondary_categories": [
+            "chaotic_energy"
+        ],
+        "match_cues": [
+            "being unable to cope with an overwhelming situation",
+            "watching a situation get progressively worse",
+            "reacting dramatically to unbearable frustration",
+            "waiting for an outcome that is emotionally torturous"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "michael_scott_animated_smirk",
+        "asset_path": "/stickers/michael_scott_animated_smirk.png",
+        "franchise": "The Office",
+        "character": "Michael Scott",
+        "visual_description": "Michael Scott makes an animated, exaggerated smirking face, conveying a mischievous reaction often used as a meme.",
+        "expression": [
+            "smug",
+            "mischievous",
+            "confident"
+        ],
+        "action": [
+            "smirking",
+            "making_a_face"
+        ],
+        "vibe_tags": [
+            "smug",
+            "mischievous",
+            "false_confidence",
+            "unhinged",
+            "awkward"
+        ],
+        "primary_category": "chaotic_energy",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "thinking you have gotten away with something",
+            "reacting smugly to an embarrassing or absurd situation",
+            "being suspiciously pleased with your own idea",
+            "trying to look confident when the situation is ridiculous"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "joey_tribbiani_ok_sign_not_bad",
+        "asset_path": "/stickers/joey_tribbiani_ok_sign_not_bad.png",
+        "franchise": "Friends",
+        "character": "Joey Tribbiani",
+        "visual_description": "Joey Tribbiani makes an OK hand sign with an approving, self-assured expression, conveying that something is not bad.",
+        "expression": [
+            "smug",
+            "confident",
+            "amused"
+        ],
+        "action": [
+            "making_a_gesture",
+            "posing"
+        ],
+        "vibe_tags": [
+            "smug",
+            "unbothered",
+            "carefree",
+            "confident",
+            "unexpectedly_competent"
+        ],
+        "primary_category": "blissful_ignorance",
+        "secondary_categories": [],
+        "match_cues": [
+            "giving something a casual stamp of approval",
+            "admitting that something is surprisingly decent",
+            "showing satisfaction without making a big deal of it",
+            "reacting to a mediocre result as though it meets your standards"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ali_riza_tekin_peeking_behind_door",
+        "asset_path": "/stickers/ali_riza_tekin_peeking_behind_door.png",
+        "franchise": "Yaprak Dökümü",
+        "character": "Ali Rıza Tekin",
+        "visual_description": "Ali Rıza Bey peers from behind a door with a worried, suspicious, or reproachful expression.",
+        "expression": [
+            "anxious",
+            "skeptical",
+            "disappointed"
+        ],
+        "action": [
+            "staring"
+        ],
+        "vibe_tags": [
+            "skeptical",
+            "judgmental",
+            "exasperated",
+            "awkward"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "suspecting that someone is hiding something",
+            "watching a questionable situation unfold from a distance",
+            "silently disapproving of someone's decisions",
+            "checking on a suspicious noise or unexpected development"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "gina_linetti_blue_snuggie_sunglasses",
+        "asset_path": "/stickers/gina_linetti_blue_snuggie_sunglasses.png",
+        "franchise": "Brooklyn Nine-Nine",
+        "character": "Gina Linetti",
+        "visual_description": "Gina Linetti wears a blue Snuggie and sunglasses in a distinctive, self-assured pose, embodying her character's signature confidence and nonchalance.",
+        "expression": [],
+        "action": [
+            "posing",
+            "wearing"
+        ],
+        "vibe_tags": [
+            "confident",
+            "unbothered",
+            "self_important",
+            "smug",
+            "performative"
+        ],
+        "primary_category": "dramatic_flair",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "acting like the main character regardless of the situation",
+            "being unapologetically confident in a ridiculous outfit",
+            "refusing to care what anyone thinks",
+            "making an ordinary moment about yourself"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ai_black_cat_dap_up",
+        "asset_path": "/stickers/ai_black_cat_dap_up.png",
+        "franchise": null,
+        "character": null,
+        "visual_description": "An AI-generated black cat reaching out to initiate a casual dap-up greeting.",
+        "expression": [],
+        "action": [
+            "reaching_out",
+            "making_a_gesture"
+        ],
+        "vibe_tags": [
+            "carefree",
+            "confident",
+            "unbothered",
+            "absurd"
+        ],
+        "primary_category": "blissful_ignorance",
+        "secondary_categories": [],
+        "match_cues": [
+            "casually greeting someone or showing respect",
+            "agreeing with someone's take without needing an explanation",
+            "establishing instant camaraderie",
+            "approaching an awkward situation with casual confidence"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "joey_tribbiani_late_realization_red_sweater",
+        "asset_path": "/stickers/joey_tribbiani_late_realization_red_sweater.png",
+        "franchise": "Friends",
+        "character": "Joey Tribbiani",
+        "visual_description": "Joey Tribbiani displays a shocked expression as he finally realizes that Ross is the father of Rachel's baby, after taking an unusually long time to connect the clues.",
+        "expression": [
+            "shocked",
+            "surprised",
+            "bewildered"
+        ],
+        "action": [
+            "reacting_in_shock",
+            "staring"
+        ],
+        "vibe_tags": [
+            "pleasantly_confused",
+            "absurd",
+            "overwhelmed",
+            "clueless"
+        ],
+        "primary_category": "blissful_ignorance",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "finally understanding something everyone else already knows",
+            "experiencing a painfully delayed realization",
+            "connecting the obvious clues much too late",
+            "suddenly discovering information that changes the whole situation"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "ross_geller_apartment_window_triumph",
+        "asset_path": "/stickers/ross_geller_apartment_window_triumph.png",
+        "franchise": "Friends",
+        "character": "Ross Geller",
+        "visual_description": "Ross Geller stands inside his new apartment and makes an exaggerated, triumphant gesture toward his friends through the windows, celebrating his independence after tensions with the other residents.",
+        "expression": [
+            "excited",
+            "smug",
+            "confident"
+        ],
+        "action": [
+            "celebrating",
+            "gesturing",
+            "posing_dramatically"
+        ],
+        "vibe_tags": [
+            "triumphant",
+            "self_important",
+            "performative",
+            "smug",
+            "dramatic"
+        ],
+        "primary_category": "dramatic_flair",
+        "secondary_categories": [
+            "chaotic_energy"
+        ],
+        "match_cues": [
+            "celebrating a petty victory as though it were a major achievement",
+            "proving a point to people who doubted you",
+            "overconfidently declaring independence after a minor conflict",
+            "taking excessive satisfaction in getting your own way"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "monica_geller_turkey_head_dance",
+        "asset_path": "/stickers/monica_geller_turkey_head_dance.png",
+        "franchise": "Friends",
+        "character": "Monica Geller",
+        "visual_description": "Monica Geller dances with a large raw turkey over her head, wearing yellow glasses and a red fez, in an absurd attempt to cheer up Chandler Bing and earn his forgiveness.",
+        "expression": [],
+        "action": [
+            "dancing",
+            "wearing",
+            "gesturing"
+        ],
+        "vibe_tags": [
+            "absurd",
+            "dramatic",
+            "performative",
+            "emotionally_excessive",
+            "unhinged"
+        ],
+        "primary_category": "chaotic_energy",
+        "secondary_categories": [
+            "dramatic_flair"
+        ],
+        "match_cues": [
+            "making an outrageous gesture to cheer someone up",
+            "trying to earn forgiveness through sheer absurdity",
+            "embarrassing yourself to make someone you care about smile",
+            "turning an apology into an unforgettable spectacle"
+        ],
+        "annotation_status": "approved"
+    },
+    {
+        "id": "barney_stinson_umm_i_guess_palm",
+        "asset_path": "/stickers/barney_stinson_umm_i_guess_palm.png",
+        "franchise": "How I Met Your Mother",
+        "character": "Barney Stinson",
+        "visual_description": "Barney Stinson raises his hand with the phrase \"UMM... I GUESS\" written in quotation marks on his palm.",
+        "expression": [],
+        "action": [
+            "gesturing",
+            "showing_a_gesture"
+        ],
+        "vibe_tags": [
+            "awkward",
+            "passive",
+            "skeptical",
+            "unimpressed"
+        ],
+        "primary_category": "cynical_observer",
+        "secondary_categories": [
+            "blissful_ignorance"
+        ],
+        "match_cues": [
+            "reluctantly agreeing to something",
+            "giving an uncertain or unenthusiastic approval",
+            "being pressured into a decision without feeling convinced",
+            "responding with a hesitant \"I guess\" instead of a clear answer"
+        ],
+        "annotation_status": "approved"
+    }
+]
