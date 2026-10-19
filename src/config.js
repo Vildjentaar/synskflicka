@@ -45,9 +45,12 @@ const config = {
   },
   rateLimitPerMinute: int(env.RATE_LIMIT_PER_MINUTE, 20),
   reading: {
-    // Prompt asks for 300-400 chars; validation allows ~10% slack because LLMs miscount characters.
-    minChars: 280,
-    maxChars: 420,
+    // Prompt targets 40-60 words (~280-450 characters).
+    // Validation allows generous buffer so valid readings are never discarded to fallback.
+    minWords: 25,
+    maxWords: 85,
+    minChars: 150,
+    maxChars: 650,
     minSentences: 2,
     maxSentences: 6,
   },

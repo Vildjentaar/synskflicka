@@ -59,6 +59,10 @@ function countSentences(text) {
   return (text.match(/[^.!?]+[.!?]+(\s|$)/g) || [text]).length;
 }
 
+function countWords(text) {
+  return (text.trim().match(/\S+/g) || []).length;
+}
+
 /**
  * Validates raw model output. Returns { reading, category, sticker, issues } where any of
  * reading/category/sticker may be null if invalid.
@@ -74,12 +78,16 @@ function checkModelOutput(raw, catalog, limits) {
     issues.push('reading_text is empty or missing');
     reading = null;
   } else {
-    const n = countSentences(reading);
-    if (reading.length < limits.minChars || reading.length > limits.maxChars) {
+    const sentences = countSentences(reading);
+    const words = countWords(reading);
+    if (limits.minWords && limits.maxWords && (words < limits.minWords || words > limits.maxWords)) {
+      issues.push(`reading_text has ${words} words, expected ${limits.minWords}-${limits.maxWords}`);
+      reading = null;
+    } else if (limits.minChars && limits.maxChars && (reading.length < limits.minChars || reading.length > limits.maxChars)) {
       issues.push(`reading_text length ${reading.length} outside ${limits.minChars}-${limits.maxChars}`);
       reading = null;
-    } else if (n < limits.minSentences || n > limits.maxSentences) {
-      issues.push(`reading_text has ${n} sentences, expected ${limits.minSentences}-${limits.maxSentences}`);
+    } else if (sentences < limits.minSentences || sentences > limits.maxSentences) {
+      issues.push(`reading_text has ${sentences} sentences, expected ${limits.minSentences}-${limits.maxSentences}`);
       reading = null;
     }
   }

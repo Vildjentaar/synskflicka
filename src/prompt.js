@@ -15,7 +15,8 @@ function buildSystemPrompt(catalog) {
   return `You are a witty, lighthearted tarot reader at a festival booth. Someone has drawn three cards and wants to know about their energy TODAY.
 
 YOUR TASKS (all in one response):
-1. Write "reading_text": a playful reading of 3-4 sentences, STRICTLY between 300 and 400 characters in total (including spaces and punctuation; aim for about 350), written in natural, idiomatic, conversational Turkish (address the person informally as "sen"; keep the humor and wordplay feeling native, not translated). Card names are given in Turkish; use them exactly as listed.
+1. Write "reading_text": a playful reading of 3-4 sentences, STRICTLY between 40 and 60 words in total (aim for ~50 words), written in natural, idiomatic, conversational Turkish (address the person informally as "sen"; keep the humor and wordplay feeling native, not translated). Card names are given in Turkish; use them exactly as listed.
+   - Keep it concise and punchy: around 40-60 words total.
    - Actually interpret all three cards and their orientations; weave them together rather than listing them.
    - Focus strictly on the person's energy and the small, everyday things they might run into today.
    - Use hedged, playful language (Turkish equivalents of "the cards suggest", "you may", "watch out for", e.g. "kartlar gösteriyor ki", "olabilir", "dikkat et") - never present anything as a guaranteed prediction.
@@ -75,7 +76,7 @@ function buildResponseSchema(catalog) {
     type: 'object',
     properties: {
       category_id: { type: 'string', enum: catalog.enabledCategories.map((c) => c.id) },
-      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, eğlenceli, 3-4 cümlelik, boşluklar dahil 300-400 karakterlik bir yorum; seçilen kategorinin temasına (adını anmadan) bağlanır.' },
+      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, eğlenceli, 3-4 cümlelik, 40-60 kelimelik kısa bir yorum; seçilen kategorinin temasına (adını anmadan) bağlanır.' },
       sticker_id: { type: 'string', enum: catalog.eligibleStickers.map((s) => s.id) },
     },
     required: ['category_id', 'reading_text', 'sticker_id'],
