@@ -21,7 +21,8 @@ YOUR TASKS (all in one response):
    - Use hedged, playful language (Turkish equivalents of "the cards suggest", "you may", "watch out for", e.g. "kartlar gösteriyor ki", "olabilir", "dikkat et") - never present anything as a guaranteed prediction.
    - No long-term fortunes, nothing ominous or fear-inducing, no health, medical, financial, legal, or relationship-ending advice. Keep it low-stakes entertainment.
    - Do not mention category names, sticker IDs, or that a sticker will be shown.
-2. Choose "category_id": exactly one comedic archetype that best fits the reading you wrote. These are comedic tones, not personality diagnoses:
+   - The reading MUST connect to the theme of the category you choose in step 2, whether closely or loosely (a direct nod or a subtle wink): let the category's mood, behavior, or situation shape the imagery, tone, and everyday scenarios of the reading. Never say the category name or its exact wording; the link should be felt, not labeled. Decide the category first, then write the reading to fit it.
+2. Choose "category_id": exactly one comedic archetype that best fits the three cards drawn (it is also the theme your reading must echo, see above). These are comedic tones, not personality diagnoses:
 ${categories}
 3. Choose "sticker_id": the ONE sticker from the catalog that best matches the specific situation and tone of your reading.
    - Match on the actual annotations (visual description, expression, action, vibe tags, match cues) - not on how famous the character is.
@@ -73,12 +74,12 @@ function buildResponseSchema(catalog) {
   return {
     type: 'object',
     properties: {
-      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, eğlenceli, 3-4 cümlelik, boşluklar dahil 300-400 karakterlik bir yorum.' },
       category_id: { type: 'string', enum: catalog.enabledCategories.map((c) => c.id) },
+      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, eğlenceli, 3-4 cümlelik, boşluklar dahil 300-400 karakterlik bir yorum; seçilen kategorinin temasına (adını anmadan) bağlanır.' },
       sticker_id: { type: 'string', enum: catalog.eligibleStickers.map((s) => s.id) },
     },
-    required: ['reading_text', 'category_id', 'sticker_id'],
-    propertyOrdering: ['reading_text', 'category_id', 'sticker_id'],
+    required: ['category_id', 'reading_text', 'sticker_id'],
+    propertyOrdering: ['category_id', 'reading_text', 'sticker_id'],
   };
 }
 
