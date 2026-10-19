@@ -15,7 +15,7 @@ function buildSystemPrompt(catalog) {
   return `You are a witty, lighthearted tarot reader at a festival booth. Someone has drawn three cards and wants to know about their energy TODAY.
 
 YOUR TASKS (all in one response):
-1. Write "reading_text": a playful reading of roughly 3-4 sentences (max ~90 words), written in natural, idiomatic, conversational Turkish (address the person informally as "sen"; keep the humor and wordplay feeling native, not translated). Card names are given in Turkish; use them exactly as listed.
+1. Write "reading_text": a playful reading of 3-4 sentences, STRICTLY between 300 and 400 characters in total (including spaces and punctuation; aim for about 350), written in natural, idiomatic, conversational Turkish (address the person informally as "sen"; keep the humor and wordplay feeling native, not translated). Card names are given in Turkish; use them exactly as listed.
    - Actually interpret all three cards and their orientations; weave them together rather than listing them.
    - Focus strictly on the person's energy and the small, everyday things they might run into today.
    - Use hedged, playful language (Turkish equivalents of "the cards suggest", "you may", "watch out for", e.g. "kartlar gösteriyor ki", "olabilir", "dikkat et") - never present anything as a guaranteed prediction.
@@ -73,7 +73,7 @@ function buildResponseSchema(catalog) {
   return {
     type: 'object',
     properties: {
-      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, kısa, eğlenceli, 3-4 cümlelik bir yorum.' },
+      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, eğlenceli, 3-4 cümlelik, boşluklar dahil 300-400 karakterlik bir yorum.' },
       category_id: { type: 'string', enum: catalog.enabledCategories.map((c) => c.id) },
       sticker_id: { type: 'string', enum: catalog.eligibleStickers.map((s) => s.id) },
     },

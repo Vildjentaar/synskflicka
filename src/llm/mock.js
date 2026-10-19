@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 /**
  * Offline provider for development and tests. It produces a plausible, schema-valid response
@@ -24,7 +24,7 @@ function createMockProvider({ respond, delayMs = 600 } = {}) {
           `${cards[0]}, gününe durumun gerektirdiğinden biraz fazla özgüvenle başlamanı sağlıyor. ` +
           `${cards[1]}, öğle civarında küçük bir olay örgüsü dönüşü olduğunu gösteriyor; sen de bunu sezon finali gibi anlatacaksın. ` +
           `${cards[2]} ortaya çıktığında, asıl hazinenin yol boyunca bulduğun atıştırmalıklar olduğunu fark edebilirsin. ` +
-          `(Sahte yorum - gerçek kahin için GEMINI_API_KEY ayarla.)`,
+          `(Sahte yorum - gerçek kahin için OPENAI_API_KEY (veya GEMINI_API_KEY) ayarla.)`,
         category_id: category,
         sticker_id: sticker.id,
       };

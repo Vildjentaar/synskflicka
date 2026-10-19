@@ -23,16 +23,31 @@ const config = {
   },
   strictAssets: bool(env.STRICT_ASSETS, false),
   llm: {
-    provider: (env.LLM_PROVIDER || (env.GEMINI_API_KEY ? 'gemini' : 'mock')).toLowerCase(),
-    apiKey: env.GEMINI_API_KEY || '',
-    model: env.GEMINI_MODEL || 'gemini-2.5-flash',
+    // "groq" | "openai" | "gemini" | "mock". Defaults to whichever provider has an API key (Groq, OpenAI, Gemini).
+    provider: (
+      env.LLM_PROVIDER ||
+      (env.GROQ_API_KEY ? 'groq' : env.OPENAI_API_KEY ? 'openai' : env.GEMINI_API_KEY ? 'gemini' : 'mock')
+    ).toLowerCase(),
+    groq: {
+      apiKey: env.GROQ_API_KEY || '',
+      model: env.GROQ_MODEL || 'openai/gpt-oss-20b',
+    },
+    openai: {
+      apiKey: env.OPENAI_API_KEY || '',
+      model: env.OPENAI_MODEL || 'gpt-4o-mini',
+    },
+    gemini: {
+      apiKey: env.GEMINI_API_KEY || '',
+      model: env.GEMINI_MODEL || 'gemini-3.8-flash',
+    },
     temperature: Number.isFinite(parseFloat(env.LLM_TEMPERATURE)) ? parseFloat(env.LLM_TEMPERATURE) : 0.7,
     timeoutMs: int(env.LLM_TIMEOUT_MS, 15000),
   },
   rateLimitPerMinute: int(env.RATE_LIMIT_PER_MINUTE, 20),
   reading: {
-    minChars: 60,
-    maxChars: 700,
+    // Prompt asks for 300-400 chars; validation allows ~10% slack because LLMs miscount characters.
+    minChars: 280,
+    maxChars: 420,
     minSentences: 2,
     maxSentences: 6,
   },

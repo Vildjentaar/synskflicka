@@ -108,12 +108,12 @@ function publicSticker(s) {
 }
 
 function createReadingService({ catalog, provider, limits, logger = console, rng = Math.random }) {
-  function fallbackResult(draw, reason) {
+  function fallbackResult(draw, reason, fallbackType = 'full_fallback') {
     const category = pick(catalog.enabledCategories, rng).id;
     const sticker = pick(catalog.stickersForCategory(category), rng);
     const names = draw.map((d) => (d.orientation === 'reversed' ? `${d.card.name} (ters)` : d.card.name));
-    logger.warn(JSON.stringify({ event: 'reading_fallback', reason }));
-    return { reading: FALLBACK_READINGS[category](names), category, sticker, source: 'fallback' };
+    logger.warn(JSON.stringify({ event: 'reading_fallback', fallback_type: fallbackType, reason }));
+    return { reading: FALLBACK_READINGS[category](names), category, sticker, source: 'fallback', fallback_type: fallbackType, fallback_reason: reason };
   }
 
   async function generate(body) {
@@ -129,7 +129,7 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
       const checked = checkModelOutput(raw, catalog, limits);
 
       if (!checked.reading || !checked.category) {
-        result = fallbackResult(draw, `invalid model output: ${checked.issues.join('; ')}`);
+        result = fallbackResult(draw, `invalid model output: ${checked.issues.join('; ')}`, 'invalid_model_output');
       } else {
         let { sticker } = checked;
         let source = 'llm';
@@ -137,13 +137,15 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
           // Keep the good reading + category, repair only the sticker (plan 3.4).
           sticker = pick(catalog.stickersForCategory(checked.category), rng);
           source = 'llm_sticker_repaired';
-          logger.warn(JSON.stringify({ event: 'sticker_repaired', issues: checked.issues, replacement: sticker.id }));
+          logger.warn(JSON.stringify({ event: 'sticker_repaired', issues: checked.issues, replacement: sticker.id, fallback_type: 'sticker_repaired' }));
         }
-        result = { reading: checked.reading, category: checked.category, sticker, source };
+        result = { reading: checked.reading, category: checked.category, sticker, source, fallback_type: source === 'llm_sticker_repaired' ? 'sticker_repaired' : null };
       }
     } catch (err) {
-      const reason = err.name === 'TimeoutError' || err.name === 'AbortError' ? 'llm timeout' : `llm error: ${err.message}`;
-      result = fallbackResult(draw, reason);
+      const isTimeout = err.name === 'TimeoutError' || err.name === 'AbortError';
+      const fallbackType = isTimeout ? 'timeout' : 'provider_error';
+      const reason = isTimeout ? 'llm timeout' : `llm error: ${err.message}`;
+      result = fallbackResult(draw, reason, fallbackType);
     }
 
     return {
@@ -153,6 +155,8 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
       category_label: catalog.categoryLabel(result.category),
       sticker: publicSticker(result.sticker),
       source: result.source,
+      fallback_type: result.fallback_type || null,
+      fallback_reason: result.fallback_reason || null,
     };
   }
 

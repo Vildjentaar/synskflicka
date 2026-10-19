@@ -50,7 +50,14 @@ function createApp({ catalog, provider, logger = console } = {}) {
       try {
         const result = await readings.generate(req.body);
         logger.info(
-          JSON.stringify({ event: 'reading', source: result.source, category: result.category_id, sticker: result.sticker.id, ms: Date.now() - started })
+          JSON.stringify({
+            event: 'reading',
+            source: result.source,
+            fallback_type: result.fallback_type || undefined,
+            category: result.category_id,
+            sticker: result.sticker.id,
+            ms: Date.now() - started,
+          })
         );
         res.json(result);
       } catch (err) {

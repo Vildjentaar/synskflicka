@@ -262,6 +262,17 @@ async function fetchAndShow(pending) {
   try {
     const data = await pending;
     stopLoader();
+    if (data.source !== 'llm') {
+      console.warn(`[Fallback Debug] Fallback triggered! Source: "${data.source}", Type: "${data.fallback_type || 'unknown'}"`, {
+        fallback_type: data.fallback_type,
+        fallback_reason: data.fallback_reason,
+        source: data.source,
+        category: data.category_id,
+        sticker: data.sticker?.id,
+      });
+    } else {
+      console.log('[Fallback Debug] Normal LLM reading received (no fallback).');
+    }
     await showResult(data);
   } catch (err) {
     stopLoader();
