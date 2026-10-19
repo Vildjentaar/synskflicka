@@ -3,7 +3,9 @@ const fs = require('fs');
 const config = require('./config');
 const { validateData, isEligible, assetExists } = require('./validateData');
 
-const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
+const defaultDeck = require('../data/tarot_cards.json');
+const defaultStickers = require('../data/stickers.json');
+const defaultVocab = require('../config/vocabulary.json');
 
 /**
  * Loads deck, stickers and vocabulary, validates them, and exposes lookup helpers.
@@ -11,9 +13,9 @@ const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
  */
 function loadCatalog(overrides = {}) {
   const opts = {
-    deck: overrides.deck || readJson(config.paths.deck),
-    stickers: overrides.stickers || readJson(config.paths.stickers),
-    vocab: overrides.vocab || readJson(config.paths.vocabulary),
+    deck: overrides.deck || defaultDeck,
+    stickers: overrides.stickers || defaultStickers,
+    vocab: overrides.vocab || defaultVocab,
     assetRoot: overrides.assetRoot || config.paths.assetRoot,
     strictAssets: overrides.strictAssets ?? config.strictAssets,
   };

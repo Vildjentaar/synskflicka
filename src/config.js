@@ -21,7 +21,7 @@ const config = {
     assetRoot: ROOT,
     public: path.join(ROOT, 'public'),
   },
-  strictAssets: bool(env.STRICT_ASSETS, isProduction),
+  strictAssets: bool(env.STRICT_ASSETS, false),
   llm: {
     provider: (env.LLM_PROVIDER || (env.GEMINI_API_KEY ? 'gemini' : 'mock')).toLowerCase(),
     apiKey: env.GEMINI_API_KEY || '',
