@@ -35,14 +35,14 @@ function createApp({ catalog, provider, logger = console } = {}) {
 
   // Public deck list: IDs and display info only. Meanings stay server-side.
   const publicDeck = catalog.deck.map(({ id, name, arcana, suit, rank }) => ({ id, name, arcana, suit, rank }));
-  app.get('/api/deck', (req, res) => res.json({ cards: publicDeck }));
 
-  app.get('/api/health', (req, res) =>
+  const apiRouter = express.Router();
+  apiRouter.get('/deck', (req, res) => res.json({ cards: publicDeck }));
+  apiRouter.get('/health', (req, res) =>
     res.json({ ok: true, provider: provider.name, eligible_stickers: catalog.eligibleStickers.length })
   );
-
-  app.post(
-    '/api/generate-reading',
+  apiRouter.post(
+    '/generate-reading',
     rateLimit({ perMinute: config.rateLimitPerMinute }),
     express.json({ limit: '2kb' }),
     async (req, res) => {
@@ -61,13 +61,16 @@ function createApp({ catalog, provider, logger = console } = {}) {
     }
   );
 
+  // Mount router at both /api and / so both direct and rewritten serverless requests match
+  app.use('/api', apiRouter);
+  app.use('/', apiRouter);
+
   // Malformed JSON / oversized bodies from express.json
-  app.use('/api', (err, req, res, next) => {
+  app.use((err, req, res, next) => {
     if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Request too large.' });
     if (err.type === 'entity.parse.failed') return res.status(400).json({ error: 'Invalid JSON.' });
     next(err);
   });
-  app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
 
   const stickersDir = fs.existsSync(path.join(config.paths.public, 'stickers'))
     ? path.join(config.paths.public, 'stickers')
