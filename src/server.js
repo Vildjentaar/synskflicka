@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const config = require('./config');
@@ -68,26 +69,41 @@ function createApp({ catalog, provider, logger = console } = {}) {
   });
   app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
 
-  app.use('/stickers', express.static(path.join(config.root, 'stickers'), { maxAge: '1h' }));
+  const stickersDir = fs.existsSync(path.join(config.paths.public, 'stickers'))
+    ? path.join(config.paths.public, 'stickers')
+    : path.join(config.root, 'stickers');
+  app.use('/stickers', express.static(stickersDir, { maxAge: '1h' }));
   app.use('/stickers', (req, res) => res.status(404).end());
   app.use(express.static(config.paths.public, { maxAge: config.isProduction ? '1h' : 0 }));
 
   return app;
 }
 
-if (require.main === module) {
-  let catalog;
-  try {
-    catalog = loadCatalog();
-  } catch (e) {
-    console.error(e.message);
-    process.exit(1);
+let defaultApp;
+function getDefaultApp() {
+  if (!defaultApp) {
+    let catalog;
+    try {
+      catalog = loadCatalog();
+    } catch (e) {
+      console.error(e.message);
+      throw e;
+    }
+    catalog.warnings.forEach((w) => console.warn(`[data] ${w}`));
+    defaultApp = createApp({ catalog });
   }
-  catalog.warnings.forEach((w) => console.warn(`[data] ${w}`));
-  const app = createApp({ catalog });
+  return defaultApp;
+}
+
+if (require.main === module) {
+  const app = getDefaultApp();
   app.listen(config.port, () => {
     console.log(`Tarot Sticker Game on http://localhost:${config.port}  (LLM: ${config.llm.provider}, strict assets: ${config.strictAssets})`);
   });
 }
 
-module.exports = { createApp };
+const serverlessHandler = (req, res) => getDefaultApp()(req, res);
+serverlessHandler.createApp = createApp;
+serverlessHandler.getDefaultApp = getDefaultApp;
+
+module.exports = serverlessHandler;
