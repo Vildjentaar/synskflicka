@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 const { test, describe, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { createApp } = require('../src/server');
@@ -89,7 +89,7 @@ describe('model output handling', () => {
         character: goodSticker.character,
         visual_description: goodSticker.visual_description,
       });
-      assert.deepEqual(json.cards.map((c) => c.name), ['The Fool', 'The Tower', 'Three of Cups']);
+      assert.deepEqual(json.cards.map((c) => c.name), ['Deli', 'Kule', 'Kupa Üçlüsü']);
       assert.equal(json.cards[1].orientation, 'reversed');
     }));
 
@@ -123,7 +123,7 @@ describe('model output handling', () => {
         assert.equal(json.source, 'fallback');
         assert.ok(catalog.isEnabledCategory(json.category_id));
         assert.ok(catalog.isCompatible(catalog.getEligibleSticker(json.sticker.id), json.category_id));
-        assert.ok(json.reading_text.includes('The Fool'));
+        assert.ok(json.reading_text.includes('Deli'));
       }));
   }
 

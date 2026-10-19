@@ -14,42 +14,42 @@ class RequestError extends Error {
 /** Lighthearted fallback readings, keyed by category. Used when the LLM fails or misbehaves. */
 const FALLBACK_READINGS = {
   chaotic_energy: (c) =>
-    `${c[0]}, ${c[1]} and ${c[2]} walked into a bar, and the cards are still trying to piece together what happened next. ` +
-    `Your energy today is a shopping cart with one wobbly wheel: fast, loud, and only loosely steerable. ` +
-    `Embrace a little spontaneity, but maybe double-check before you hit "reply all".`,
+    `${c[0]}, ${c[1]} ve ${c[2]} bir bara girmiş; kartlar sonrasında ne olduğunu hâlâ kafalarında birleştirmeye çalışıyor. ` +
+    `Bugünkü enerjin tekerlerinden biri sallanan bir alışveriş arabası gibi: hızlı, gürültülü ve ancak yarı yarıya yönetilebilir. ` +
+    `Biraz doğallığa yer aç, ama "herkese yanıtla" tuşuna basmadan önce bir kez daha kontrol et.`,
   cynical_observer: (c) =>
-    `The cards consulted each other, sighed, and settled on ${c[0]}, ${c[1]} and ${c[2]}. ` +
-    `Today you may find yourself watching other people's questionable decisions with the calm of a nature documentary narrator. ` +
-    `Your raised eyebrow is fully charged - use it wisely.`,
+    `Kartlar birbirine danıştı, iç çekti ve ${c[0]}, ${c[1]} ve ${c[2]} üzerinde karar kıldı. ` +
+    `Bugün başkalarının kuşkulu kararlarını, bir belgesel anlatıcısının sakinliğiyle izlerken bulabilirsin. ` +
+    `Kalkık kaşın tamamen şarjlı - akıllıca kullan.`,
   hyper_focused: (c) =>
-    `${c[0]}, ${c[1]} and ${c[2]} suggest a day with tunnel vision and a to-do list that fears you. ` +
-    `You may get a surprising amount done, as long as nobody interrupts you mid-flow. ` +
-    `Remember to blink occasionally.`,
+    `${c[0]}, ${c[1]} ve ${c[2]}, tünel görüşü ve senden korkan bir yapılacaklar listesi olan bir günü işaret ediyor. ` +
+    `Kimse seni akışının ortasında bölmediği sürece şaşırtıcı miktarda iş bitirebilirsin. ` +
+    `Ara sıra göz kırpmayı unutma.`,
   blissful_ignorance: (c) =>
-    `With ${c[0]}, ${c[1]} and ${c[2]} on the table, the universe recommends a strictly vibes-based approach to today. ` +
-    `Small problems may simply bounce off you like you are wearing invisible bubble wrap. ` +
-    `Whatever is going on, you are probably fine - and honestly, you look great doing it.`,
+    `Masada ${c[0]}, ${c[1]} ve ${c[2]} varken evren bugün için tamamen havana göre takılmanı öneriyor. ` +
+    `Küçük sorunlar, görünmez bir balonlu naylon giymişsin gibi üzerinden kayıp gidebilir. ` +
+    `Ne olursa olsun, büyük ihtimalle iyisin - ve açıkçası bunu yaparken harika görünüyorsun.`,
   dramatic_flair: (c) =>
-    `${c[0]}, ${c[1]} and ${c[2]} have arrived, and they brought a spotlight. ` +
-    `Today the smallest inconvenience may feel like a plot twist worthy of its own theme music. ` +
-    `Lean in, take a bow, and let the minor stuff be cinematic.`,
+    `${c[0]}, ${c[1]} ve ${c[2]} geldi ve yanında bir spot ışığı da getirdi. ` +
+    `Bugün en küçük aksilik bile kendi tema müziğini hak eden bir olay örgüsü dönüşü gibi hissettirebilir. ` +
+    `Rolüne gir, reverans yap ve ufak tefek şeyleri sinematik olmaya bırak.`,
 };
 
 function validateDrawRequest(body, catalog) {
   if (!body || typeof body !== 'object' || !Array.isArray(body.cards)) {
-    throw new RequestError('Request body must contain a "cards" array.');
+    throw new RequestError('İstek gövdesi bir "cards" dizisi içermelidir.');
   }
-  if (body.cards.length !== 3) throw new RequestError('Exactly three cards are required.');
+  if (body.cards.length !== 3) throw new RequestError('Tam olarak üç kart gereklidir.');
 
   const seen = new Set();
   return body.cards.map((entry, i) => {
-    if (!entry || typeof entry !== 'object') throw new RequestError(`cards[${i}] must be an object.`);
+    if (!entry || typeof entry !== 'object') throw new RequestError(`cards[${i}] bir nesne olmalıdır.`);
     const { id, orientation } = entry;
-    if (typeof id !== 'string' || id.length > 64) throw new RequestError(`cards[${i}].id must be a string.`);
-    if (!ORIENTATIONS.has(orientation)) throw new RequestError(`cards[${i}].orientation must be "upright" or "reversed".`);
+    if (typeof id !== 'string' || id.length > 64) throw new RequestError(`cards[${i}].id bir metin olmalıdır.`);
+    if (!ORIENTATIONS.has(orientation)) throw new RequestError(`cards[${i}].orientation "upright" veya "reversed" olmalıdır.`);
     const card = catalog.getCard(id);
-    if (!card) throw new RequestError(`cards[${i}].id is not a known card.`);
-    if (seen.has(id)) throw new RequestError('The three cards must be distinct.');
+    if (!card) throw new RequestError(`cards[${i}].id bilinen bir kart değil.`);
+    if (seen.has(id)) throw new RequestError('Üç kart birbirinden farklı olmalıdır.');
     seen.add(id);
     return { card, orientation };
   });
@@ -111,7 +111,7 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
   function fallbackResult(draw, reason) {
     const category = pick(catalog.enabledCategories, rng).id;
     const sticker = pick(catalog.stickersForCategory(category), rng);
-    const names = draw.map((d) => (d.orientation === 'reversed' ? `${d.card.name} (reversed)` : d.card.name));
+    const names = draw.map((d) => (d.orientation === 'reversed' ? `${d.card.name} (ters)` : d.card.name));
     logger.warn(JSON.stringify({ event: 'reading_fallback', reason }));
     return { reading: FALLBACK_READINGS[category](names), category, sticker, source: 'fallback' };
   }

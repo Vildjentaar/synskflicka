@@ -1,7 +1,7 @@
 [
   {
     "id": "the_fool",
-    "name": "The Fool",
+    "name": "Deli",
     "arcana": "major",
     "suit": null,
     "rank": 0,
@@ -20,7 +20,7 @@
   },
   {
     "id": "the_magician",
-    "name": "The Magician",
+    "name": "Büyücü",
     "arcana": "major",
     "suit": null,
     "rank": 1,
@@ -39,7 +39,7 @@
   },
   {
     "id": "the_high_priestess",
-    "name": "The High Priestess",
+    "name": "Başrahibe",
     "arcana": "major",
     "suit": null,
     "rank": 2,
@@ -58,7 +58,7 @@
   },
   {
     "id": "the_empress",
-    "name": "The Empress",
+    "name": "İmparatoriçe",
     "arcana": "major",
     "suit": null,
     "rank": 3,
@@ -77,7 +77,7 @@
   },
   {
     "id": "the_emperor",
-    "name": "The Emperor",
+    "name": "İmparator",
     "arcana": "major",
     "suit": null,
     "rank": 4,
@@ -96,7 +96,7 @@
   },
   {
     "id": "the_hierophant",
-    "name": "The Hierophant",
+    "name": "Başrahip",
     "arcana": "major",
     "suit": null,
     "rank": 5,
@@ -115,7 +115,7 @@
   },
   {
     "id": "the_lovers",
-    "name": "The Lovers",
+    "name": "Aşıklar",
     "arcana": "major",
     "suit": null,
     "rank": 6,
@@ -134,7 +134,7 @@
   },
   {
     "id": "the_chariot",
-    "name": "The Chariot",
+    "name": "Savaş Arabası",
     "arcana": "major",
     "suit": null,
     "rank": 7,
@@ -153,7 +153,7 @@
   },
   {
     "id": "strength",
-    "name": "Strength",
+    "name": "Güç",
     "arcana": "major",
     "suit": null,
     "rank": 8,
@@ -172,7 +172,7 @@
   },
   {
     "id": "the_hermit",
-    "name": "The Hermit",
+    "name": "Ermiş",
     "arcana": "major",
     "suit": null,
     "rank": 9,
@@ -191,7 +191,7 @@
   },
   {
     "id": "wheel_of_fortune",
-    "name": "Wheel of Fortune",
+    "name": "Kader Çarkı",
     "arcana": "major",
     "suit": null,
     "rank": 10,
@@ -210,7 +210,7 @@
   },
   {
     "id": "justice",
-    "name": "Justice",
+    "name": "Adalet",
     "arcana": "major",
     "suit": null,
     "rank": 11,
@@ -229,7 +229,7 @@
   },
   {
     "id": "the_hanged_man",
-    "name": "The Hanged Man",
+    "name": "Asılan Adam",
     "arcana": "major",
     "suit": null,
     "rank": 12,
@@ -248,7 +248,7 @@
   },
   {
     "id": "death",
-    "name": "Death",
+    "name": "Ölüm",
     "arcana": "major",
     "suit": null,
     "rank": 13,
@@ -267,7 +267,7 @@
   },
   {
     "id": "temperance",
-    "name": "Temperance",
+    "name": "Denge",
     "arcana": "major",
     "suit": null,
     "rank": 14,
@@ -286,7 +286,7 @@
   },
   {
     "id": "the_devil",
-    "name": "The Devil",
+    "name": "Şeytan",
     "arcana": "major",
     "suit": null,
     "rank": 15,
@@ -305,7 +305,7 @@
   },
   {
     "id": "the_tower",
-    "name": "The Tower",
+    "name": "Kule",
     "arcana": "major",
     "suit": null,
     "rank": 16,
@@ -323,7 +323,7 @@
   },
   {
     "id": "the_star",
-    "name": "The Star",
+    "name": "Yıldız",
     "arcana": "major",
     "suit": null,
     "rank": 17,
@@ -342,7 +342,7 @@
   },
   {
     "id": "the_moon",
-    "name": "The Moon",
+    "name": "Ay",
     "arcana": "major",
     "suit": null,
     "rank": 18,
@@ -361,7 +361,7 @@
   },
   {
     "id": "the_sun",
-    "name": "The Sun",
+    "name": "Güneş",
     "arcana": "major",
     "suit": null,
     "rank": 19,
@@ -380,7 +380,7 @@
   },
   {
     "id": "judgement",
-    "name": "Judgement",
+    "name": "Mahkeme",
     "arcana": "major",
     "suit": null,
     "rank": 20,
@@ -399,7 +399,7 @@
   },
   {
     "id": "the_world",
-    "name": "The World",
+    "name": "Dünya",
     "arcana": "major",
     "suit": null,
     "rank": 21,
@@ -418,7 +418,7 @@
   },
   {
     "id": "ace_of_wands",
-    "name": "Ace of Wands",
+    "name": "Asa Ası",
     "arcana": "minor",
     "suit": "wands",
     "rank": 1,
@@ -437,7 +437,7 @@
   },
   {
     "id": "two_of_wands",
-    "name": "Two of Wands",
+    "name": "Asa İkilisi",
     "arcana": "minor",
     "suit": "wands",
     "rank": 2,
@@ -455,7 +455,7 @@
   },
   {
     "id": "three_of_wands",
-    "name": "Three of Wands",
+    "name": "Asa Üçlüsü",
     "arcana": "minor",
     "suit": "wands",
     "rank": 3,
@@ -474,7 +474,7 @@
   },
   {
     "id": "four_of_wands",
-    "name": "Four of Wands",
+    "name": "Asa Dörtlüsü",
     "arcana": "minor",
     "suit": "wands",
     "rank": 4,
@@ -492,7 +492,7 @@
   },
   {
     "id": "five_of_wands",
-    "name": "Five of Wands",
+    "name": "Asa Beşlisi",
     "arcana": "minor",
     "suit": "wands",
     "rank": 5,
@@ -511,7 +511,7 @@
   },
   {
     "id": "six_of_wands",
-    "name": "Six of Wands",
+    "name": "Asa Altılısı",
     "arcana": "minor",
     "suit": "wands",
     "rank": 6,
@@ -530,7 +530,7 @@
   },
   {
     "id": "seven_of_wands",
-    "name": "Seven of Wands",
+    "name": "Asa Yedilisi",
     "arcana": "minor",
     "suit": "wands",
     "rank": 7,
@@ -548,7 +548,7 @@
   },
   {
     "id": "eight_of_wands",
-    "name": "Eight of Wands",
+    "name": "Asa Sekizlisi",
     "arcana": "minor",
     "suit": "wands",
     "rank": 8,
@@ -567,7 +567,7 @@
   },
   {
     "id": "nine_of_wands",
-    "name": "Nine of Wands",
+    "name": "Asa Dokuzlusu",
     "arcana": "minor",
     "suit": "wands",
     "rank": 9,
@@ -586,7 +586,7 @@
   },
   {
     "id": "ten_of_wands",
-    "name": "Ten of Wands",
+    "name": "Asa Onlusu",
     "arcana": "minor",
     "suit": "wands",
     "rank": 10,
@@ -605,7 +605,7 @@
   },
   {
     "id": "page_of_wands",
-    "name": "Page of Wands",
+    "name": "Asa Uşağı",
     "arcana": "minor",
     "suit": "wands",
     "rank": "page",
@@ -624,7 +624,7 @@
   },
   {
     "id": "knight_of_wands",
-    "name": "Knight of Wands",
+    "name": "Asa Şövalyesi",
     "arcana": "minor",
     "suit": "wands",
     "rank": "knight",
@@ -643,7 +643,7 @@
   },
   {
     "id": "queen_of_wands",
-    "name": "Queen of Wands",
+    "name": "Asa Kraliçesi",
     "arcana": "minor",
     "suit": "wands",
     "rank": "queen",
@@ -662,7 +662,7 @@
   },
   {
     "id": "king_of_wands",
-    "name": "King of Wands",
+    "name": "Asa Kralı",
     "arcana": "minor",
     "suit": "wands",
     "rank": "king",
@@ -681,7 +681,7 @@
   },
   {
     "id": "ace_of_cups",
-    "name": "Ace of Cups",
+    "name": "Kupa Ası",
     "arcana": "minor",
     "suit": "cups",
     "rank": 1,
@@ -699,7 +699,7 @@
   },
   {
     "id": "two_of_cups",
-    "name": "Two of Cups",
+    "name": "Kupa İkilisi",
     "arcana": "minor",
     "suit": "cups",
     "rank": 2,
@@ -718,7 +718,7 @@
   },
   {
     "id": "three_of_cups",
-    "name": "Three of Cups",
+    "name": "Kupa Üçlüsü",
     "arcana": "minor",
     "suit": "cups",
     "rank": 3,
@@ -737,7 +737,7 @@
   },
   {
     "id": "four_of_cups",
-    "name": "Four of Cups",
+    "name": "Kupa Dörtlüsü",
     "arcana": "minor",
     "suit": "cups",
     "rank": 4,
@@ -755,7 +755,7 @@
   },
   {
     "id": "five_of_cups",
-    "name": "Five of Cups",
+    "name": "Kupa Beşlisi",
     "arcana": "minor",
     "suit": "cups",
     "rank": 5,
@@ -774,7 +774,7 @@
   },
   {
     "id": "six_of_cups",
-    "name": "Six of Cups",
+    "name": "Kupa Altılısı",
     "arcana": "minor",
     "suit": "cups",
     "rank": 6,
@@ -792,7 +792,7 @@
   },
   {
     "id": "seven_of_cups",
-    "name": "Seven of Cups",
+    "name": "Kupa Yedilisi",
     "arcana": "minor",
     "suit": "cups",
     "rank": 7,
@@ -811,7 +811,7 @@
   },
   {
     "id": "eight_of_cups",
-    "name": "Eight of Cups",
+    "name": "Kupa Sekizlisi",
     "arcana": "minor",
     "suit": "cups",
     "rank": 8,
@@ -828,7 +828,7 @@
   },
   {
     "id": "nine_of_cups",
-    "name": "Nine of Cups",
+    "name": "Kupa Dokuzlusu",
     "arcana": "minor",
     "suit": "cups",
     "rank": 9,
@@ -847,7 +847,7 @@
   },
   {
     "id": "ten_of_cups",
-    "name": "Ten of Cups",
+    "name": "Kupa Onlusu",
     "arcana": "minor",
     "suit": "cups",
     "rank": 10,
@@ -865,7 +865,7 @@
   },
   {
     "id": "page_of_cups",
-    "name": "Page of Cups",
+    "name": "Kupa Uşağı",
     "arcana": "minor",
     "suit": "cups",
     "rank": "page",
@@ -883,7 +883,7 @@
   },
   {
     "id": "knight_of_cups",
-    "name": "Knight of Cups",
+    "name": "Kupa Şövalyesi",
     "arcana": "minor",
     "suit": "cups",
     "rank": "knight",
@@ -902,7 +902,7 @@
   },
   {
     "id": "queen_of_cups",
-    "name": "Queen of Cups",
+    "name": "Kupa Kraliçesi",
     "arcana": "minor",
     "suit": "cups",
     "rank": "queen",
@@ -920,7 +920,7 @@
   },
   {
     "id": "king_of_cups",
-    "name": "King of Cups",
+    "name": "Kupa Kralı",
     "arcana": "minor",
     "suit": "cups",
     "rank": "king",
@@ -938,7 +938,7 @@
   },
   {
     "id": "ace_of_swords",
-    "name": "Ace of Swords",
+    "name": "Kılıç Ası",
     "arcana": "minor",
     "suit": "swords",
     "rank": 1,
@@ -956,7 +956,7 @@
   },
   {
     "id": "two_of_swords",
-    "name": "Two of Swords",
+    "name": "Kılıç İkilisi",
     "arcana": "minor",
     "suit": "swords",
     "rank": 2,
@@ -974,7 +974,7 @@
   },
   {
     "id": "three_of_swords",
-    "name": "Three of Swords",
+    "name": "Kılıç Üçlüsü",
     "arcana": "minor",
     "suit": "swords",
     "rank": 3,
@@ -993,7 +993,7 @@
   },
   {
     "id": "four_of_swords",
-    "name": "Four of Swords",
+    "name": "Kılıç Dörtlüsü",
     "arcana": "minor",
     "suit": "swords",
     "rank": 4,
@@ -1012,7 +1012,7 @@
   },
   {
     "id": "five_of_swords",
-    "name": "Five of Swords",
+    "name": "Kılıç Beşlisi",
     "arcana": "minor",
     "suit": "swords",
     "rank": 5,
@@ -1030,7 +1030,7 @@
   },
   {
     "id": "six_of_swords",
-    "name": "Six of Swords",
+    "name": "Kılıç Altılısı",
     "arcana": "minor",
     "suit": "swords",
     "rank": 6,
@@ -1048,7 +1048,7 @@
   },
   {
     "id": "seven_of_swords",
-    "name": "Seven of Swords",
+    "name": "Kılıç Yedilisi",
     "arcana": "minor",
     "suit": "swords",
     "rank": 7,
@@ -1066,7 +1066,7 @@
   },
   {
     "id": "eight_of_swords",
-    "name": "Eight of Swords",
+    "name": "Kılıç Sekizlisi",
     "arcana": "minor",
     "suit": "swords",
     "rank": 8,
@@ -1084,7 +1084,7 @@
   },
   {
     "id": "nine_of_swords",
-    "name": "Nine of Swords",
+    "name": "Kılıç Dokuzlusu",
     "arcana": "minor",
     "suit": "swords",
     "rank": 9,
@@ -1103,7 +1103,7 @@
   },
   {
     "id": "ten_of_swords",
-    "name": "Ten of Swords",
+    "name": "Kılıç Onlusu",
     "arcana": "minor",
     "suit": "swords",
     "rank": 10,
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "page_of_swords",
-    "name": "Page of Swords",
+    "name": "Kılıç Uşağı",
     "arcana": "minor",
     "suit": "swords",
     "rank": "page",
@@ -1140,7 +1140,7 @@
   },
   {
     "id": "knight_of_swords",
-    "name": "Knight of Swords",
+    "name": "Kılıç Şövalyesi",
     "arcana": "minor",
     "suit": "swords",
     "rank": "knight",
@@ -1159,7 +1159,7 @@
   },
   {
     "id": "queen_of_swords",
-    "name": "Queen of Swords",
+    "name": "Kılıç Kraliçesi",
     "arcana": "minor",
     "suit": "swords",
     "rank": "queen",
@@ -1178,7 +1178,7 @@
   },
   {
     "id": "king_of_swords",
-    "name": "King of Swords",
+    "name": "Kılıç Kralı",
     "arcana": "minor",
     "suit": "swords",
     "rank": "king",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "ace_of_pentacles",
-    "name": "Ace of Pentacles",
+    "name": "Tılsım Ası",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 1,
@@ -1215,7 +1215,7 @@
   },
   {
     "id": "two_of_pentacles",
-    "name": "Two of Pentacles",
+    "name": "Tılsım İkilisi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 2,
@@ -1233,7 +1233,7 @@
   },
   {
     "id": "three_of_pentacles",
-    "name": "Three of Pentacles",
+    "name": "Tılsım Üçlüsü",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 3,
@@ -1252,7 +1252,7 @@
   },
   {
     "id": "four_of_pentacles",
-    "name": "Four of Pentacles",
+    "name": "Tılsım Dörtlüsü",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 4,
@@ -1271,7 +1271,7 @@
   },
   {
     "id": "five_of_pentacles",
-    "name": "Five of Pentacles",
+    "name": "Tılsım Beşlisi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 5,
@@ -1290,7 +1290,7 @@
   },
   {
     "id": "six_of_pentacles",
-    "name": "Six of Pentacles",
+    "name": "Tılsım Altılısı",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 6,
@@ -1308,7 +1308,7 @@
   },
   {
     "id": "seven_of_pentacles",
-    "name": "Seven of Pentacles",
+    "name": "Tılsım Yedilisi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 7,
@@ -1326,7 +1326,7 @@
   },
   {
     "id": "eight_of_pentacles",
-    "name": "Eight of Pentacles",
+    "name": "Tılsım Sekizlisi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 8,
@@ -1344,7 +1344,7 @@
   },
   {
     "id": "nine_of_pentacles",
-    "name": "Nine of Pentacles",
+    "name": "Tılsım Dokuzlusu",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 9,
@@ -1362,7 +1362,7 @@
   },
   {
     "id": "ten_of_pentacles",
-    "name": "Ten of Pentacles",
+    "name": "Tılsım Onlusu",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": 10,
@@ -1380,7 +1380,7 @@
   },
   {
     "id": "page_of_pentacles",
-    "name": "Page of Pentacles",
+    "name": "Tılsım Uşağı",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "page",
@@ -1398,7 +1398,7 @@
   },
   {
     "id": "knight_of_pentacles",
-    "name": "Knight of Pentacles",
+    "name": "Tılsım Şövalyesi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "knight",
@@ -1417,7 +1417,7 @@
   },
   {
     "id": "queen_of_pentacles",
-    "name": "Queen of Pentacles",
+    "name": "Tılsım Kraliçesi",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "queen",
@@ -1435,7 +1435,7 @@
   },
   {
     "id": "king_of_pentacles",
-    "name": "King of Pentacles",
+    "name": "Tılsım Kralı",
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "king",

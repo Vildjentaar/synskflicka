@@ -4,7 +4,7 @@
         "asset_path": "/stickers/kevin_malone_smirk.png",
         "franchise": "The Office",
         "character": "Kevin Malone",
-        "visual_description": "A zoomed-in close-up of Kevin Malone's face with a smirking expression.",
+        "visual_description": "Kevin Malone'un yüzünün yakın plan çekimi; yüzünde sırıtan bir ifade var.",
         "expression": [
             "smug",
             "mischievous"
@@ -35,7 +35,7 @@
         "asset_path": "/stickers/barney_stinson_loving_napkin_pouch.png",
         "franchise": "How I Met Your Mother",
         "character": "Barney Stinson",
-        "visual_description": "Barney Stinson sits on a couch, lovingly hugging a napkin pouch with an affectionate expression.",
+        "visual_description": "Barney Stinson bir kanepede oturuyor ve sevgi dolu bir ifadeyle peçete kesesine sarılıyor.",
         "expression": [
             "happy",
             "smiling",
@@ -68,7 +68,7 @@
         "asset_path": "/stickers/ray_holt_confused_old_woman.png",
         "franchise": "Brooklyn Nine-Nine",
         "character": "Raymond Holt",
-        "visual_description": "Raymond Holt wears a whiteboard displaying the words \"Confused Old Woman\" while maintaining a bored expression.",
+        "visual_description": "Raymond Holt, üzerinde \"Şaşkın Yaşlı Kadın\" yazan bir beyaz tahta takıyor ve sıkılmış bir ifadesini koruyor.",
         "expression": [
             "bored",
             "deadpan",
@@ -99,7 +99,7 @@
         "asset_path": "/stickers/claire_dunphy_messy_hair_mug_scoff.png",
         "franchise": "Modern Family",
         "character": "Claire Dunphy",
-        "visual_description": "Claire Dunphy has messy hair and holds a mug while making a scoffing expression.",
+        "visual_description": "Claire Dunphy'nin saçları dağınık; elinde bir kupa tutarken alaycı bir şekilde bakıyor.",
         "expression": [
             "unimpressed",
             "smug",
@@ -133,7 +133,7 @@
         "asset_path": "/stickers/ed_truck_michael_scott_handshake_logo.png",
         "franchise": "The Office",
         "character": "Ed Truck and Michael Scott",
-        "visual_description": "Ed Truck and Michael Scott shake hands in a scene from The Office, with the event logo positioned over Ed Truck's head.",
+        "visual_description": "Ed Truck ve Michael Scott, The Office'ten bir sahnede el sıkışıyor; etkinlik logosu Ed Truck'ın başının üstünde duruyor.",
         "expression": [],
         "action": [
             "handshaking"
@@ -160,7 +160,7 @@
         "asset_path": "/stickers/burhan_altintop_office_skincare_magazine.png",
         "franchise": "Avrupa Yakası",
         "character": "Burhan Altıntop",
-        "visual_description": "Burhan Altıntop sits in an office wearing a suit, with skincare products applied to his face, while reading a magazine in an elegant, composed manner.",
+        "visual_description": "Burhan Altıntop takım elbiseyle bir ofiste oturuyor; yüzünde cilt bakım ürünleri var ve zarif, sakin bir tavırla dergi okuyor.",
         "expression": [],
         "action": [
             "sitting",
@@ -189,7 +189,7 @@
         "asset_path": "/stickers/leonard_hofstadter_sarcasm_sign.png",
         "franchise": "The Big Bang Theory",
         "character": "Leonard Hofstadter",
-        "visual_description": "Leonard Hofstadter holds a piece of paper displaying the word \"SARCASM\" while wearing a bored expression.",
+        "visual_description": "Leonard Hofstadter, üzerinde \"SARCASM\" (ALAY) yazan bir kâğıt tutuyor ve sıkılmış bir ifade takınıyor.",
         "expression": [
             "bored",
             "deadpan",
@@ -221,7 +221,7 @@
         "asset_path": "/stickers/rachel_sleeping_under_comforter.png",
         "franchise": "Friends",
         "character": "Rachel Green",
-        "visual_description": "Rachel Green is sleeping in bed with a large comforter pulled over her face.",
+        "visual_description": "Rachel Green yatakta uyuyor; kocaman bir yorgan yüzüne kadar çekilmiş.",
         "expression": [],
         "action": [
             "sleeping",
@@ -251,7 +251,7 @@
         "asset_path": "/stickers/ferhunde_tekin_sobe_affair_photo.png",
         "franchise": "Yaprak Dökümü",
         "character": "Ferhunde Tekin",
-        "visual_description": "Ferhunde Tekin smiles while taking a picture with a digital camera and holding a cellphone to her ear. She has just caught someone having an affair and is about to say, \"Sobe!\"",
+        "visual_description": "Ferhunde Tekin gülümseyerek dijital kamerayla fotoğraf çekiyor ve bir yandan cep telefonunu kulağına tutuyor. Birini aldatırken yakalamış ve tam \"Söbe!\" diyecek.",
         "expression": [
             "smiling",
             "mischievous",
@@ -286,7 +286,7 @@
         "asset_path": "/stickers/ai_female_kitten_armored_sword_flat_face.png",
         "franchise": null,
         "character": null,
-        "visual_description": "An AI-generated female kitten wearing armor and holding a sword, with a flat, expressionless face.",
+        "visual_description": "Zırh giymiş, elinde kılıç tutan, yüzü düz ve ifadesiz yapay zekâ yapımı dişi bir yavru kedi.",
         "expression": [
             "deadpan",
             "neutral",
@@ -320,7 +320,7 @@
         "asset_path": "/stickers/nurhayat_karakas_pajamas_reading_newspaper.png",
         "franchise": "Yalan Dünya",
         "character": "Nurhayat Karakaş",
-        "visual_description": "Nurhayat Karakaş wears pyjamas while reading a newspaper with an expression of ennui.",
+        "visual_description": "Nurhayat Karakaş pijamalarıyla gazete okuyor; yüzünde bıkkın bir ifade var.",
         "expression": [
             "bored",
             "indifferent",
@@ -353,7 +353,7 @@
         "asset_path": "/stickers/jake_peralta_this_is_killing_me.png",
         "franchise": "Brooklyn Nine-Nine",
         "character": "Jake Peralta",
-        "visual_description": "Jake Peralta reacts with shock, stress, and despair while saying, \"This is killing me.\"",
+        "visual_description": "Jake Peralta şok, stres ve çaresizlik içinde tepki veriyor ve \"Bu beni öldürüyor.\" diyor.",
         "expression": [
             "shocked",
             "stressed",
@@ -387,7 +387,7 @@
         "asset_path": "/stickers/michael_scott_animated_smirk.png",
         "franchise": "The Office",
         "character": "Michael Scott",
-        "visual_description": "Michael Scott makes an animated, exaggerated smirking face, conveying a mischievous reaction often used as a meme.",
+        "visual_description": "Michael Scott abartılı, hareketli bir sırıtma yüzü yapıyor; sıkça meme olarak kullanılan haylaz bir tepki.",
         "expression": [
             "smug",
             "mischievous",
@@ -421,7 +421,7 @@
         "asset_path": "/stickers/joey_tribbiani_ok_sign_not_bad.png",
         "franchise": "Friends",
         "character": "Joey Tribbiani",
-        "visual_description": "Joey Tribbiani makes an OK hand sign with an approving, self-assured expression, conveying that something is not bad.",
+        "visual_description": "Joey Tribbiani onaylayan, kendinden emin bir ifadeyle \"OK\" işareti yapıyor; yani \"hiç fena değil\" diyor.",
         "expression": [
             "smug",
             "confident",
@@ -453,7 +453,7 @@
         "asset_path": "/stickers/ali_riza_tekin_peeking_behind_door.png",
         "franchise": "Yaprak Dökümü",
         "character": "Ali Rıza Tekin",
-        "visual_description": "Ali Rıza Bey peers from behind a door with a worried, suspicious, or reproachful expression.",
+        "visual_description": "Ali Rıza Bey bir kapının arkasından endişeli, şüpheli ya da sitemkâr bir ifadeyle bakıyor.",
         "expression": [
             "anxious",
             "skeptical",
@@ -485,7 +485,7 @@
         "asset_path": "/stickers/gina_linetti_blue_snuggie_sunglasses.png",
         "franchise": "Brooklyn Nine-Nine",
         "character": "Gina Linetti",
-        "visual_description": "Gina Linetti wears a blue Snuggie and sunglasses in a distinctive, self-assured pose, embodying her character's signature confidence and nonchalance.",
+        "visual_description": "Gina Linetti mavi bir Snuggie ve güneş gözlüğü takmış; karakterinin imzası olan özgüveni ve umursamazlığı yansıtan kendine has bir poz veriyor.",
         "expression": [],
         "action": [
             "posing",
@@ -515,7 +515,7 @@
         "asset_path": "/stickers/ai_black_cat_dap_up.png",
         "franchise": null,
         "character": null,
-        "visual_description": "An AI-generated black cat reaching out to initiate a casual dap-up greeting.",
+        "visual_description": "Yapay zekâ yapımı siyah bir kedi, havalı bir el sıkışma selamı için elini uzatıyor.",
         "expression": [],
         "action": [
             "reaching_out",
@@ -542,7 +542,7 @@
         "asset_path": "/stickers/joey_tribbiani_late_realization_red_sweater.png",
         "franchise": "Friends",
         "character": "Joey Tribbiani",
-        "visual_description": "Joey Tribbiani displays a shocked expression as he finally realizes that Ross is the father of Rachel's baby, after taking an unusually long time to connect the clues.",
+        "visual_description": "Joey Tribbiani, ipuçlarını birleştirmesi alışılmadık derecede uzun sürdükten sonra Rachel'ın bebeğinin babasının Ross olduğunu nihayet fark ediyor ve şok geçiriyor.",
         "expression": [
             "shocked",
             "surprised",
@@ -575,7 +575,7 @@
         "asset_path": "/stickers/ross_geller_apartment_window_triumph.png",
         "franchise": "Friends",
         "character": "Ross Geller",
-        "visual_description": "Ross Geller stands inside his new apartment and makes an exaggerated, triumphant gesture toward his friends through the windows, celebrating his independence after tensions with the other residents.",
+        "visual_description": "Ross Geller yeni dairesinin içinde duruyor ve diğer sakinlerle yaşadığı gerginliklerin ardından bağımsızlığını kutlayarak pencerelerden arkadaşlarına abartılı, zafer dolu bir hareket yapıyor.",
         "expression": [
             "excited",
             "smug",
@@ -610,7 +610,7 @@
         "asset_path": "/stickers/monica_geller_turkey_head_dance.png",
         "franchise": "Friends",
         "character": "Monica Geller",
-        "visual_description": "Monica Geller dances with a large raw turkey over her head, wearing yellow glasses and a red fez, in an absurd attempt to cheer up Chandler Bing and earn his forgiveness.",
+        "visual_description": "Monica Geller, Chandler Bing'i neşelendirmek ve gönlünü almak için saçma bir çabayla, başında kocaman çiğ bir hindiyle, sarı gözlük ve kırmızı fes takarak dans ediyor.",
         "expression": [],
         "action": [
             "dancing",
@@ -641,7 +641,7 @@
         "asset_path": "/stickers/barney_stinson_umm_i_guess_palm.png",
         "franchise": "How I Met Your Mother",
         "character": "Barney Stinson",
-        "visual_description": "Barney Stinson raises his hand with the phrase \"UMM... I GUESS\" written in quotation marks on his palm.",
+        "visual_description": "Barney Stinson elini kaldırmış; avucunda tırnak içinde \"UMM... I GUESS\" (EEE... GALİBA) yazıyor.",
         "expression": [],
         "action": [
             "gesturing",

@@ -7,15 +7,16 @@ const ROMAN = ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
 // Traditional playing-card lineage: wands→clubs, cups→hearts, swords→spades, pentacles→diamonds
 const SUIT_GLYPH = { wands: '♣', cups: '♥', swords: '♠', pentacles: '♦' };
 const MAJOR_GLYPHS = ['☉', '☽', '✶', '♄', '♃', '♀', '♂', '☿', '✷', '♆', '✺'];
-const COURT = { page: 'P', knight: 'Kn', queen: 'Q', king: 'K' };
+const COURT = { page: 'U', knight: 'Şv', queen: 'Kç', king: 'Kr' };
+const ORIENTATION_LABEL = { upright: 'düz', reversed: 'ters' };
 const LOADING_LINES = [
-  'Consulting the spirits…',
-  'Shuffling the cosmic laundry…',
-  'Asking Mercury if it’s in retrograde again…',
-  'The crystal ball is buffering…',
-  'Cross-referencing with every sitcom ever…',
-  'Negotiating with a very dramatic ghost…',
-  'Polishing the third eye…',
+  'Ruhlara danışılıyor…',
+  'Kozmik çamaşırlar karıştırılıyor…',
+  'Merkür’e yine retroda mı diye soruluyor…',
+  'Kristal küre yükleniyor…',
+  'Gelmiş geçmiş bütün dizilerle çapraz kontrol yapılıyor…',
+  'Aşırı dramatik bir hayaletle pazarlık ediliyor…',
+  'Üçüncü göz parlatılıyor…',
 ];
 
 const $ = (sel) => document.querySelector(sel);
@@ -119,7 +120,7 @@ function cardArt(card, orientation) {
     numeral = ROMAN[card.rank] ?? '';
     glyph = MAJOR_GLYPHS[card.rank % MAJOR_GLYPHS.length];
   } else {
-    numeral = typeof card.rank === 'number' ? (card.rank === 1 ? 'A' : String(card.rank)) : COURT[card.rank];
+    numeral = typeof card.rank === 'number' ? (card.rank === 1 ? 'As' : String(card.rank)) : COURT[card.rank];
     glyph = SUIT_GLYPH[card.suit];
   }
   return el('div', { class: `card-art${orientation === 'reversed' ? ' is-reversed' : ''}` }, [
@@ -149,7 +150,7 @@ function dealSpread() {
     ...state.spread.map((entry, i) => {
       const btn = tarotCard(entry, {
         tag: 'button',
-        attrs: { type: 'button', 'data-index': String(i), 'aria-pressed': 'false', 'aria-label': `Face-down card ${i + 1}` },
+        attrs: { type: 'button', 'data-index': String(i), 'aria-pressed': 'false', 'aria-label': `Kapalı kart ${i + 1}` },
       });
       btn.style.setProperty('--i', i);
       btn.style.setProperty('--tilt', `${(Math.random() * 6 - 3).toFixed(2)}deg`);
@@ -168,7 +169,7 @@ function onSpreadClick(e) {
   btn.classList.add('is-selected');
   btn.dataset.order = String(state.selected.length);
   btn.setAttribute('aria-pressed', 'true');
-  btn.setAttribute('aria-label', `Selected card ${state.selected.length}`);
+  btn.setAttribute('aria-label', `Seçilen kart ${state.selected.length}`);
   btn.disabled = true;
   els.slots[state.selected.length - 1].classList.add('is-filled');
 
@@ -193,7 +194,7 @@ async function requestReading(draw) {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+  if (!res.ok) throw new Error(data.error || `İstek başarısız oldu (${res.status})`);
   return data;
 }
 
@@ -204,7 +205,7 @@ function renderDrawn(draw) {
         tarotCard(entry),
         el('div', { class: 'drawn__label' }, [
           el('span', { class: 'drawn__name', text: entry.card.name }),
-          el('span', { class: `pill${entry.orientation === 'reversed' ? ' pill--reversed' : ''}`, text: entry.orientation }),
+          el('span', { class: `pill${entry.orientation === 'reversed' ? ' pill--reversed' : ''}`, text: ORIENTATION_LABEL[entry.orientation] || entry.orientation }),
         ]),
       ]);
       item.style.setProperty('--i', i);
@@ -265,7 +266,7 @@ async function fetchAndShow(pending) {
   } catch (err) {
     stopLoader();
     els.errorText.textContent =
-      err.name === 'TimeoutError' ? 'The spirits took too long to answer. Shall we try again?' : `${err.message}. Shall we try again?`;
+      err.name === 'TimeoutError' ? 'Ruhlar cevap vermekte çok gecikti. Tekrar deneyelim mi?' : `${err.message} Tekrar deneyelim mi?`;
     els.error.hidden = false;
   } finally {
     state.busy = false;
@@ -287,7 +288,7 @@ function setSticker(sticker) {
     els.stickerFallback.hidden = false;
   };
   els.stickerImg.src = sticker.asset_path;
-  els.credit.textContent = who || 'Original sticker';
+  els.credit.textContent = who || 'Özgün çıkartma';
 }
 
 async function showResult(data) {
@@ -343,7 +344,7 @@ async function boot() {
     state.deck = (await res.json()).cards;
     els.startBtn.disabled = false;
   } catch {
-    els.startBtn.textContent = 'The deck is missing. Refresh to try again';
+    els.startBtn.textContent = 'Deste bulunamadı. Tekrar denemek için sayfayı yenile';
   }
 }
 

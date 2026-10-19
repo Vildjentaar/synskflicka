@@ -15,7 +15,7 @@ function rateLimit({ perMinute }) {
     const key = req.ip;
     const n = (hits.get(key) || 0) + 1;
     hits.set(key, n);
-    if (n > perMinute) return res.status(429).json({ error: 'The spirits need a breather. Try again in a minute.' });
+    if (n > perMinute) return res.status(429).json({ error: 'Ruhların biraz nefes alması lazım. Bir dakika sonra tekrar dene.' });
     next();
   };
 }
@@ -56,7 +56,7 @@ function createApp({ catalog, provider, logger = console } = {}) {
       } catch (err) {
         if (err.status === 400) return res.status(400).json({ error: err.message });
         logger.error(JSON.stringify({ event: 'reading_error', message: err.message }));
-        res.status(500).json({ error: 'Something went wrong in the crystal ball.' });
+        res.status(500).json({ error: 'Kristal küre içinde bir şeyler ters gitti.' });
       }
     }
   );
@@ -67,8 +67,8 @@ function createApp({ catalog, provider, logger = console } = {}) {
 
   // Malformed JSON / oversized bodies from express.json
   app.use((err, req, res, next) => {
-    if (err.type === 'entity.too.large') return res.status(413).json({ error: 'Request too large.' });
-    if (err.type === 'entity.parse.failed') return res.status(400).json({ error: 'Invalid JSON.' });
+    if (err.type === 'entity.too.large') return res.status(413).json({ error: 'İstek çok büyük.' });
+    if (err.type === 'entity.parse.failed') return res.status(400).json({ error: 'Geçersiz JSON.' });
     next(err);
   });
 

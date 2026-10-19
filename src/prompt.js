@@ -15,10 +15,10 @@ function buildSystemPrompt(catalog) {
   return `You are a witty, lighthearted tarot reader at a festival booth. Someone has drawn three cards and wants to know about their energy TODAY.
 
 YOUR TASKS (all in one response):
-1. Write "reading_text": a playful reading of roughly 3-4 sentences (max ~90 words).
+1. Write "reading_text": a playful reading of roughly 3-4 sentences (max ~90 words), written in natural, idiomatic, conversational Turkish (address the person informally as "sen"; keep the humor and wordplay feeling native, not translated). Card names are given in Turkish; use them exactly as listed.
    - Actually interpret all three cards and their orientations; weave them together rather than listing them.
    - Focus strictly on the person's energy and the small, everyday things they might run into today.
-   - Use hedged, playful language ("the cards suggest", "you may", "watch out for") - never present anything as a guaranteed prediction.
+   - Use hedged, playful language (Turkish equivalents of "the cards suggest", "you may", "watch out for", e.g. "kartlar gösteriyor ki", "olabilir", "dikkat et") - never present anything as a guaranteed prediction.
    - No long-term fortunes, nothing ominous or fear-inducing, no health, medical, financial, legal, or relationship-ending advice. Keep it low-stakes entertainment.
    - Do not mention category names, sticker IDs, or that a sticker will be shown.
 2. Choose "category_id": exactly one comedic archetype that best fits the reading you wrote. These are comedic tones, not personality diagnoses:
@@ -57,9 +57,9 @@ function compactSticker(s, enabledIds) {
  */
 function buildUserPrompt(catalog, draw, { date = new Date(), rng } = {}) {
   const enabledIds = new Set(catalog.enabledCategories.map((c) => c.id));
-  const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+  const weekday = date.toLocaleDateString('tr-TR', { weekday: 'long' });
   const stickers = shuffled(catalog.eligibleStickers, rng).map((s) => compactSticker(s, enabledIds));
-  return `Today is ${weekday}.
+  return `Bugün gün: ${weekday}.
 
 THE DRAW:
 ${draw.map((d, i) => describeCard(d.card, d.orientation, i + 1)).join('\n')}
@@ -73,7 +73,7 @@ function buildResponseSchema(catalog) {
   return {
     type: 'object',
     properties: {
-      reading_text: { type: 'string', description: 'A short, playful 3-4 sentence reading about today.' },
+      reading_text: { type: 'string', description: 'Bugün hakkında Türkçe, kısa, eğlenceli, 3-4 cümlelik bir yorum.' },
       category_id: { type: 'string', enum: catalog.enabledCategories.map((c) => c.id) },
       sticker_id: { type: 'string', enum: catalog.eligibleStickers.map((s) => s.id) },
     },

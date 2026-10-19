@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 /**
  * Offline provider for development and tests. It produces a plausible, schema-valid response
@@ -12,7 +12,7 @@ function createMockProvider({ respond, delayMs = 600 } = {}) {
       await new Promise((r) => setTimeout(r, delayMs));
       if (respond) return typeof respond === 'function' ? respond({ user, schema }) : respond;
 
-      const cards = [...user.matchAll(/^\d\. (.+?) \((upright|reversed)\)/gm)].map((m) => `${m[1]}${m[2] === 'reversed' ? ' (reversed)' : ''}`);
+      const cards = [...user.matchAll(/^\d\. (.+?) \((upright|reversed)\)/gm)].map((m) => `${m[1]}${m[2] === 'reversed' ? ' (ters)' : ''}`);
       const categories = schema.properties.category_id.enum;
       const category = categories[Math.floor(Math.random() * categories.length)];
       const catalogJson = user.slice(user.indexOf('['));
@@ -21,10 +21,10 @@ function createMockProvider({ respond, delayMs = 600 } = {}) {
 
       return {
         reading_text:
-          `${cards[0]} kicks off your day with more confidence than the situation strictly requires. ` +
-          `${cards[1]} suggests a small plot twist around lunchtime that you will narrate like a season finale. ` +
-          `By the time ${cards[2]} shows up, you may realize the real treasure was the snacks you found along the way. ` +
-          `(Mock reading - set GEMINI_API_KEY for the real oracle.)`,
+          `${cards[0]}, gününe durumun gerektirdiğinden biraz fazla özgüvenle başlamanı sağlıyor. ` +
+          `${cards[1]}, öğle civarında küçük bir olay örgüsü dönüşü olduğunu gösteriyor; sen de bunu sezon finali gibi anlatacaksın. ` +
+          `${cards[2]} ortaya çıktığında, asıl hazinenin yol boyunca bulduğun atıştırmalıklar olduğunu fark edebilirsin. ` +
+          `(Sahte yorum - gerçek kahin için GEMINI_API_KEY ayarla.)`,
         category_id: category,
         sticker_id: sticker.id,
       };
