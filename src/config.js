@@ -17,8 +17,7 @@ const config = {
     deck: path.join(ROOT, 'data', 'tarot_cards.json'),
     stickers: path.join(ROOT, 'data', 'stickers.json'),
     vocabulary: path.join(ROOT, 'config', 'vocabulary.json'),
-    // Remaining sticker counts (runtime state). Delete this file to restock everything.
-    stock: env.STICKER_STOCK_FILE || path.join(ROOT, 'data', 'sticker_stock.json'),
+    stock: env.STICKER_STOCK_FILE || (env.VERCEL ? path.join('/tmp', 'sticker_stock.json') : path.join(ROOT, 'data', 'sticker_stock.json')),
     // asset_path values look like "/stickers/foo.png" and resolve against this directory.
     assetRoot: ROOT,
     public: path.join(ROOT, 'public'),

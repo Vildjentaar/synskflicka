@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stok Odası · Synskflicka – Çıkartma Envanter Yönetimi</title>
+  <meta name="description" content="Synskflicka fiziksel çıkartma stoklarını artır, azalt; çıkartmaları etkinleştir veya devre dışı bırak." />
+  <meta name="theme-color" content="#0d0a1f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/stocks.css" />
+</head>
+<body class="stocks-page">
+  <div class="sky" aria-hidden="true">
+    <div class="aurora aurora--a"></div>
+    <div class="aurora aurora--b"></div>
+    <div class="aurora aurora--c"></div>
+    <div class="stars stars--small"></div>
+    <div class="stars stars--big"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Synskflicka ana sayfa">
+      <span class="brand__glyph" aria-hidden="true">☾</span>
+      <span class="brand__name">Synskflicka</span>
+    </a>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <a href="/" class="chip-btn" style="text-decoration: none; color: var(--gold-hi);">
+        <span aria-hidden="true">🔮</span> <span>Tarot Çekilişi</span>
+      </a>
+      <button id="motion-toggle" class="chip-btn" type="button" aria-pressed="false" onclick="document.documentElement.classList.toggle('reduce-motion')">
+        <span aria-hidden="true">✧</span> <span class="motion-toggle__label">Hareketi azalt</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="stocks-main">
+    <header class="stocks-header">
+      <p class="eyebrow">Fiziksel Envanter Yönetimi</p>
+      <h1 class="stocks-title">Stok Odası</h1>
+      <p class="stocks-sub">Çıkartma stoklarını artır veya azalt; dilediğin çıkartmaları fal havuzunda aktif tut veya devre dışı bırak. Yapılan tüm değişiklikler anında sisteme yansır.</p>
+    </header>
+
+    <!-- Stats Overview -->
+    <section class="stats-grid" aria-label="Genel Stok Durumu">
+      <div class="stat-card stat-card--total">
+        <span class="stat-card__label">Toplam Fiziksel Stok</span>
+        <span class="stat-card__val" id="stat-total">—</span>
+      </div>
+      <div class="stat-card stat-card--active">
+        <span class="stat-card__label">Aktif Çıkartma</span>
+        <span class="stat-card__val" id="stat-active">—</span>
+      </div>
+      <div class="stat-card stat-card--disabled">
+        <span class="stat-card__label">Devre Dışı</span>
+        <span class="stat-card__val" id="stat-disabled">—</span>
+      </div>
+      <div class="stat-card stat-card--out">
+        <span class="stat-card__label">Tükenenler</span>
+        <span class="stat-card__val" id="stat-out">—</span>
+      </div>
+    </section>
+
+    <!-- Categories breakdown -->
+    <div class="categories-row">
+      <span class="categories-row__title">Kategori Stokları:</span>
+      <div id="categories-list" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+    </div>
+
+    <!-- Controls Bar -->
+    <section class="controls-bar" aria-label="Filtreler ve Toplu İşlemler">
+      <div class="controls-top">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="search" id="search-input" class="search-input" placeholder="Karakter, dizi veya kategori ara..." aria-label="Çıkartma ara" />
+        </div>
+
+        <div class="filter-tabs" id="status-tabs" role="tablist" aria-label="Durum filtreleri">
+          <button type="button" class="tab-btn is-active" data-status="all">Tümü</button>
+          <button type="button" class="tab-btn" data-status="active">Sadece Aktif</button>
+          <button type="button" class="tab-btn" data-status="disabled">Devre Dışı</button>
+          <button type="button" class="tab-btn" data-status="out">Tükenenler</button>
+        </div>
+      </div>
+
+      <div class="controls-top">
+        <div class="filter-tabs" id="category-tabs" role="tablist" aria-label="Kategori filtreleri">
+          <button type="button" class="tab-btn is-active" data-category="all">Tüm Kategoriler</button>
+          <button type="button" class="tab-btn" data-category="chaotic_energy">Kaotik Enerji</button>
+          <button type="button" class="tab-btn" data-category="cynical_observer">Alaycı Gözlemci</button>
+          <button type="button" class="tab-btn" data-category="blissful_ignorance">Mutlu Cehalet</button>
+          <button type="button" class="tab-btn" data-category="dramatic_flair">Dramatik Üslup</button>
+        </div>
+      </div>
+
+      <div class="bulk-actions">
+        <span class="bulk-label">Toplu İşlemler:</span>
+        <button type="button" class="bulk-btn" id="btn-enable-all">
+          <span aria-hidden="true">✓</span> Tümünü Aç
+        </button>
+        <button type="button" class="bulk-btn bulk-btn--danger" id="btn-disable-all">
+          <span aria-hidden="true">✕</span> Tümünü Kapat
+        </button>
+        <button type="button" class="bulk-btn" id="btn-add-five-all">
+          <span aria-hidden="true">+5</span> Herkese Ekle
+        </button>
+        <button type="button" class="bulk-btn" id="btn-reset-all">
+          <span aria-hidden="true">↺</span> Varsayılana Sıfırla (20)
+        </button>
+      </div>
+    </section>
+
+    <!-- Sticker Grid -->
+    <section class="sticker-grid" id="sticker-grid" aria-label="Çıkartma Listesi">
+      <!-- Injected via stocks.js -->
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <aside class="stocks-toast" id="toast" role="status" aria-live="polite">
+    <span class="stocks-toast__icon" id="toast-icon">✓</span>
+    <span class="stocks-toast__msg" id="toast-msg">Stok güncellendi.</span>
+  </aside>
+
+  <footer class="footer">
+    <p>Synskflicka Stok Odası · Değişiklikler sunucu üzerinde yerel olarak saklanır ve doğrudan çekiliş havuzunu etkiler.</p>
+  </footer>
+
+  <script src="/stocks.js" type="module"></script>
+</body>
+</html>

@@ -235,4 +235,107 @@ describe('sticker stock', () => {
       assert.equal(res.status, 503);
     });
   });
+
+  test('GET /api/stocks returns full inventory without file names in display fields', () => {
+    const inv = newInventory();
+    return withStockApp(respond({}), inv, async (base) => {
+      const res = await fetch(`${base}/api/stocks`);
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.ok, true);
+      assert.equal(json.stock.length, catalog.eligibleStickers.length);
+      const first = json.stock[0];
+      assert.ok(first.character);
+      assert.ok(first.franchise);
+      assert.ok(first.category_label);
+      assert.equal(typeof first.remaining, 'number');
+      assert.equal(first.enabled, true);
+    });
+  });
+
+  test('POST /api/stocks/:id/adjust increases and decreases stock', () => {
+    const inv = newInventory(10);
+    return withStockApp(respond({}), inv, async (base) => {
+      const resInc = await fetch(`${base}/api/stocks/${goodSticker.id}/adjust`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: 5 }),
+      });
+      const dataInc = await resInc.json();
+      assert.equal(dataInc.remaining, 15);
+
+      const resDec = await fetch(`${base}/api/stocks/${goodSticker.id}/adjust`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ delta: -20 }),
+      });
+      const dataDec = await resDec.json();
+      assert.equal(dataDec.remaining, 0);
+      assert.equal(dataDec.disabled, true);
+    });
+  });
+
+  test('POST /api/stocks/:id/toggle enables and disables stickers from system pool', () => {
+    const inv = newInventory(10);
+    return withStockApp(respond({}), inv, async (base) => {
+      // Initially in stock
+      assert.ok(inv.isInStock(goodSticker.id));
+
+      // Disable it
+      const resToggle = await fetch(`${base}/api/stocks/${goodSticker.id}/toggle`, { method: 'POST' });
+      const dataToggle = await resToggle.json();
+      assert.equal(dataToggle.enabled, false);
+      assert.equal(inv.isInStock(goodSticker.id), false);
+      assert.equal(catalog.withStock(inv.isInStock).getEligibleSticker(goodSticker.id), undefined);
+
+      // Re-enable it
+      const resEnable = await fetch(`${base}/api/stocks/${goodSticker.id}/enable`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enabled: true }),
+      });
+      const dataEnable = await resEnable.json();
+      assert.equal(dataEnable.enabled, true);
+      assert.equal(inv.isInStock(goodSticker.id), true);
+      assert.ok(catalog.withStock(inv.isInStock).getEligibleSticker(goodSticker.id));
+    });
+  });
+
+  test('POST /api/stocks/bulk performs bulk enable, disable, and reset', () => {
+    const inv = newInventory(10);
+    return withStockApp(respond({}), inv, async (base) => {
+      // Disable all
+      await fetch(`${base}/api/stocks/bulk`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'disable_all' }),
+      });
+      assert.ok(catalog.eligibleStickers.every((s) => !inv.isInStock(s.id)));
+
+      // Enable all
+      await fetch(`${base}/api/stocks/bulk`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'enable_all' }),
+      });
+      assert.ok(catalog.eligibleStickers.every((s) => inv.isInStock(s.id)));
+
+      // Reset
+      await fetch(`${base}/api/stocks/bulk`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'reset', initialStock: 25 }),
+      });
+      assert.equal(inv.remaining(goodSticker.id), 25);
+    });
+  });
+
+  test('GET /stocks serves stocks HTML page', () => {
+    return withStockApp(respond({}), newInventory(), async (base) => {
+      const res = await fetch(`${base}/stocks`);
+      assert.equal(res.status, 200);
+      const text = await res.text();
+      assert.ok(text.includes('Stok Odası'));
+    });
+  });
 });

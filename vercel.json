@@ -1,3 +1,13 @@
 {
-  "version": 2
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/stocks",
+      "destination": "/stocks.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    }
+  ]
 }

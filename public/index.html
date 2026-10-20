@@ -25,9 +25,14 @@
       <span class="brand__glyph" aria-hidden="true">☾</span>
       <span class="brand__name">Synskflicka</span>
     </a>
-    <button id="motion-toggle" class="chip-btn" type="button" aria-pressed="false">
-      <span aria-hidden="true">✧</span> <span class="motion-toggle__label">Hareketi azalt</span>
-    </button>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <a href="/stocks" class="chip-btn" style="text-decoration: none;" aria-label="Stok Yönetimi">
+        <span aria-hidden="true">🏷️</span> <span class="motion-toggle__label">Stoklar</span>
+      </a>
+      <button id="motion-toggle" class="chip-btn" type="button" aria-pressed="false">
+        <span aria-hidden="true">✧</span> <span class="motion-toggle__label">Hareketi azalt</span>
+      </button>
+    </div>
   </header>
 
   <main id="main">
@@ -115,7 +120,7 @@
   </main>
 
   <footer class="footer">
-    <p>Yorumlar eğlence için üretilir. Fal yok, tavsiye yok, sadece hava.</p>
+    <p>Yorumlar eğlence için üretilir. Fal yok, tavsiye yok, sadece hava. · <a href="/stocks" style="color: var(--gold-hi); text-decoration: none;">Stok Odası</a></p>
   </footer>
 
   <script src="/app.js" type="module"></script>

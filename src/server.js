@@ -90,7 +90,7 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
       JSON.stringify({
         event: taken.ok ? 'sticker_taken' : 'sticker_take_rejected',
         sticker: id,
-        category: sticker.primary_category,
+        category: sticker ? sticker.primary_category : 'unknown',
         remaining: taken.remaining,
         total_remaining: inventory.total(),
         categories,
@@ -101,6 +101,94 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     const body = { sticker_id: id, remaining: taken.remaining, disabled: taken.remaining === 0, total_remaining: inventory.total(), categories, stock };
     if (!taken.ok) return res.status(409).json({ ...body, error: 'Bu çıkartma tükendi.' });
     res.json(body);
+  });
+
+  // Stock management API endpoints
+  apiRouter.get('/stocks', (req, res) => {
+    res.json({
+      ok: true,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+      initialStock: inventory.initialStock,
+    });
+  });
+
+  apiRouter.post('/stocks/:id/adjust', express.json(), (req, res) => {
+    const id = String(req.params.id).slice(0, 128);
+    const delta = parseInt(req.body && req.body.delta, 10) || 0;
+    const result = inventory.adjustStock(id, delta);
+    if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
+    res.json({
+      ...result,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+    });
+  });
+
+  apiRouter.post('/stocks/:id/set', express.json(), (req, res) => {
+    const id = String(req.params.id).slice(0, 128);
+    const count = req.body && req.body.count;
+    const result = inventory.setStock(id, count);
+    if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
+    res.json({
+      ...result,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+    });
+  });
+
+  apiRouter.post('/stocks/:id/toggle', (req, res) => {
+    const id = String(req.params.id).slice(0, 128);
+    const result = inventory.toggleEnabled(id);
+    if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
+    res.json({
+      ...result,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+    });
+  });
+
+  apiRouter.post('/stocks/:id/enable', express.json(), (req, res) => {
+    const id = String(req.params.id).slice(0, 128);
+    const enabled = Boolean(req.body && req.body.enabled);
+    const result = inventory.setEnabled(id, enabled);
+    if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
+    res.json({
+      ...result,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+    });
+  });
+
+  apiRouter.post('/stocks/bulk', express.json(), (req, res) => {
+    const action = req.body && req.body.action;
+    if (action === 'enable_all') {
+      inventory.setAllEnabled(true);
+    } else if (action === 'disable_all') {
+      inventory.setAllEnabled(false);
+    } else if (action === 'reset') {
+      inventory.resetStock(req.body && req.body.initialStock);
+    } else if (action === 'adjust_all') {
+      inventory.adjustAllStock(req.body && req.body.delta);
+    } else {
+      return res.status(400).json({ error: 'Geçersiz işlem.' });
+    }
+    res.json({
+      ok: true,
+      stock: inventory.snapshot(),
+      categories: inventory.categoryTotals(),
+      total_remaining: inventory.total(),
+    });
+  });
+
+  // Serve the stocks page
+  app.get('/stocks', (req, res) => {
+    res.sendFile(path.join(config.paths.public, 'stocks.html'));
   });
 
   // Mount router at both /api and / so both direct and rewritten serverless requests match
