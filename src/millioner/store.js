@@ -34,7 +34,7 @@ function initDB() {
       CREATE INDEX IF NOT EXISTS idx_rank ON scores (correct_count DESC, total_time ASC);
     `);
 
-    // Preload into memoryScores
+    // Preload baseline scores from SQLite into memoryScores
     const rows = db.prepare('SELECT * FROM scores ORDER BY correct_count DESC, total_time ASC').all();
     for (const r of rows) {
       memoryScores.push({ ...r });
@@ -43,7 +43,7 @@ function initDB() {
     console.warn('[millioner] node:sqlite unavailable or read-only, using memory store for scores:', err.message);
   }
 
-  // Sync with Vercel KV if available
+  // Pre-seed and sync with Vercel KV if available
   if (kv.isEnabled) {
     kv.get('synskflicka:millioner_scores')
       .then((cloudScores) => {
@@ -84,14 +84,13 @@ function saveSettings(settings) {
   }
 }
 
-function persistScore(s) {
+async function persistScore(s) {
   if (s.saved || s.status === 'playing') return null;
   const summary = s.resultSummary();
   const grade = s.grade || 'hazirlik';
   const createdAt = new Date().toISOString().replace('T', ' ').slice(0, 19);
 
-  let rank = 1;
-
+  // 1. Try to write to local SQLite database if writable
   if (db) {
     try {
       const stmt = db.prepare(`
@@ -114,21 +113,12 @@ function persistScore(s) {
         summary.jokers_used,
         createdAt
       );
-
-      const rankRow = db
-        .prepare(`
-          SELECT COUNT(*) as count FROM scores
-          WHERE correct_count > ? OR (correct_count = ? AND total_time < ?)
-        `)
-        .get(summary.correct_count, summary.correct_count, summary.total_time);
-
-      rank = (rankRow ? rankRow.count : 0) + 1;
     } catch (e) {
-      console.warn('[millioner] SQLite write failed, falling back to memory:', e.message);
+      // Ignored if SQLite is on a read-only filesystem (e.g. Vercel)
     }
   }
 
-  // Update memory mirror
+  // 2. Update memoryScores
   const existingIdx = memoryScores.findIndex((item) => item.session_id === s.id);
   const scoreRecord = {
     id: memoryScores.length + 1,
@@ -145,33 +135,76 @@ function persistScore(s) {
     jokers_used: summary.jokers_used,
     created_at: createdAt,
   };
+
   if (existingIdx >= 0) {
     memoryScores[existingIdx] = scoreRecord;
   } else {
     memoryScores.push(scoreRecord);
   }
 
-  if (!db) {
-    const higher = memoryScores.filter(
-      (m) =>
-        m.correct_count > summary.correct_count ||
-        (m.correct_count === summary.correct_count && m.total_time < summary.total_time)
-    );
-    rank = higher.length + 1;
+  // 3. Sync to Vercel KV if available (must be awaited before response completes)
+  if (kv.isEnabled) {
+    try {
+      await kv.set('synskflicka:millioner_scores', memoryScores);
+    } catch (err) {
+      console.warn('[kv] Failed to persist score to KV:', err.message);
+    }
   }
+
+  // Calculate rank based on all known scores
+  const higher = memoryScores.filter(
+    (m) =>
+      m.correct_count > summary.correct_count ||
+      (m.correct_count === summary.correct_count && m.total_time < summary.total_time)
+  );
+  const rank = higher.length + 1;
 
   s.saved = true;
-
-  if (kv.isEnabled) {
-    kv.set('synskflicka:millioner_scores', memoryScores).catch((err) => {
-      console.warn('[kv] Failed to persist score to KV:', err.message);
-    });
-  }
-
   return rank;
 }
 
 async function getLeaderboard({ limit = 50, grade = null } = {}) {
+  // Always fetch latest cloud scores if Vercel KV is enabled
+  if (kv.isEnabled) {
+    try {
+      const cloudScores = await kv.get('synskflicka:millioner_scores');
+      if (Array.isArray(cloudScores) && cloudScores.length > 0) {
+        memoryScores.length = 0;
+        memoryScores.push(...cloudScores);
+      }
+    } catch (e) {
+      console.warn('[kv] Failed to refresh leaderboard from KV:', e.message);
+    }
+  }
+
+  let filtered = [...memoryScores];
+  if (grade && grade in GRADE_LABELS) {
+    filtered = filtered.filter((r) => r.grade === grade);
+  }
+
+  filtered.sort((a, b) => {
+    if (b.correct_count !== a.correct_count) return b.correct_count - a.correct_count;
+    return a.total_time - b.total_time;
+  });
+
+  const scores = filtered.slice(0, limit).map((r, idx) => ({
+    ...r,
+    rank: idx + 1,
+    grade_label: GRADE_LABELS[r.grade] || 'Hazırlık',
+  }));
+
+  const millionaires = memoryScores
+    .filter((r) => r.status === 'won')
+    .sort((a, b) => a.total_time - b.total_time)
+    .map((w) => ({
+      ...w,
+      grade_label: GRADE_LABELS[w.grade] || 'Hazırlık',
+    }));
+
+  return { scores, millionaires };
+}
+
+async function getStats() {
   if (kv.isEnabled) {
     try {
       const cloudScores = await kv.get('synskflicka:millioner_scores');
@@ -180,105 +213,6 @@ async function getLeaderboard({ limit = 50, grade = null } = {}) {
         memoryScores.push(...cloudScores);
       }
     } catch (e) {}
-  }
-  let allRows = [];
-  if (db) {
-    try {
-      if (grade && grade in GRADE_LABELS) {
-        allRows = db
-          .prepare(`
-            SELECT id, name, grade, correct_count, prize_label, prize_value, status, total_time,
-                   jokers_used, created_at
-            FROM scores
-            WHERE grade = ?
-            ORDER BY correct_count DESC, total_time ASC
-            LIMIT ?
-          `)
-          .all(grade, limit);
-      } else {
-        allRows = db
-          .prepare(`
-            SELECT id, name, grade, correct_count, prize_label, prize_value, status, total_time,
-                   jokers_used, created_at
-            FROM scores
-            ORDER BY correct_count DESC, total_time ASC
-            LIMIT ?
-          `)
-          .all(limit);
-      }
-    } catch (e) {
-      allRows = [];
-    }
-  }
-
-  if (allRows.length === 0 && memoryScores.length > 0) {
-    let filtered = [...memoryScores];
-    if (grade && grade in GRADE_LABELS) {
-      filtered = filtered.filter((r) => r.grade === grade);
-    }
-    filtered.sort((a, b) => {
-      if (b.correct_count !== a.correct_count) return b.correct_count - a.correct_count;
-      return a.total_time - b.total_time;
-    });
-    allRows = filtered.slice(0, limit);
-  }
-
-  const scores = allRows.map((r, idx) => ({
-    ...r,
-    rank: idx + 1,
-    grade_label: GRADE_LABELS[r.grade] || 'Hazırlık',
-  }));
-
-  let winRows = [];
-  if (db) {
-    try {
-      winRows = db
-        .prepare(`
-          SELECT name, grade, total_time, created_at FROM scores
-          WHERE status = 'won' ORDER BY total_time ASC
-        `)
-        .all();
-    } catch (e) {
-      winRows = [];
-    }
-  }
-  if (winRows.length === 0 && memoryScores.length > 0) {
-    winRows = memoryScores
-      .filter((r) => r.status === 'won')
-      .sort((a, b) => a.total_time - b.total_time);
-  }
-
-  const millionaires = winRows.map((w) => ({
-    ...w,
-    grade_label: GRADE_LABELS[w.grade] || 'Hazırlık',
-  }));
-
-  return { scores, millionaires };
-}
-
-function getStats() {
-  if (db) {
-    try {
-      const row = db
-        .prepare(`
-          SELECT COUNT(*) as total,
-                 SUM(CASE WHEN status='won' THEN 1 ELSE 0 END) as winners,
-                 AVG(correct_count) as avg_level,
-                 SUM(wants_membership) as members
-          FROM scores
-        `)
-        .get();
-      if (row) {
-        return {
-          total_games: row.total || 0,
-          millionaires: row.winners || 0,
-          avg_correct: Number((row.avg_level || 0).toFixed(1)),
-          membership_requests: row.members || 0,
-        };
-      }
-    } catch (e) {
-      // fallback
-    }
   }
 
   const total = memoryScores.length;
@@ -295,7 +229,7 @@ function getStats() {
   };
 }
 
-function resetScores() {
+async function resetScores() {
   if (db) {
     try {
       db.exec('DELETE FROM scores');
@@ -305,27 +239,19 @@ function resetScores() {
   }
   memoryScores.length = 0;
   if (kv.isEnabled) {
-    kv.set('synskflicka:millioner_scores', []).catch(() => {});
+    try {
+      await kv.set('synskflicka:millioner_scores', []);
+    } catch (e) {
+      console.warn('[kv] Failed to reset KV scores:', e.message);
+    }
   }
 }
 
 function exportScoresCSV() {
-  let rows = [];
-  if (db) {
-    try {
-      rows = db
-        .prepare(`
-          SELECT name, email, grade, wants_membership, correct_count, prize_label, status,
-                 total_time, jokers_used, created_at
-          FROM scores ORDER BY correct_count DESC, total_time ASC
-        `)
-        .all();
-    } catch (e) {
-      rows = memoryScores;
-    }
-  } else {
-    rows = memoryScores;
-  }
+  const rows = [...memoryScores].sort((a, b) => {
+    if (b.correct_count !== a.correct_count) return b.correct_count - a.correct_count;
+    return a.total_time - b.total_time;
+  });
 
   const lines = [
     '\ufeffİsim;Sınıf;E-posta;Üyelik İsteği;Doğru Sayısı;Ödül;Durum;Süre (sn);Joker;Tarih',

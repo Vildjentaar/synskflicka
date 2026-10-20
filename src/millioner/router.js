@@ -94,7 +94,7 @@ function createMillionerRouter() {
   });
 
   // Answer
-  router.post('/game/:sid/answer', (req, res) => {
+  router.post('/game/:sid/answer', async (req, res) => {
     const s = getSessionOr404(req.params.sid, res);
     if (!s) return;
 
@@ -102,7 +102,7 @@ function createMillionerRouter() {
     try {
       const result = s.answer(choice);
       if (s.status !== 'playing') {
-        result.rank = persistScore(s);
+        result.rank = await persistScore(s);
       } else {
         result.state = result.result === 'retry' ? s.publicState() : null;
       }
@@ -138,13 +138,13 @@ function createMillionerRouter() {
   });
 
   // Withdraw
-  router.post('/game/:sid/withdraw', (req, res) => {
+  router.post('/game/:sid/withdraw', async (req, res) => {
     const s = getSessionOr404(req.params.sid, res);
     if (!s) return;
 
     try {
       const result = s.withdraw();
-      result.rank = persistScore(s);
+      result.rank = await persistScore(s);
       res.json(result);
     } catch (err) {
       res.status(400).json({ detail: err.message });
@@ -159,8 +159,8 @@ function createMillionerRouter() {
   });
 
   // Stats
-  router.get('/stats', (req, res) => {
-    res.json(getStats());
+  router.get('/stats', async (req, res) => {
+    res.json(await getStats());
   });
 
   // QR Code
@@ -238,8 +238,8 @@ function createMillionerRouter() {
   });
 
   // Admin: Reset
-  router.post('/admin/reset', checkAdmin, (req, res) => {
-    resetScores();
+  router.post('/admin/reset', checkAdmin, async (req, res) => {
+    await resetScores();
     res.json({ success: true, message: 'Skorlar sıfırlandı' });
   });
 
