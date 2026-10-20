@@ -1,5 +1,13 @@
 {
   "version": 2,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "{data/**,config/**,public/**}"
+    },
+    "api/*.js": {
+      "includeFiles": "{data/**,config/**,public/**}"
+    }
+  },
   "rewrites": [
     {
       "source": "/stocks",

@@ -124,10 +124,38 @@ function publicSticker(s) {
   };
 }
 
+/**
+ * Determines a category and sticker for fallback by weighting categories
+ * proportionally to the number of sticker types they have available (from most to least).
+ */
+function pickWeightedCategory(catalog, rng = Math.random) {
+  const candidates = catalog.enabledCategories
+    .map((c) => {
+      const stickers = catalog.stickersForCategory(c.id);
+      return { id: c.id, stickers, weight: stickers.length };
+    })
+    .filter((c) => c.weight > 0);
+
+  if (!candidates.length) {
+    const fallbackCat = pick(catalog.enabledCategories, rng).id;
+    return { category: fallbackCat, sticker: pick(catalog.stickersForCategory(fallbackCat), rng) };
+  }
+
+  const totalWeight = candidates.reduce((sum, c) => sum + c.weight, 0);
+  let roll = rng() * totalWeight;
+  for (const candidate of candidates) {
+    if (roll < candidate.weight) {
+      return { category: candidate.id, sticker: pick(candidate.stickers, rng) };
+    }
+    roll -= candidate.weight;
+  }
+  const last = candidates[candidates.length - 1];
+  return { category: last.id, sticker: pick(last.stickers, rng) };
+}
+
 function createReadingService({ catalog: baseCatalog, provider, limits, inventory = null, logger = console, rng = Math.random }) {
   function fallbackResult(catalog, draw, reason, fallbackType = 'full_fallback') {
-    const category = pick(catalog.enabledCategories, rng).id;
-    const sticker = pick(catalog.stickersForCategory(category), rng);
+    const { category, sticker } = pickWeightedCategory(catalog, rng);
     const names = draw.map((d) => (d.orientation === 'reversed' ? `${d.card.name} (ters)` : d.card.name));
     logger.warn(JSON.stringify({ event: 'reading_fallback', fallback_type: fallbackType, reason }));
     return { reading: FALLBACK_READINGS[category](names), category, sticker, source: 'fallback', fallback_type: fallbackType, fallback_reason: reason };
@@ -188,4 +216,4 @@ function createReadingService({ catalog: baseCatalog, provider, limits, inventor
   return { generate };
 }
 
-module.exports = { createReadingService, validateDrawRequest, checkModelOutput, RequestError, FALLBACK_READINGS };
+module.exports = { createReadingService, validateDrawRequest, checkModelOutput, RequestError, FALLBACK_READINGS, pickWeightedCategory };

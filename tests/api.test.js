@@ -339,3 +339,86 @@ describe('sticker stock', () => {
     });
   });
 });
+
+describe('Vercel routing compatibility', () => {
+  const { createInventory } = require('../src/inventory');
+
+  async function withRoutingApp(fn) {
+    const inv = createInventory({ stickers: catalog.eligibleStickers, initialStock: 20 });
+    const app = createApp({ catalog, provider: respond({}), inventory: inv, logger: silent });
+    const server = await new Promise((r) => {
+      const s = app.listen(0, () => r(s));
+    });
+    const base = `http://127.0.0.1:${server.address().port}`;
+    try {
+      await fn(base);
+    } finally {
+      server.close();
+    }
+  }
+
+  test('Vercel rewrite to /api/index.js with x-matched-path /api/deck resolves deck', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js`, {
+        headers: { 'x-matched-path': '/api/deck' },
+      });
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.cards.length, 78);
+    }));
+
+  test('Vercel rewrite to /api/index.js with x-matched-path /api/stocks resolves stocks', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js`, {
+        headers: { 'x-matched-path': '/api/stocks' },
+      });
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.ok, true);
+      assert.ok(json.stock);
+    }));
+
+  test('Vercel regex capture query param resolves /api/deck', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js?0=deck`);
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.cards.length, 78);
+    }));
+});
+
+describe('fallback weighted category determination', () => {
+  const { pickWeightedCategory } = require('../src/readingService');
+
+  test('picks category with probability proportional to sticker count (most to least)', () => {
+    const mockCatalog = {
+      enabledCategories: [
+        { id: 'cat_large' },
+        { id: 'cat_small' },
+      ],
+      stickersForCategory(id) {
+        if (id === 'cat_large') return [{ id: 's1' }, { id: 's2' }, { id: 's3' }];
+        if (id === 'cat_small') return [{ id: 's4' }];
+        return [];
+      },
+    };
+
+    // Total weight = 4: roll < 3 -> cat_large (75%), roll >= 3 -> cat_small (25%)
+    const resultLarge = pickWeightedCategory(mockCatalog, () => 0.1);
+    assert.equal(resultLarge.category, 'cat_large');
+
+    const resultSmall = pickWeightedCategory(mockCatalog, () => 0.9);
+    assert.equal(resultSmall.category, 'cat_small');
+  });
+
+  test('full fallback response includes valid category and sticker from catalog', () =>
+    withApp(respond(null), async (post) => {
+      const { status, json } = await post(DRAW);
+      assert.equal(status, 200);
+      assert.equal(json.source, 'fallback');
+      assert.ok(catalog.isEnabledCategory(json.category_id));
+      assert.ok(json.sticker && json.sticker.id);
+    }));
+});
+
+
