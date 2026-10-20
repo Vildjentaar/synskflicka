@@ -385,6 +385,14 @@ describe('Vercel routing compatibility', () => {
       const json = await res.json();
       assert.equal(json.cards.length, 78);
     }));
+
+  test('Vercel forward path query param resolves /api/deck', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js?path=deck`);
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.cards.length, 78);
+    }));
 });
 
 describe('fallback weighted category determination', () => {
