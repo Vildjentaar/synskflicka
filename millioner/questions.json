@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "hz_01",
+    "grade": "hazirlik",
+    "level": 1,
+    "category": "Sosyal Medya Tarihi",
+    "question": "Sosyal medya devi Facebook, 2004 yılında Mark Zuckerberg tarafından kurulduğunda ilk olarak sadece hangi üniversitenin öğrencilerine özel olarak açılmıştı?",
+    "options": [
+      "Harvard Üniversitesi",
+      "Stanford Üniversitesi",
+      "MIT (Massachusetts)",
+      "Oxford Üniversitesi"
+    ],
+    "answer": 0,
+    "explanation": "Mark Zuckerberg, 'Thefacebook'u Harvard yurdundaki odasında sadece Harvard öğrencilerini dijital ortamda buluşturmak için kodlamıştı."
+  },
+  {
+    "id": "hz_02",
+    "grade": "hazirlik",
+    "level": 1,
+    "category": "Arama Motoru Kültürü",
+    "question": "Google'ın ana sayfasında özel günlerde, bayramlarda ve tarihi olaylarda değişen eğlenceli ve interaktif logolara ne ad verilir?",
+    "options": [
+      "Doodle",
+      "Banner",
+      "Widget",
+      "Avatar"
+    ],
+    "answer": 0,
+    "explanation": "İlk Google Doodle, kurucuların 1998'de Burning Man festivaline gittiklerini kullanıcılara duyurmak için hazırlanmıştı."
+  },
+  {
+    "id": "hz_03",
+    "grade": "hazirlik",
+    "level": 2,
+    "category": "Dijital Semboller",
+    "question": "Mesajlaşma uygulamalarında ve sosyal medyada sıkça kullanılan 'gözlerini, kulaklarını ve ağzını kapatan üç bilge maymun' figürünün kökeni hangi ülkenin felsefe ve sanatına dayanır?",
+    "options": [
+      "Japonya",
+      "Çin",
+      "Hindistan",
+      "Mısır"
+    ],
+    "answer": 0,
+    "explanation": "Mizaru, Kikazaru ve Iwazaru isimli üç bilge maymun figürü, 17. yüzyıl Japon Nikko Toshogu Tapınağı'ndaki kabartmalardan dünyaya yayılmıştır."
+  },
+  {
+    "id": "hz_04",
+    "grade": "hazirlik",
+    "level": 2,
+    "category": "Müzik Platformları",
+    "question": "Dünyanın en popüler müzik akış platformu Spotify, 2006 yılında Daniel Ek ve Martin Lorentzon tarafından hangi İskandinav ülkesinde kurulmuştur?",
+    "options": [
+      "İsveç",
+      "Norveç",
+      "Finlandiya",
+      "Danimarka"
+    ],
+    "answer": 0,
+    "explanation": "Spotify, Stockholm (İsveç)'de korsan müzik indirmeye yasal ve hızlı bir akış alternatifi sunmak amacıyla kurulmuştur."
+  },
+  {
+    "id": "hz_05",
+    "grade": "hazirlik",
+    "level": 3,
+    "category": "Tarayıcı Savaşları",
+    "question": "1990'ların ortasında piyasaya çıkarak web sitelerinin resimli ve modern şekilde gezilmesini sağlayan tarihteki ilk küresel popüler web tarayıcısı hangisidir?",
+    "options": [
+      "Netscape Navigator",
+      "Google Chrome",
+      "Mozilla Firefox",
+      "Safari"
+    ],
+    "answer": 0,
+    "explanation": "Netscape Navigator, 1994'te Marc Andreessen tarafından piyasaya çıkarak web sitelerinin görsel olarak gezilmesini sağlayan ilk popüler tarayıcıydı."
+  },
+  {
+    "id": "hz_06",
+    "grade": "hazirlik",
+    "level": 3,
+    "category": "Mobil Sistemler",
+    "question": "Google, akıllı telefonlarda çalışan Android işletim sisteminin eski sürümlerine (Cupcake, Donut, KitKat, Oreo vb.) hangi temaya göre alfabetik isimler vermiştir?",
+    "options": [
+      "Tatlı ve Şekerlemeler",
+      "Yunan Tanrıları",
+      "Vahşi Kediler",
+      "Gezegenler"
+    ],
+    "answer": 0,
+    "explanation": "Google, Android 10 sürümüne kadar her versiyona alfabetik sırayla popüler bir tatlı ismi (KitKat, Lollipop, Marshmallow vb.) vermiştir."
+  },
+  {
+    "id": "hz_07",
+    "grade": "hazirlik",
+    "level": 4,
+    "category": "Kablosuz Standartlar",
+    "question": "Kısa mesafeli kablosuz teknoloji 'Bluetooth'un mavi renkli logosu, 10. yüzyıl Viking Kralı Harald Bluetooth'un baş harfleri olan hangi runik alfabedeki iki harften türetilmiştir?",
+    "options": [
+      "H ve B (ᚼ ve ᛒ)",
+      "B ve T (Blue Tooth)",
+      "W ve F (Wireless Fast)",
+      "N ve K (Nokia King)"
+    ],
+    "answer": 0,
+    "explanation": "Danimarka Kralı Harald Bluetooth'un baş harfleri olan Hagalaz (ᚼ) ve Bjarkan (ᛒ) runik harflerinin birleşiminden türetilmiştir."
+  },
+  {
+    "id": "hz_08",
+    "grade": "hazirlik",
+    "level": 4,
+    "category": "Sinema & Simülasyon",
+    "question": "1999 yapımı kült bilimkurgu filmi The Matrix'te, Morpheus Neo'ya yapay gerçeklik simülasyonundan uyanıp hakikati görmesi için hangi renk hapı seçmesi gerektiğini söyler?",
+    "options": [
+      "Kırmızı Hap",
+      "Mavi Hap",
+      "Yeşil Hap",
+      "Sarı Hap"
+    ],
+    "answer": 0,
+    "explanation": "Morpheus: 'Mavi hapı alırsan hikaye biter, yatağında uyanırsın. Kırmızı hapı alırsan Harikalar Diyarı'nda kalırsın ve tavşan deliğinin ne kadar derine gittiğini gösteririm.'"
+  },
+  {
+    "id": "hz_09",
+    "grade": "hazirlik",
+    "level": 5,
+    "category": "Sinema & Yapay Zeka",
+    "question": "Sinema tarihinin en ikonik yapay zekalarından olan '2001: Bir Uzay Destanı' filmindeki uzay gemisini yöneten kırmızı gözlü süper bilgisayarın adı nedir?",
+    "options": [
+      "HAL 9000",
+      "Skynet",
+      "Jarvis",
+      "GLaDOS"
+    ],
+    "answer": 0,
+    "explanation": "Arthur C. Clarke ve Stanley Kubrick'in başyapıtındaki HAL 9000, uzay gemisini yönetirken kontrolden çıkan yapay zekadır."
+  },
+  {
+    "id": "hz_10",
+    "grade": "hazirlik",
+    "level": 5,
+    "category": "Üretken Yapay Zeka",
+    "question": "Yapay zeka ile metinden görsel üreten 'Midjourney', popüler bir web sitesi yerine ilk olarak hangi platformdaki bir sohbet botu kanalı üzerinden hizmet vermiştir?",
+    "options": [
+      "Discord",
+      "Telegram",
+      "Slack",
+      "Reddit"
+    ],
+    "answer": 0,
+    "explanation": "Midjourney, web sitesi yerine tamamen Discord sunucusundaki bot komutlarıyla (/imagine) küresel bir fenomene dönüşmüştür."
+  },
+  {
+    "id": "hz_11",
+    "grade": "hazirlik",
+    "level": 6,
+    "category": "Bilim Kurgu & AI",
+    "question": "James Cameron'ın yönettiği kült Terminatör film serisinde insanlığa karşı küresel nükleer savaş başlatan askeri yapay zeka ağının adı nedir?",
+    "options": [
+      "Skynet",
+      "Matrix",
+      "Ultron",
+      "Cerebro"
+    ],
+    "answer": 0,
+    "explanation": "Skynet, Terminatör serisinde kendi bilincini kazandıktan sonra insanlığı tehdit olarak algılayıp Kıyamet Günü'nü (Judgment Day) başlatan yapay zekadır."
+  },
+  {
+    "id": "hz_12",
+    "grade": "hazirlik",
+    "level": 6,
+    "category": "Sosyal Medya Çıkışı",
+    "question": "2010 yılında yalnızca kare fotoğraflar ve nostaljik filtrelerle App Store'da yayınlanan Instagram, yayına girdiği ilk 24 saat içinde yaklaşık kaç kullanıcıya ulaşmıştır?",
+    "options": [
+      "25 bin kullanıcı",
+      "1 milyon kullanıcı",
+      "500 kullanıcı",
+      "100 bin kullanıcı"
+    ],
+    "answer": 0,
+    "explanation": "Kevin Systrom ve Mike Krieger'ın geliştirdiği Instagram, ilk gününde 25.000 kayıt alarak sunucularını kilitlemişti."
+  },
+  {
+    "id": "hz_13",
+    "grade": "hazirlik",
+    "level": 7,
+    "category": "Oyun Dünyası",
+    "question": "Dünyanın en çok satan açık dünya video oyun serilerinden GTA (Grand Theft Auto) ve Red Dead Redemption serilerinin yaratıcısı olan ünlü oyun stüdyosu hangisidir?",
+    "options": [
+      "Rockstar Games",
+      "Ubisoft",
+      "EA Sports",
+      "Bethesda"
+    ],
+    "answer": 0,
+    "explanation": "Sam ve Dan Houser kardeşlerin kurduğu Rockstar Games, GTA ve Red Dead Redemption serilerinin efsanevi yaratıcısıdır."
+  },
+  {
+    "id": "hz_14",
+    "grade": "hazirlik",
+    "level": 7,
+    "category": "E-Ticaret Tarihi",
+    "question": "1995 yılında Jeff Bezos tarafından online bir kitapçı olarak kurulan Amazon üzerinden satılan tarihteki ilk ürün neydi?",
+    "options": [
+      "Bir kitap (Douglas Hofstadter'ın eseri)",
+      "Müzik CD'si",
+      "Bilgisayar faresi",
+      "Kahve kupası"
+    ],
+    "answer": 0,
+    "explanation": "Amazon'da satılan ilk ürün, John Wainwright tarafından satın alınan Douglas Hofstadter'ın 'Fluid Concepts and Creative Analogies' adlı kitabıydı."
+  },
+  {
+    "id": "hz_15",
+    "grade": "hazirlik",
+    "level": 8,
+    "category": "Web Tarihi",
+    "question": "Dünyanın ilk web sitesi olan 'info.cern.ch', 1991 yılında Tim Berners-Lee tarafından Steve Jobs'ın kurduğu hangi bilgisayar modeli üzerinde yayına açılmıştır?",
+    "options": [
+      "NeXT Computer",
+      "Apple Macintosh",
+      "IBM Personal Computer",
+      "Commodore Amiga"
+    ],
+    "answer": 0,
+    "explanation": "Tim Berners-Lee, Steve Jobs'ın Apple'dan ayrıldıktan sonra kurduğu NeXT Computer iş istasyonunu tarihteki ilk web sunucusu olarak kullanmıştır."
+  },
+  {
+    "id": "hz_16",
+    "grade": "hazirlik",
+    "level": 8,
+    "category": "İnsansı Robotlar",
+    "question": "Yapay zeka robotu 'Sophia', 2017 yılında dünyada ilk kez hangi ülkenin resmi vatandaşlığını alarak tarihe geçmiştir?",
+    "options": [
+      "Suudi Arabistan",
+      "Birleşik Arap Emirlikleri",
+      "Japonya",
+      "Singapur"
+    ],
+    "answer": 0,
+    "explanation": "Hanson Robotics tarafından üretilen insansı robot Sophia, Riyad'daki Gelecek Yatırım Girişimi zirvesinde Suudi Arabistan vatandaşlığı almıştır."
+  },
+  {
+    "id": "hz_17",
+    "grade": "hazirlik",
+    "level": 9,
+    "category": "İşletim Sistemi İkonları",
+    "question": "Windows XP işletim sisteminin 2001'de milyonlarca ekranda yer alan, yeşil tepeler ve mavi gökyüzünden oluşan ikonik varsayılan masaüstü duvar kağıdının adı nedir?",
+    "options": [
+      "Bliss",
+      "Serenity",
+      "Harmony",
+      "Green Hill"
+    ],
+    "answer": 0,
+    "explanation": "Charles O'Rear tarafından 1996'da Kaliforniya Napa Vadisi'nde çekilen 'Bliss' fotoğrafı, tarihte en çok görüntülenen fotoğraflardan biridir."
+  },
+  {
+    "id": "hz_18",
+    "grade": "hazirlik",
+    "level": 9,
+    "category": "Reklam Dünyası Efsaneleri",
+    "question": "1984 yılında George Orwell'in romanından esinlenilerek Ridley Scott tarafından çekilen ve Super Bowl'da yayınlanan efsanevi reklam filmi hangi bilgisayarı tanıtmıştı?",
+    "options": [
+      "Apple Macintosh",
+      "IBM PC",
+      "Commodore 64",
+      "Atari ST"
+    ],
+    "answer": 0,
+    "explanation": "'1984 neden 1984 gibi olmayacak göreceksiniz' sloganıyla yayınlanan Ridley Scott imzalı reklam, Apple Macintosh'un doğuşunu müjdelemiştir."
+  },
+  {
+    "id": "hz_19",
+    "grade": "hazirlik",
+    "level": 10,
+    "category": "Siber Tehditler",
+    "question": "2000 yılında e-posta yoluyla yayılan, 'Seni Seviyorum' başlıklı sahte bir aşk mektubu süsü verilerek dünya çapında milyonlarca bilgisayara bulaşan tarihin en yıkıcı virüslerinden biri hangisidir?",
+    "options": [
+      "ILOVEYOU",
+      "Melissa",
+      "Chernobyl",
+      "WannaCry"
+    ],
+    "answer": 0,
+    "explanation": "Filipinler'den yayılan ILOVEYOU virüsü, e-posta ekinde 'LOVE-LETTER-FOR-YOU.TXT.vbs' dosyası olarak yayılmış ve 10 milyar dolarlık hasar vermiştir."
+  },
+  {
+    "id": "hz_20",
+    "grade": "hazirlik",
+    "level": 10,
+    "category": "Silikon Vadisi Arkeolojisi",
+    "question": "Google'ın kurucuları Larry Page ve Sergey Brin, 1996 yılında Stanford'da geliştirdikleri arama motoru projesine başlangıçta hangi adı vermişlerdi?",
+    "options": [
+      "BackRub",
+      "PageRank",
+      "Googol",
+      "SearchAlpha"
+    ],
+    "answer": 0,
+    "explanation": "İlk prototip, sitelerin arka bağlantılarını (backlink) analiz ettiği için kurucuları tarafından 'BackRub' olarak adlandırılmıştı."
+  },
+  {
+    "id": "hz_21",
+    "grade": "hazirlik",
+    "level": 11,
+    "category": "Kamera Arkeolojisi",
+    "question": "Cambridge Üniversitesi laboratuvarında 1991'de kurulan tarihteki ilk web kamerası (Trojan Room webcam), araştırmacıların hangi zahmete girmesini önlemek için icat edilmiştir?",
+    "options": [
+      "Kahve cezvesini boş bulup merdivenleri boşuna çıkmalarını",
+      "Sunucu odası sıcaklığını kontrol etmeyi",
+      "Otoparktaki arabayı gözetlemeyi",
+      "Posta kutusunu kontrol etmeyi"
+    ],
+    "answer": 0,
+    "explanation": "Quentin Stafford-Fraser ve ekibi, 'Trojan Room'daki kahve filtresini izleyen saniyede 1 karelik bir kamera kurarak ilk web kamerasını icat etti."
+  },
+  {
+    "id": "hz_22",
+    "grade": "hazirlik",
+    "level": 11,
+    "category": "Satranç & Süper Bilgisayar",
+    "question": "1996'da standart turnuva koşullarında dünya satranç şampiyonu Garry Kasparov'a karşı tek bir oyun kazanan ve 1997'de maçı kazanan IBM süper bilgisayarı hangisidir?",
+    "options": [
+      "Deep Blue",
+      "Watson",
+      "AlphaZero",
+      "Stockfish"
+    ],
+    "answer": 0,
+    "explanation": "Deep Blue, özel satranç işlemcileri sayesinde saniyede 200 milyon olasılığı analiz ederek dünya şampiyonunu yenmiştir."
+  },
+  {
+    "id": "hz_23",
+    "grade": "hazirlik",
+    "level": 12,
+    "category": "Edebiyat & Bilgisayar",
+    "question": "Arthur C. Clarke'ın '2001: Bir Uzay Destanı' eserindeki yapay zeka bilgisayarı 'HAL'ın harfleri, alfabede birer basamak ileri kaydırıldığında hangi dev şirketin adı ortaya çıkar?",
+    "options": [
+      "IBM (H->I, A->B, L->M)",
+      "Apple",
+      "Intel",
+      "Sony"
+    ],
+    "answer": 0,
+    "explanation": "H'den sonra I, A'dan sonra B, L'den sonra M gelir. Yazar Clarke bunu tesadüf olarak nitelendirse de popüler kültürün en ünlü bilişim göndermelerinden biridir."
+  },
+  {
+    "id": "hz_24",
+    "grade": "hazirlik",
+    "level": 12,
+    "category": "Dünyayı Kurtaran Sezgi",
+    "question": "1983'te Sovyet erken uyarı uydusunun sahte nükleer alarmını sezgisiyle 'yazılım hatası' olarak raporlayıp karşı saldırıyı engelleyerek nükleer savaşı önleyen subay kimdir?",
+    "options": [
+      "Stanislav Petrov",
+      "Vasili Arkhipov",
+      "Yuri Gagarin",
+      "Valery Legasov"
+    ],
+    "answer": 0,
+    "explanation": "Petrov, uydunun bulutlardan yansıyan güneş ışınlarını füze sanması üzerine sakinliğini koruyup 'yanlış alarm' bildirerek 3. Dünya Savaşı'nı önlemiştir."
+  },
+  {
+    "id": "g1_01",
+    "grade": "1",
+    "level": 1,
+    "category": "Zararlı Yazılım Tarihi",
+    "question": "Tarihte IBM uyumlu kişisel bilgisayarlar (PC) için yazılmış ilk genel virüs olan ve 1986'da iki Pakistanlı kardeş tarafından disket korsanlığını tespit etmek amacıyla yazılan virüsün adı nedir?",
+    "options": [
+      "Brain",
+      "Creeper",
+      "ILOVEYOU",
+      "Melissa"
+    ],
+    "answer": 0,
+    "explanation": "'Brain' virüsü, IBM PC'ler için yazılmış ilk genel virüstü ve disketin önyükleme (boot) sektörüne yerleşiyordu."
+  },
+  {
+    "id": "g1_02",
+    "grade": "1",
+    "level": 1,
+    "category": "Silikon Vadisi Girişimleri",
+    "question": "Elon Musk, ilk büyük servetini 2002 yılında hangi online ödeme şirketini eBay'e 1.5 milyar dolara satarak elde etmiştir?",
+    "options": [
+      "PayPal",
+      "Stripe",
+      "Square",
+      "TransferWise"
+    ],
+    "answer": 0,
+    "explanation": "Musk'ın kurduğu X.com şirketi Confinity ile birleşip PayPal olmuş, 2002'de eBay'e satılmıştır."
+  },
+  {
+    "id": "g1_03",
+    "grade": "1",
+    "level": 2,
+    "category": "Kablosuz Ağ Kökeni",
+    "question": "İnternet dünyasında kablosuz yerel ağlar için kullanılan 'Wi-Fi' kısaltması, ses sistemlerindeki hangi terimden esinlenerek bir pazarlama ajansı tarafından türetilmiştir?",
+    "options": [
+      "Hi-Fi (High Fidelity)",
+      "Sci-Fi (Science Fiction)",
+      "Bi-Fi (Bimodal Field)",
+      "Li-Fi (Light Fidelity)"
+    ],
+    "answer": 0,
+    "explanation": "Tüketicilere 'IEEE 802.11b' gibi teknik bir isim yerine akılda kalıcı olması için 'Hi-Fi' ses teriminden esinlenerek türetilmiştir."
+  },
+  {
+    "id": "g1_04",
+    "grade": "1",
+    "level": 2,
+    "category": "İşletim Sistemi Çekirdeği",
+    "question": "Apple'ın Mac bilgisayarlarında çalışan macOS işletim sistemi, arka planda hangi Unix tabanlı açık kaynak çekirdek mimarisi üzerinde yükselir?",
+    "options": [
+      "Darwin / BSD",
+      "Linux",
+      "MS-DOS",
+      "Solaris"
+    ],
+    "answer": 0,
+    "explanation": "macOS, Steve Jobs'ın NeXTSTEP döneminde geliştirilen açık kaynaklı Darwin (BSD Unix) temeline dayanır."
+  },
+  {
+    "id": "g1_05",
+    "grade": "1",
+    "level": 3,
+    "category": "Web Güvenliği",
+    "question": "İnternette güvenli web trafiği sağlayan ve tarayıcı adres çubuğunda kilit simgesi çıkaran 'HTTPS' protokolündeki 'S' harfi hangi kelimenin kısaltmasıdır?",
+    "options": [
+      "Secure (Güvenli)",
+      "Speed (Hızlı)",
+      "Standard (Standart)",
+      "System (Sistem)"
+    ],
+    "answer": 0,
+    "explanation": "Hypertext Transfer Protocol Secure, verileri TLS/SSL katmanı üzerinden uçtan uca şifreleyerek aktarır."
+  },
+  {
+    "id": "g1_06",
+    "grade": "1",
+    "level": 3,
+    "category": "Depolama Teknolojileri",
+    "question": "Geleneksel mekanik dönen manyetik diskler (HDD) yerine flaş bellek çipleri kullanarak bilgisayarların saniyeler içinde açılmasını sağlayan modern depolama birimi hangisidir?",
+    "options": [
+      "SSD (Solid State Drive)",
+      "RAM",
+      "ROM",
+      "GPU"
+    ],
+    "answer": 0,
+    "explanation": "SSD'ler mekanik hareketli parça içermediği için HDD'lere göre kat kat hızlı okuma/yazma yapar ve sessiz çalışır."
+  },
+  {
+    "id": "g1_07",
+    "grade": "1",
+    "level": 4,
+    "category": "Yazılım Ekosistemi",
+    "question": "Yazılım dünyasında açık kaynak kod paylaşımının merkezi olan GitHub'ın maskotu olan yarı kedi yarı ahtapot karakterin adı nedir?",
+    "options": [
+      "Octocat (Mona)",
+      "Tux",
+      "Bugdroid",
+      "Gopher"
+    ],
+    "answer": 0,
+    "explanation": "GitHub'ın resmi maskotu Octocat (Mona), ahtapotun çoklu kollarıyla yazılımdaki dallanma ve paralel görev yeteneğini simgeler."
+  },
+  {
+    "id": "g1_08",
+    "grade": "1",
+    "level": 4,
+    "category": "Açık Kaynak Öncüleri",
+    "question": "Açık kaynak dünyasında sunucuları ve Android'i yöneten Linux işletim sisteminin çekirdeğini 1991 yılında Helsinki Üniversitesi'nde öğrenciyken geliştiren Finli yazılımcı kimdir?",
+    "options": [
+      "Linus Torvalds",
+      "Richard Stallman",
+      "Ken Thompson",
+      "Dennis Ritchie"
+    ],
+    "answer": 0,
+    "explanation": "Linus Torvalds, 'Sadece bir hobi, büyük ve profesyonel bir şey olmayacak' diyerek başlattığı projeyle dünya bilişim tarihini değiştirdi."
+  },
+  {
+    "id": "g1_09",
+    "grade": "1",
+    "level": 5,
+    "category": "Üretken Yapay Zeka Riskleri",
+    "question": "Büyük Dil Modellerinde (ChatGPT vb.) yapay zekanın gerçekte var olmayan kişileri, sahte bilimsel kaynakları veya olayları kendinden emin bir dille uydurmasına ne ad verilir?",
+    "options": [
+      "Halüsinasyon (Hallucination)",
+      "Overfitting (Aşırı Uyum)",
+      "Underfitting",
+      "Data Leakage"
+    ],
+    "answer": 0,
+    "explanation": "Olasılıksal kelime tamamlama yapan modeller veride boşluk olduğunda tutarlı görünen yanlış bilgiler üretebilir (halüsinasyon)."
+  },
+  {
+    "id": "g1_10",
+    "grade": "1",
+    "level": 5,
+    "category": "Biyometrik Güvenlik",
+    "question": "Akıllı telefonlarda yüz tanıma sistemiyle kilit açmayı sağlayan Apple 'Face ID' teknolojisi, kullanıcının yüzüne görünmez yaklaşık kaç adet kızılötesi nokta yansıtır?",
+    "options": [
+      "30.000'den fazla nokta",
+      "Yaklaşık 500 nokta",
+      "5.000 nokta",
+      "100.000 nokta"
+    ],
+    "answer": 0,
+    "explanation": "TrueDepth kamera sistemi, yüzün derinlik haritasını çıkarmak için 30.000'in üzerinde görünmez kızılötesi nokta yansıtır."
+  },
+  {
+    "id": "g1_11",
+    "grade": "1",
+    "level": 6,
+    "category": "Yapay Zeka Kilometre Taşları",
+    "question": "2016 yılında 2500 yıllık antik Go oyununda 18 kez dünya şampiyonu olan efsanevi usta Lee Sedol'u 4-1 mağlup eden Google DeepMind yapay zekasının adı nedir?",
+    "options": [
+      "AlphaGo",
+      "Deep Blue",
+      "Stockfish",
+      "Watson"
+    ],
+    "answer": 0,
+    "explanation": "DeepMind tarafından geliştirilen AlphaGo, antik Go oyununda derin pekiştirmeli öğrenmeyle insan sezgisini ve şampiyonları alt etmiştir."
+  },
+  {
+    "id": "g1_12",
+    "grade": "1",
+    "level": 6,
+    "category": "Mikroçip Kuralları",
+    "question": "Mikroişlemcilerdeki transistör sayısının yaklaşık her iki yılda bir ikiye katlanacağını ve işlem gücünün katlanacağını öngören ünlü teknoloji yasası hangisidir?",
+    "options": [
+      "Moore Yasası",
+      "Ohm Yasası",
+      "Metcalfe Yasası",
+      "Amper Yasası"
+    ],
+    "answer": 0,
+    "explanation": "Intel'in kurucu ortaklarından Gordon Moore tarafından 1965 yılında ortaya atılmış bir yarı iletken gelişim gözlemidir."
+  },
+  {
+    "id": "g1_13",
+    "grade": "1",
+    "level": 7,
+    "category": "Milenyum Krizi",
+    "question": "Bilgisayarlarda 1999 yılından 2000 yılına geçerken eski sistemlerde tarihlerin '00' olmasından ötürü bankaların ve uçuşların çökeceği endişesiyle küresel panik yaratan krizin adı nedir?",
+    "options": [
+      "Y2K Problemi (Milenyum Böceği)",
+      "Dot-Com Balonu",
+      "WannaCry Salgını",
+      "Chernobyl Virüsü"
+    ],
+    "answer": 0,
+    "explanation": "Eski yazılımların yılları 2 basamaklı tutması yüzünden 2000 yılını 1900 sanacağı endişesiyle milyarlarca dolar harcanmıştı."
+  },
+  {
+    "id": "g1_14",
+    "grade": "1",
+    "level": 7,
+    "category": "İnternet Güvenliği",
+    "question": "Web sitelerinde insan ile otomatik botları ayırt etmek için kullanılan CAPTCHA testinin açılımı hangi efsanevi matematikçi ve bilişim öncüsünün adını taşır?",
+    "options": [
+      "Alan Turing (Completely Automated Public Turing test...)",
+      "John von Neumann",
+      "Claude Shannon",
+      "Charles Babbage"
+    ],
+    "answer": 0,
+    "explanation": "CAPTCHA, 'Completely Automated Public Turing test to tell Computers and Humans Apart' (İnsan ve Bilgisayarı ayıran Otomatik Turing Testi) demektir."
+  },
+  {
+    "id": "g1_15",
+    "grade": "1",
+    "level": 8,
+    "category": "Mobil Oyun Efsaneleri",
+    "question": "1997'de üretilen ve tarihin en dayanıklı telefonlarından biri kabul edilen Nokia cep telefonlarında küresel bir çılgınlığa dönüşen nostaljik piksel oyun hangisidir?",
+    "options": [
+      "Snake (Yılan)",
+      "Tetris",
+      "Space Invaders",
+      "Pac-Man"
+    ],
+    "answer": 0,
+    "explanation": "Taneli piksel ekranlı Snake oyunu, cep telefonlarında mobil oyun kültürünü başlatan ilk küresel çılgınlıktır."
+  },
+  {
+    "id": "g1_16",
+    "grade": "1",
+    "level": 8,
+    "category": "Bilişim Öncüleri",
+    "question": "Dünyanın ilk bilgisayar programcısı kabul edilen ve 19. yüzyılda Charles Babbage'ın mekanik Analitik Motoru için algoritma tasarlayan dahi kadın matematikçi kimdir?",
+    "options": [
+      "Ada Lovelace",
+      "Grace Hopper",
+      "Margaret Hamilton",
+      "Hedy Lamarr"
+    ],
+    "answer": 0,
+    "explanation": "Ada Lovelace, mekanik bir makinenin sadece matematik değil harf ve müzik notaları da işleyebileceğini ilk öngören kişidir."
+  },
+  {
+    "id": "g1_17",
+    "grade": "1",
+    "level": 9,
+    "category": "Silikon Vadisi Fiyatlandırması",
+    "question": "1976 yılında Steve Jobs ve Steve Wozniak, ilk kişisel bilgisayarları Apple I'i tekrar eden rakamları sevdikleri ve toptancıya üçte bir kar ekledikleri için hangi sembolik fiyattan satmışlardır?",
+    "options": [
+      "666.66 Dolar",
+      "777.77 Dolar",
+      "500.00 Dolar",
+      "999.99 Dolar"
+    ],
+    "answer": 0,
+    "explanation": "Wozniak tekrarlayan rakamları sevdiği ve toptancıya üçte bir kar ekledikleri için fiyatı 666.66 Dolar olarak belirlemişlerdi."
+  },
+  {
+    "id": "g1_18",
+    "grade": "1",
+    "level": 9,
+    "category": "Arayüz Arkeolojisi",
+    "question": "1968 yılında Douglas Engelbart tarafından tarihi bir sunumda tanıtılan dünyanın ilk bilgisayar faresi (mouse) hangi malzemeden oyularak üretilmiştir?",
+    "options": [
+      "Ahşap",
+      "Metal",
+      "Bakalit",
+      "Plastik"
+    ],
+    "answer": 0,
+    "explanation": "İlk fare, iki metal tekerleğe ve üzerinde tek bir kırmızı düğmeye sahip oyulmuş ahşap bir bloktu."
+  },
+  {
+    "id": "g1_19",
+    "grade": "1",
+    "level": 10,
+    "category": "Kripto Tarihi",
+    "question": "2008 yılında yayınladığı 9 sayfalık tarihi teknik bildiriyle ilk merkeziyetsiz kripto para Bitcoin'i ve blokzinciri icat eden gizemli kişi veya grubun takma adı nedir?",
+    "options": [
+      "Satoshi Nakamoto",
+      "Vitalik Buterin",
+      "Hal Finney",
+      "Nick Szabo"
+    ],
+    "answer": 0,
+    "explanation": "Satoshi Nakamoto'nun gerçek kimliği günümüzde bilişim dünyasının en büyük gizemi olmaya devam etmektedir."
+  },
+  {
+    "id": "g1_20",
+    "grade": "1",
+    "level": 10,
+    "category": "Bilişim Kökenleri",
+    "question": "Yazılımdaki hatalar için kullanılan 'Bug' (böcek) terimi, 1947'de Grace Hopper ve ekibinin Harvard Mark II bilgisayarı röleleri arasında bularak günlüğe yapıştırdığı hangi fiziksel canlıdan gelmektedir?",
+    "options": [
+      "Güve (Moth)",
+      "Hamamböceği",
+      "Karınca",
+      "Sivrisinek"
+    ],
+    "answer": 0,
+    "explanation": "Harvard Mark II bilgisayarında kısa devreye yol açan bir güve cımbızla alınıp mühendislik günlüğüne yapıştırılmış ve ilk 'bug' belgelenmiştir."
+  },
+  {
+    "id": "g1_21",
+    "grade": "1",
+    "level": 11,
+    "category": "İlk Mikroişlemci",
+    "question": "1971 yılında geliştirilen, bir Japon masa hesap makinesi (Busicom) için tasarlanan ve tarihteki ilk ticari tek çipli mikroişlemci kabul edilen efsanevi çip hangisidir?",
+    "options": [
+      "Intel 4004",
+      "Intel 8086",
+      "Intel Pentium",
+      "MOS 6502"
+    ],
+    "answer": 0,
+    "explanation": "Federico Faggin liderliğinde geliştirilen 4-bitlik Intel 4004, modern mikroişlemci çağının başlangıcıdır."
+  },
+  {
+    "id": "g1_22",
+    "grade": "1",
+    "level": 11,
+    "category": "Turing Testi Kökeni",
+    "question": "Alan Turing, 1950'de makinelerin insan gibi düşünüp düşünemeyeceğini sorguladığı ve Turing testine temel oluşturan tarihi makalesinde bu testi ilk kez hangi adla tanımlamıştır?",
+    "options": [
+      "Taklit Oyunu (The Imitation Game)",
+      "Akıl Oyunu",
+      "Düşünce Düellosu",
+      "Zeka Sınavı"
+    ],
+    "answer": 0,
+    "explanation": "Turing, makalesine 'Makineler düşünebilir mi?' sorusuyla ve 'Taklit Oyunu' (Imitation Game) adını verdiği senaryoyla başlar."
+  },
+  {
+    "id": "g1_23",
+    "grade": "1",
+    "level": 12,
+    "category": "İnternetin İlk Mesajı",
+    "question": "29 Ekim 1969'da internetin atası ARPANET'te UCLA ile Stanford arasında gönderilmeye çalışılan ilk kelime neydi (sistem 'LO' harflerinden sonra çökmüştü)?",
+    "options": [
+      "LOGIN",
+      "HELLO",
+      "ONLINE",
+      "START"
+    ],
+    "answer": 0,
+    "explanation": "Mühendisler 'LOGIN' kelimesini göndermek isterken L ve O harflerinden sonra bellek taşmasıyla sistem çökmüş ve ilk mesaj 'LO' olmuştur."
+  },
+  {
+    "id": "g1_24",
+    "grade": "1",
+    "level": 12,
+    "category": "Bilişim Teorisinin Temeli",
+    "question": "1948 yılında Claude Shannon tarafından Bell Labs'ta yazılan ve bilginin 'bit' birimiyle ölçülebileceğini matematiksel olarak kanıtlayan bilişim teorisinin kurucu makalesi hangisidir?",
+    "options": [
+      "A Mathematical Theory of Communication",
+      "Computing Machinery and Intelligence",
+      "First Draft of a Report on the EDVAC",
+      "Cybernetics: Or Control and Communication"
+    ],
+    "answer": 0,
+    "explanation": "Claude Shannon'ın 'İletişimin Matematiksel Teorisi' makalesi, dijital iletişimin ve bilişim teorisinin temel taşıdır."
+  },
+  {
+    "id": "g2_01",
+    "grade": "2",
+    "level": 1,
+    "category": "Dillerin Kökeni",
+    "question": "Python programlama dilinin ismi, yaratıcısı Guido van Rossum tarafından hangi ünlü İngiliz komedi grubundan esinlenerek verilmiştir?",
+    "options": [
+      "Monty Python",
+      "Mr. Bean",
+      "Blackadder",
+      "Fawlty Towers"
+    ],
+    "answer": 0,
+    "explanation": "Guido van Rossum, dili geliştirirken BBC'nin absürt komedi klasiği 'Monty Python's Flying Circus' senaryolarını okuduğu için bu adı seçmiştir."
+  },
+  {
+    "id": "g2_02",
+    "grade": "2",
+    "level": 1,
+    "category": "Renk Modelleri",
+    "question": "Dijital ekranlarda ve web tasarımında kullanılan temel aditif renk uzayı RGB, hangi üç ana rengin baş harflerinden oluşur?",
+    "options": [
+      "Red, Green, Blue (Kırmızı, Yeşil, Mavi)",
+      "Red, Gray, Black",
+      "Rose, Gold, Brown",
+      "Rust, Green, Beige"
+    ],
+    "answer": 0,
+    "explanation": "RGB, ışığın kırmızı, yeşil ve mavi kanallarının birleşimiyle milyonlarca rengi üretir."
+  },
+  {
+    "id": "g2_03",
+    "grade": "2",
+    "level": 2,
+    "category": "Donanım Kısaltmaları",
+    "question": "Derin öğrenme modellerinin matris çarpımlarını binlerce çekirdekle paralel hesaplamasında kritik rol oynayan 'GPU' kısaltmasının açılımı nedir?",
+    "options": [
+      "Graphics Processing Unit",
+      "General Power Unit",
+      "Global Pixel Utility",
+      "Gaming Performance Unit"
+    ],
+    "answer": 0,
+    "explanation": "GPU (Grafik İşleme Birimi), başlangıçta 3D grafikler için tasarlanmışken günümüzde paralel matris işlemlerinde yapay zekanın kalbidir."
+  },
+  {
+    "id": "g2_04",
+    "grade": "2",
+    "level": 2,
+    "category": "Versiyon Kontrol",
+    "question": "Git versiyon kontrol sisteminde o ana kadar hazırlanan (staged) değişiklikleri yerel proje geçmişine kalıcı bir anlık görüntü olarak kaydeden komut hangisidir?",
+    "options": [
+      "git commit",
+      "git push",
+      "git pull",
+      "git merge"
+    ],
+    "answer": 0,
+    "explanation": "git commit komutu, staged değişiklikleri bir commit mesajıyla yerel depoya mühürler."
+  },
+  {
+    "id": "g2_05",
+    "grade": "2",
+    "level": 3,
+    "category": "Yapay Zeka Mühendisliği",
+    "question": "ChatGPT, Claude ve Midjourney gibi üretken yapay zeka modellerine ne yapması gerektiğini iletmek için yazdığımız yönlendirici komut metnine ne ad verilir?",
+    "options": [
+      "Prompt",
+      "Token",
+      "Script",
+      "Hash"
+    ],
+    "answer": 0,
+    "explanation": "Prompt, modelin bağlamını ve üreteceği cevabın tarzını belirleyen girdi metnidir."
+  },
+  {
+    "id": "g2_06",
+    "grade": "2",
+    "level": 3,
+    "category": "Veritabanı Standartları",
+    "question": "İlişkisel veritabanlarını yönetmek ve sorgulamak için kullanılan evrensel standart dil olan SQL'in açılımı nedir?",
+    "options": [
+      "Structured Query Language",
+      "Standard Quick Logic",
+      "System Quality Layer",
+      "Sequential Queue List"
+    ],
+    "answer": 0,
+    "explanation": "Structured Query Language (Yapılandırılmış Sorgu Dili), ilişkisel veritabanlarında veri okuma ve yazma standardıdır."
+  },
+  {
+    "id": "g2_07",
+    "grade": "2",
+    "level": 4,
+    "category": "Yakın Alan İletişimi",
+    "question": "Akıllı telefonlarda temassız ödeme ve toplu taşıma kartlarında kullanılan 13.56 MHz frekanslı kablosuz iletişim standardı nedir?",
+    "options": [
+      "NFC (Near Field Communication)",
+      "GPS",
+      "Infrared (Kızılötesi)",
+      "LTE"
+    ],
+    "answer": 0,
+    "explanation": "NFC, birkaç santimetrelik mesafede yüksek güvenlikli radyo frekansı indüksiyonuyla veri transferi yapar."
+  },
+  {
+    "id": "g2_08",
+    "grade": "2",
+    "level": 4,
+    "category": "Temel Veri Yapıları",
+    "question": "Son giren ilk çıkar (LIFO - Last In First Out) prensibiyle çalışan, tarayıcıların 'Geri' butonu mantığında kullanılan temel veri yapısı hangisidir?",
+    "options": [
+      "Yığıt / Yığın (Stack)",
+      "Kuyruk (Queue)",
+      "Bağlı Liste (Linked List)",
+      "Ağaç (Tree)"
+    ],
+    "answer": 0,
+    "explanation": "Stack (yığın) yapısında elemanlar üst üste eklenir (push) ve son eklenen eleman ilk olarak çıkarılır (pop)."
+  },
+  {
+    "id": "g2_09",
+    "grade": "2",
+    "level": 5,
+    "category": "Sensör Sistemleri",
+    "question": "Robot süpürgelerin ve otonom araçların çevreyi saniyede binlerce lazer darbesiyle tarayıp 3 boyutlu derinlik haritası çıkarmasını sağlayan optik sensör hangisidir?",
+    "options": [
+      "LiDAR",
+      "Sonar",
+      "Termal Kamera",
+      "Hall Sensörü"
+    ],
+    "answer": 0,
+    "explanation": "LiDAR (Light Detection and Ranging), ışığın hedefe çarpıp dönme süresini ölçerek milimetrik harita çıkarır."
+  },
+  {
+    "id": "g2_10",
+    "grade": "2",
+    "level": 5,
+    "category": "Yazılım Süreçleri",
+    "question": "Yazılım geliştiricilerin kodlarındaki mantıksal hataları, çökmeleri veya hafıza sızıntılarını adım adım izleyerek çözme sürecine ne ad verilir?",
+    "options": [
+      "Debugging (Hata Ayıklama)",
+      "Compiling (Derleme)",
+      "Deployment (Dağıtım)",
+      "Benchmarking"
+    ],
+    "answer": 0,
+    "explanation": "Debugging, program kodlarının breakpoint'ler ve loglar yardımıyla adım adım izlenip hatanın giderilmesidir."
+  },
+  {
+    "id": "g2_11",
+    "grade": "2",
+    "level": 6,
+    "category": "Açık Kaynak Hukuku",
+    "question": "Richard Stallman tarafından 1989'da yazılan ve türetilen tüm yazılımların da zorunlu olarak açık kaynak kalmasını şart koşan (copyleft) lisans hangisidir?",
+    "options": [
+      "GPL (General Public License)",
+      "MIT Lisansı",
+      "Apache 2.0",
+      "BSD Lisansı"
+    ],
+    "answer": 0,
+    "explanation": "GPL lisansı, yazılımın özgür kalmasını garanti eden katı bir 'copyleft' felsefesine sahiptir."
+  },
+  {
+    "id": "g2_12",
+    "grade": "2",
+    "level": 6,
+    "category": "Web Mimarisi",
+    "question": "Web sitelerinde 404 (Not Found) veya 403 (Forbidden) gibi 4xx serisi HTTP durum kodları genel olarak ne tür bir hatayı belirtir?",
+    "options": [
+      "İstemci Hatası (Client Error)",
+      "Sunucu Hatası (Server Error)",
+      "Ağ Zaman Aşımı",
+      "Başarılı Yönlendirme"
+    ],
+    "answer": 0,
+    "explanation": "4xx kodları istemci kaynaklı hataları (yanlış adres, yetkisiz erişim), 5xx kodları ise sunucu çökmelerini ifade eder."
+  },
+  {
+    "id": "g2_13",
+    "grade": "2",
+    "level": 7,
+    "category": "Yapay Zeka Laboratuvarları",
+    "question": "2022 yılı sonunda ChatGPT'yi kullanıma sunarak üretken yapay zeka devrimini başlatan Sam Altman liderliğindeki yapay zeka araştırma şirketi hangisidir?",
+    "options": [
+      "OpenAI",
+      "DeepMind",
+      "Meta AI",
+      "Anthropic"
+    ],
+    "answer": 0,
+    "explanation": "OpenAI, GPT serisi ve DALL-E modelleriyle yapay zekanın küresel yayılımında öncülük yapmıştır."
+  },
+  {
+    "id": "g2_14",
+    "grade": "2",
+    "level": 7,
+    "category": "3D Üretim Malzemeleri",
+    "question": "Ev tipi FDM 3D yazıcılarda en yaygın kullanılan, mısır nişastasından üretilen biyobozunur plastik filament türü hangisidir?",
+    "options": [
+      "PLA (Polilaktik Asit)",
+      "ABS",
+      "Naylon",
+      "Polikarbonat"
+    ],
+    "answer": 0,
+    "explanation": "PLA, düşük erime sıcaklığı, kokusuzluğu ve çevre dostu yapısıyla en popüler 3D yazıcı filamentidir."
+  },
+  {
+    "id": "g2_15",
+    "grade": "2",
+    "level": 8,
+    "category": "Dinamik Robotik",
+    "question": "Ters takla atabilen insansı robot 'Atlas' ve dört ayaklı endüstriyel robot köpek 'Spot'u geliştiren öncü robotik şirketi hangisidir?",
+    "options": [
+      "Boston Dynamics",
+      "Tesla Optimus",
+      "iRobot",
+      "DJI Robotics"
+    ],
+    "answer": 0,
+    "explanation": "MIT kökenli Boston Dynamics, dinamik denge ve robotik hareket kabiliyetinde dünyanın en gelişmiş şirketidir."
+  },
+  {
+    "id": "g2_16",
+    "grade": "2",
+    "level": 8,
+    "category": "Sentetik Medya",
+    "question": "Derin öğrenme algoritmalarıyla bir kişinin yüzünün veya sesinin başka bir videoya gerçeğinden ayırt edilemeyecek doğallıkta monte edilmesine ne ad verilir?",
+    "options": [
+      "Deepfake",
+      "Photoshop",
+      "Green Screen",
+      "Motion Capture"
+    ],
+    "answer": 0,
+    "explanation": "Deepfake, 'Deep Learning' ve 'Fake' kelimelerinin birleşiminden doğan sentetik medya manipülasyonudur."
+  },
+  {
+    "id": "g2_17",
+    "grade": "2",
+    "level": 9,
+    "category": "Makine Öğrenimi Metodolojisi",
+    "question": "Makine öğrenimi modellerini eğitirken, modelin ezber yapıp yapmadığını anlamak için eğitim boyunca modele ASLA gösterilmeyen veri kümesine ne denir?",
+    "options": [
+      "Test Veri Seti (Test Set)",
+      "Eğitim Seti (Train Set)",
+      "Validasyon Seti",
+      "Çöp Veri"
+    ],
+    "answer": 0,
+    "explanation": "Test seti, modelin daha önce hiç görmediği gerçek dünya verilerindeki genelleme yeteneğini ölçer."
+  },
+  {
+    "id": "g2_18",
+    "grade": "2",
+    "level": 9,
+    "category": "Ağ Standartları",
+    "question": "İnternet ağlarında şifresiz standart HTTP web trafiği için varsayılan olarak tahsis edilmiş olan ağ port numarası kaçtır?",
+    "options": [
+      "Port 80",
+      "Port 443",
+      "Port 22",
+      "Port 21"
+    ],
+    "answer": 0,
+    "explanation": "Standart HTTP trafiği Port 80, şifreli HTTPS trafiği ise Port 443 üzerinden akar."
+  },
+  {
+    "id": "g2_19",
+    "grade": "2",
+    "level": 10,
+    "category": "Kurumsal Bilişim Devleri",
+    "question": "1995 yılında James Gosling liderliğinde Java programlama dilini geliştiren ve 'Bir kez yaz, her yerde çalıştır' sloganıyla çığır açan tarihi teknoloji şirketi hangisidir?",
+    "options": [
+      "Sun Microsystems",
+      "Oracle",
+      "Microsoft",
+      "IBM"
+    ],
+    "answer": 0,
+    "explanation": "Sun Microsystems, Java ve Solaris ile internet çağının kurumsal omurgasını inşa etmiş, 2010'da Oracle tarafından satın alınmıştır."
+  },
+  {
+    "id": "g2_20",
+    "grade": "2",
+    "level": 10,
+    "category": "İşletim Sistemleri Atası",
+    "question": "1969 yılında Bell Labs'ta Ken Thompson ve Dennis Ritchie tarafından geliştirilen, modern Linux ve macOS işletim sistemlerinin atası kabul edilen işletim sistemi hangisidir?",
+    "options": [
+      "Unix",
+      "CP/M",
+      "MS-DOS",
+      "OS/2"
+    ],
+    "answer": 0,
+    "explanation": "Unix, çok kullanıcılı yapısı, dosya sistemi mimarisi ve C diliyle yeniden yazılmasıyla bilişim dünyasının temel taşıdır."
+  },
+  {
+    "id": "g2_21",
+    "grade": "2",
+    "level": 11,
+    "category": "Teknoloji Yönetim Hataları",
+    "question": "1975'te mühendisi Steve Sasson aracılığıyla tarihteki ilk dijital fotoğraf makinesini icat eden ancak film satışlarını korumak için bunu gizleyip iflas eden dev hangisidir?",
+    "options": [
+      "Kodak",
+      "Canon",
+      "Nikon",
+      "Fujifilm"
+    ],
+    "answer": 0,
+    "explanation": "Kodak, dijital kamerayı icat eden ilk şirket olmasına rağmen 'film rulosu satışlarını bitirir' korkusuyla inovasyonu ertelemiş ve iflas etmiştir."
+  },
+  {
+    "id": "g2_22",
+    "grade": "2",
+    "level": 11,
+    "category": "Yapay Zekanın İsim Babası",
+    "question": "1956 yazında John McCarthy, Marvin Minsky ve Claude Shannon'ın katılımıyla düzenlenen ve 'Yapay Zeka' (Artificial Intelligence) teriminin ilk kez resmen ortaya atıldığı efsanevi akademik buluşma hangisidir?",
+    "options": [
+      "Dartmouth Konferansı",
+      "Turing Sempozyumu",
+      "Stanford Zirvesi",
+      "MIT Bilişim Kongresi"
+    ],
+    "answer": 0,
+    "explanation": "Dartmouth Koleji'ndeki iki aylık yaz atölyesi, Yapay Zeka disiplininin resmi doğum yeri kabul edilir."
+  },
+  {
+    "id": "g2_23",
+    "grade": "2",
+    "level": 12,
+    "category": "E-Postanın Doğuşu",
+    "question": "1971'de ARPANET üzerinden ilk e-postayı gönderen ve kullanıcı ile bilgisayar adını ayırmak için klavyeden '@' (at) sembolünü seçen bilişim öncüsü kimdir?",
+    "options": [
+      "Ray Tomlinson",
+      "Tim Berners-Lee",
+      "Vint Cerf",
+      "Bob Kahn"
+    ],
+    "answer": 0,
+    "explanation": "Ray Tomlinson, İngilizcede '-de / -da' (at) anlamına gelen ve isimlerde geçmeyen nadir '@' işaretini seçerek e-posta standardını kurdu."
+  },
+  {
+    "id": "g2_24",
+    "grade": "2",
+    "level": 12,
+    "category": "İlk Elektronik Bilgisayar",
+    "question": "1946 yılında Pennsylvania Üniversitesi'nde tamamlanan ve tarihteki ilk elektronik genel amaçlı programlanabilir dijital bilgisayar kabul edilen dev makine hangisidir?",
+    "options": [
+      "ENIAC",
+      "UNIVAC",
+      "EDVAC",
+      "Colossus"
+    ],
+    "answer": 0,
+    "explanation": "18.000 vakum tüpünden oluşan ENIAC, top mermisi yörüngelerini hesaplamak için tasarlanmış devasa ilk genel amaçlı elektronik bilgisayardır."
+  },
+  {
+    "id": "g3_01",
+    "grade": "3",
+    "level": 1,
+    "category": "Veri Görselleştirme",
+    "question": "Veri biliminde bir bütünün yüzde paylarını ve oransal dağılımını dairesel dilimler halinde göstermek için kullanılan klasik grafik türü hangisidir?",
+    "options": [
+      "Pasta Grafiği (Pie Chart)",
+      "Dağılım Grafiği (Scatter)",
+      "Isı Haritası (Heatmap)",
+      "Kutu Grafiği (Boxplot)"
+    ],
+    "answer": 0,
+    "explanation": "Pasta grafiği, kategorilerin toplam içindeki yüzdelik paylarını görselleştirmek için idealdir."
+  },
+  {
+    "id": "g3_02",
+    "grade": "3",
+    "level": 1,
+    "category": "Veri Kütüphaneleri",
+    "question": "Python'da büyük veri tablolarını DataFrame yapısında işlemek ve veri manipülasyonu yapmak için dünya standardı olan açık kaynak kütüphane hangisidir?",
+    "options": [
+      "Pandas",
+      "Matplotlib",
+      "Flask",
+      "PyTorch"
+    ],
+    "answer": 0,
+    "explanation": "Pandas, veri temizleme, filtreleme ve analizinde veri bilimcilerin en çok başvurduğu kütüphanedir."
+  },
+  {
+    "id": "g3_03",
+    "grade": "3",
+    "level": 2,
+    "category": "Tavsiye Algoritmaları",
+    "question": "Netflix veya Spotify gibi platformlarda kullanıcıların geçmiş tercihlerini ve benzer profilleri eşleştirerek yeni içerik öneren yapay zeka algoritmalarına ne ad verilir?",
+    "options": [
+      "Öneri Sistemleri (Recommendation Systems)",
+      "Arama Motoru",
+      "Derleyici",
+      "Veritabanı İndeksi"
+    ],
+    "answer": 0,
+    "explanation": "İşbirlikçi filtreleme (collaborative filtering) gibi tekniklerle kullanıcıların beğeneceği içerikler tahmin edilir."
+  },
+  {
+    "id": "g3_04",
+    "grade": "3",
+    "level": 2,
+    "category": "Spor Teknolojisi",
+    "question": "Futbol ve tenis gibi sporlarda topun çizgiyi geçip geçmediğini veya oyuncunun ofsayt pozisyonunu yüksek hızlı kameralarla tespit eden optik bilgisayarlı görü sistemi nedir?",
+    "options": [
+      "Hawk-Eye / Şahin Gözü",
+      "GPS Tracker",
+      "Lojik Kapı",
+      "Foto-Finiş"
+    ],
+    "answer": 0,
+    "explanation": "Hawk-Eye sistemi, stadyumdaki çoklu kameralarla topun ve oyuncuların 3D milimetrik yörüngesini hesaplar."
+  },
+  {
+    "id": "g3_05",
+    "grade": "3",
+    "level": 3,
+    "category": "Model Hataları",
+    "question": "Makine öğreniminde bir modelin eğitim verisini aşırı ezberleyip sınavlarda (yeni veride) başarısız olması durumuna ne ad verilir?",
+    "options": [
+      "Aşırı Uyum (Overfitting)",
+      "Eksik Uyum (Underfitting)",
+      "Halüsinasyon",
+      "Normalizasyon"
+    ],
+    "answer": 0,
+    "explanation": "Overfitting, modelin verideki gürültüyü bile kural sanarak genelleme yeteneğini kaybetmesidir."
+  },
+  {
+    "id": "g3_06",
+    "grade": "3",
+    "level": 3,
+    "category": "İşlemci Mimarisi",
+    "question": "Bilgisayarlarda CPU'nun aynı anda birden fazla bağımsız işlemi eşzamanlı olarak donmadan yürütmesini sağlayan donanım yapısına ne ad verilir?",
+    "options": [
+      "Çok Çekirdekli Mimari (Multi-core)",
+      "Hız Aşırtma (Overclock)",
+      "Monolitik Çekirdek",
+      "Tek Kanallı Bellek"
+    ],
+    "answer": 0,
+    "explanation": "Çok çekirdekli işlemciler, görevleri farklı çekirdeklere dağıtarak eşzamanlı çoklu işlem (multitasking) yapabilmeyi sağlar."
+  },
+  {
+    "id": "g3_07",
+    "grade": "3",
+    "level": 4,
+    "category": "Fotoğraf Teknolojisi",
+    "question": "Akıllı telefonların karanlık ortamlarda birden fazla kareyi mikrosaniyeler içinde birleştirip yapay zekayla gürültüyü temizlemesi tekniğine ne denir?",
+    "options": [
+      "Hesaplamalı Fotoğrafçılık (Computational Photography)",
+      "Optik Zum",
+      "Makro Lens",
+      "Fiziksel Diyafram"
+    ],
+    "answer": 0,
+    "explanation": "Hesaplamalı fotoğrafçılık, küçük sensörlerin fiziksel sınırlarını yapay zeka ve yazılımsal füzyon ile aşar."
+  },
+  {
+    "id": "g3_08",
+    "grade": "3",
+    "level": 4,
+    "category": "Veritabanı Performansı",
+    "question": "Bir veritabanında aranan kaydın milyonlarca satır taranmadan saniyeler yerine milisaniyelerde getirilmesini sağlayan fihrist benzeri veri yapısına ne ad verilir?",
+    "options": [
+      "İndeks (Index)",
+      "Foreign Key",
+      "Görünüm (View)",
+      "Tetikleyici (Trigger)"
+    ],
+    "answer": 0,
+    "explanation": "Veritabanı indeksleri (B-Tree vb.), tablonun tüm satırlarını gezmek yerine doğrudan adresine dallanarak disk aramalarını hızlandırır."
+  },
+  {
+    "id": "g3_09",
+    "grade": "3",
+    "level": 5,
+    "category": "Görü Görevleri",
+    "question": "Bilgisayarlı görüde (Computer Vision) bir fotoğraftaki yayaları, araçları veya nesneleri kutu içine alıp sınıflarını belirleyen algoritmik göreve ne ad verilir?",
+    "options": [
+      "Nesne Tespiti (Object Detection)",
+      "Görüntü Sıkıştırma",
+      "Filtreleme",
+      "Gürültü Ekleme"
+    ],
+    "answer": 0,
+    "explanation": "YOLO gibi modeller nesnelerin türünü ve piksel koordinat kutularını (bounding box) anında tespit eder."
+  },
+  {
+    "id": "g3_10",
+    "grade": "3",
+    "level": 5,
+    "category": "Büyük Veri İlkeleri",
+    "question": "Veri bilimi ve makine öğreniminde 'Büyük Veri' (Big Data) olgusunu niteleyen meşhur '3V' kuralı hangi üç İngilizce kelimeden oluşur?",
+    "options": [
+      "Volume, Velocity, Variety (Hacim, Hız, Çeşitlilik)",
+      "Vision, Value, Virtual",
+      "Vector, Variable, Vortex",
+      "Vast, Valid, Vivid"
+    ],
+    "answer": 0,
+    "explanation": "Büyük veri; devasa hacmi (Volume), gerçek zamanlı üretim hızı (Velocity) ve farklı formatlardaki çeşitliliğiyle (Variety) tanımlanır."
+  },
+  {
+    "id": "g3_11",
+    "grade": "3",
+    "level": 6,
+    "category": "Otonom Sürüş Sistemleri",
+    "question": "Modern otomobillerde ön camdaki kameralarla öndeki aracı takip edip mesafeye göre kendi kendine gaz ve fren yapan sürüş destek sistemine ne ad verilir?",
+    "options": [
+      "Adaptif Hız Sabitleyici (ACC)",
+      "ABS Fren Sistemi",
+      "ESP Denge Kontrolü",
+      "Hava Yastığı Sensörü"
+    ],
+    "answer": 0,
+    "explanation": "ACC (Adaptive Cruise Control), radar ve görüntü işleme algoritmalarıyla güvenli takip mesafesini otomatik korur."
+  },
+  {
+    "id": "g3_12",
+    "grade": "3",
+    "level": 6,
+    "category": "Vektörel Temsil",
+    "question": "Metin veya kategorik verileri yapay zekanın anlayabileceği çok boyutlu sayısal vektör uzayına dönüştürme işlemine ne ad verilir?",
+    "options": [
+      "Vektör Gömme (Embedding)",
+      "Derleme",
+      "Hashleme",
+      "Serileştirme"
+    ],
+    "answer": 0,
+    "explanation": "Kelime ve cümle gömmeleri (Word2Vec, OpenAI embeddings), anlamsal olarak benzer kelimeleri vektör uzayında birbirine yakın konumlandırır."
+  },
+  {
+    "id": "g3_13",
+    "grade": "3",
+    "level": 7,
+    "category": "Veri Bilimi Toplulukları",
+    "question": "Veri bilimcilerin ödüllü makine öğrenimi yarışmalarına katıldığı, veri setleri bulduğu ve Jupyter Notebook paylaştığı Google bünyesindeki küresel platform hangisidir?",
+    "options": [
+      "Kaggle",
+      "Stack Overflow",
+      "LeetCode",
+      "HackerRank"
+    ],
+    "answer": 0,
+    "explanation": "Kaggle, dünya çapındaki veri bilimcilerin model geliştirdiği ve Büyük Usta (Grandmaster) unvanı için yarıştığı platformdur."
+  },
+  {
+    "id": "g3_14",
+    "grade": "3",
+    "level": 7,
+    "category": "Siber Güvenlik Saldırıları",
+    "question": "Dağıtık sistemlerde aynı anda yüz binlerce sahte istek göndererek bir web sitesinin sunucularını kitleyip hizmet dışı bırakan siber saldırı türü nedir?",
+    "options": [
+      "DDoS (Distributed Denial of Service)",
+      "Phishing (Oltalama)",
+      "Keylogger",
+      "Ransomware"
+    ],
+    "answer": 0,
+    "explanation": "DDoS saldırısı, zombi bilgisayar ağları (botnet) kullanarak hedef sistemi aşırı trafik yüküyle çökertir."
+  },
+  {
+    "id": "g3_15",
+    "grade": "3",
+    "level": 8,
+    "category": "Gelişmiş LLM Mimarisi",
+    "question": "Büyük Dil Modellerinin (LLM) dışarıdan güvenilir bir veritabanı veya şirket içi belgelerle beslenerek güncel ve doğru cevap vermesini sağlayan popüler mimari hangisidir?",
+    "options": [
+      "RAG (Retrieval-Augmented Generation)",
+      "Fine-Tuning",
+      "Zero-Shot",
+      "GAN"
+    ],
+    "answer": 0,
+    "explanation": "RAG, modelin eğitim verisinde olmayan güncel belgeleri bir vektör veritabanından sorgulayarak prompt bağlamına ekler."
+  },
+  {
+    "id": "g3_16",
+    "grade": "3",
+    "level": 8,
+    "category": "Model Hizalama",
+    "question": "Yapay zeka modellerinin insan değerlerine, güvenliğe ve etik sınırlara uygun davranmasını sağlamak için insan geri bildirimiyle eğitilmesine ne ad verilir?",
+    "options": [
+      "RLHF (Reinforcement Learning from Human Feedback)",
+      "K-Means",
+      "PCA",
+      "Lasso"
+    ],
+    "answer": 0,
+    "explanation": "RLHF, modellerin zararlı içerik üretmesini önlemek ve insan tercihlerine göre optimize etmek için pekiştirmeli öğrenme kullanır."
+  },
+  {
+    "id": "g3_17",
+    "grade": "3",
+    "level": 9,
+    "category": "Yapay Zeka Donanım Devleri",
+    "question": "Yapay zeka donanımı pazarında H100 ve Blackwell çipleriyle süper bilgisayar ve veri merkezlerini domine eden teknoloji devi hangisidir?",
+    "options": [
+      "Nvidia",
+      "Intel",
+      "Qualcomm",
+      "AMD"
+    ],
+    "answer": 0,
+    "explanation": "Jensen Huang'ın kurduğu Nvidia, CUDA platformu ve tensör çekirdekli çipleriyle yapay zeka devriminin en kritik donanım sağlayıcısıdır."
+  },
+  {
+    "id": "g3_18",
+    "grade": "3",
+    "level": 9,
+    "category": "Veritabanı Teorisi",
+    "question": "1970 yılında IBM araştırmacısı Edgar F. Codd tarafından formüle edilen ve tablolar arasındaki anahtarlarla ilişki kuran veritabanı modeli hangisidir?",
+    "options": [
+      "İlişkisel Veritabanı Modeli (RDBMS)",
+      "Hiyerarşik Model",
+      "Graf Veritabanı",
+      "Nesne Yönelimli Model"
+    ],
+    "answer": 0,
+    "explanation": "E.F. Codd'un ilişkisel cebire dayanan modeli, günümüzdeki SQL veritabanlarının (PostgreSQL, MySQL vb.) kuramsal temelidir."
+  },
+  {
+    "id": "g3_19",
+    "grade": "3",
+    "level": 10,
+    "category": "Derin Öğrenme Eğitimi",
+    "question": "Yapay sinir ağlarında yapılan tahmin hatasını çıktı katmanından geriye doğru ileterek tüm nöron ağırlıklarını türevle güncelleyen temel derin öğrenme algoritması nedir?",
+    "options": [
+      "Geriye Yayılım (Backpropagation)",
+      "Monte Carlo",
+      "İkili Arama (Binary Search)",
+      "Dijkstra Algoritması"
+    ],
+    "answer": 0,
+    "explanation": "Geriye yayılım, zincir kuralı kullanarak gradyanları hesaplar ve çok katmanlı yapay sinir ağlarının eğitilmesini mümkün kılar."
+  },
+  {
+    "id": "g3_20",
+    "grade": "3",
+    "level": 10,
+    "category": "İstatistiksel Ölçümler",
+    "question": "Veri biliminde iki değişken arasındaki doğrusal ilişkinin gücünü ve yönünü -1 ile +1 arasında ölçen istatistiksel katsayıya ne ad verilir?",
+    "options": [
+      "Pearson Korelasyon Katsayısı",
+      "Standart Sapma",
+      "P-Değeri",
+      "Gini Katsayısı"
+    ],
+    "answer": 0,
+    "explanation": "Pearson korelasyonu +1'e yaklaştıkça güçlü pozitif, -1'e yaklaştıkça güçlü negatif doğrusal ilişkiyi gösterir."
+  },
+  {
+    "id": "g3_21",
+    "grade": "3",
+    "level": 11,
+    "category": "Transformer Devrimi",
+    "question": "2017 yılında Google araştırmacıları tarafından yayınlanan ve günümüzdeki ChatGPT, Claude gibi tüm LLM'lerin kalbi olan mimariyi tanıtan makalenin adı nedir?",
+    "options": [
+      "'Attention Is All You Need'",
+      "'Deep Residual Learning for Image Recognition'",
+      "'Generative Adversarial Nets'",
+      "'Mastering the Game of Go'"
+    ],
+    "answer": 0,
+    "explanation": "Vaswani ve arkadaşları, RNN'lerin yerini alan ve öz-dikkat (self-attention) mekanizmasına dayanan Transformer mimarisini bu makaleyle tanıtmıştır."
+  },
+  {
+    "id": "g3_22",
+    "grade": "3",
+    "level": 11,
+    "category": "Sohbet Robotu Arkeolojisi",
+    "question": "Yapay zekanın ve doğal dil işlemenin tarihi öncüsü kabul edilen, 1966 yılında Joseph Weizenbaum tarafından MIT'de geliştirilen ilk psikoterapist sohbet robotu hangisidir?",
+    "options": [
+      "ELIZA",
+      "Siri",
+      "Watson",
+      "A.L.I.C.E."
+    ],
+    "answer": 0,
+    "explanation": "ELIZA, basit kalıp eşleme kurallarıyla bir Rogerian psikoterapisti taklit ederek insanları bilinçli olduğuna inandırmıştı."
+  },
+  {
+    "id": "g3_23",
+    "grade": "3",
+    "level": 12,
+    "category": "Bilinç ve Yapay Zeka",
+    "question": "Felsefeci John Searle tarafından 1980'de ortaya atılan ve bir makinenin sembolleri kurallara göre kusursuz yönetse bile gerçekte hiçbir şeyi anlamadığını savunan düşünce deneyi nedir?",
+    "options": [
+      "Çin Odası Argümanı (Chinese Room)",
+      "Schrödinger'in Kedisi",
+      "Maxwell'in Cini",
+      "Ship of Theseus"
+    ],
+    "answer": 0,
+    "explanation": "Odadaki kişi kural kitabına bakarak gelen Çince sorulara doğru Çince cevaplar verse bile kendisi tek kelime Çince bilmemektedir."
+  },
+  {
+    "id": "g3_24",
+    "grade": "3",
+    "level": 12,
+    "category": "İnternetin Omurgası",
+    "question": "1998 yılında Google'ın temelini oluşturan ve web sayfalarının önemini arkasındaki köprülerin (hyperlink) sayısına ve otoritesine göre puanlayan tarihi algoritma hangisidir?",
+    "options": [
+      "PageRank",
+      "MapReduce",
+      "Backprop",
+      "Random Forest"
+    ],
+    "answer": 0,
+    "explanation": "Larry Page'in soyadından ve web sayfalarından esinlenen PageRank, akademik atıf mantığını web aramalarına uyarlamıştır."
+  },
+  {
+    "id": "g4_01",
+    "grade": "4",
+    "level": 1,
+    "category": "Öğrenme Paradigmaları",
+    "question": "Makine öğreniminde etiketli veriler kullanılarak girdi ile çıktı arasındaki matematiksel haritalamanın öğrenildiği öğrenme türüne ne ad verilir?",
+    "options": [
+      "Denetimli Öğrenme (Supervised Learning)",
+      "Denetimsiz Öğrenme",
+      "Pekiştirmeli Öğrenme",
+      "Kendi Kendini Denetleyen Öğrenme"
+    ],
+    "answer": 0,
+    "explanation": "Denetimli öğrenmede her eğitim örneği bir özellik vektörü ve arzulanan hedef etiketle birlikte verilir."
+  },
+  {
+    "id": "g4_02",
+    "grade": "4",
+    "level": 1,
+    "category": "Nöron Matematiği",
+    "question": "Yapay sinir ağlarında bir nöronun girdiler toplamını doğrusal olmayan bir çıktıya dönüştürerek modele karmaşık ilişkileri öğrenme yetisi kazandıran fonksiyonlara ne denir?",
+    "options": [
+      "Aktivasyon Fonksiyonu (Activation Function)",
+      "Kayıp Fonksiyonu",
+      "Optimizasyon Fonksiyonu",
+      "Skaler Fonksiyon"
+    ],
+    "answer": 0,
+    "explanation": "ReLU, Sigmoid ve GELU gibi aktivasyon fonksiyonları, ağa doğrusal olmayan (non-linear) modelleme gücü katar."
+  },
+  {
+    "id": "g4_03",
+    "grade": "4",
+    "level": 2,
+    "category": "Görüntü İşleme Mimarileri",
+    "question": "İnsan beynindeki görsel korteksten esinlenerek geliştirilen ve özellikle görüntü tanıma, tıbbi tarama ve otonom sürüşte çığır açan derin öğrenme mimarisi hangisidir?",
+    "options": [
+      "CNN (Evrişimli Sinir Ağları)",
+      "RNN",
+      "MLP",
+      "Transformer"
+    ],
+    "answer": 0,
+    "explanation": "CNN (Convolutional Neural Networks), evrişim çekirdekleriyle piksellerdeki kenar ve doku desenlerini yerel olarak yakalar."
+  },
+  {
+    "id": "g4_04",
+    "grade": "4",
+    "level": 2,
+    "category": "Doğal Dil İşleme",
+    "question": "Doğal Dil İşleme modellerinde metinlerin kelime veya hece parçalarına bölünerek sayısal indekslere dönüştürülmesi işlemine ne ad verilir?",
+    "options": [
+      "Tokenizasyon (Tokenization)",
+      "Vektörizasyon",
+      "Normalizasyon",
+      "Lemmatizasyon"
+    ],
+    "answer": 0,
+    "explanation": "Byte-Pair Encoding (BPE) gibi tokenizasyon algoritmaları, metinleri model sözlüğündeki tamsayı belirteçlerine böler."
+  },
+  {
+    "id": "g4_05",
+    "grade": "4",
+    "level": 3,
+    "category": "Veri Dengesizlikleri",
+    "question": "Makine öğrenimi modellerinde bir sınıfa ait verilerin diğer sınıfa göre ezici çoğunlukta olması durumunda (örneğin %99 sağlıklı, %1 hasta) yaşanan probleme ne denir?",
+    "options": [
+      "Dengesiz Veri Seti Problemi (Class Imbalance)",
+      "Multicollinearity",
+      "Heteroscedasticity",
+      "Kurtosis"
+    ],
+    "answer": 0,
+    "explanation": "Dengesiz veri setlerinde model her şeye çoğunluk sınıfı diyerek yüksek doğruluk elde edebilir; SMOTE veya F1-skoru gibi metrikler gerekir."
+  },
+  {
+    "id": "g4_06",
+    "grade": "4",
+    "level": 3,
+    "category": "Sıralı Veri Modelleri",
+    "question": "Zaman serisi verilerinde ve sıralı sinyallerde geçmiş durum bilgisini dahili döngülerle hafızasında tutarak işleyen klasik sinir ağı türü hangisidir?",
+    "options": [
+      "RNN (Tekrarlayan Sinir Ağları)",
+      "Perceptron",
+      "K-Means",
+      "Naive Bayes"
+    ],
+    "answer": 0,
+    "explanation": "RNN ve LSTM ağları, sıralı girdilerde gizli durum vektörüyle (hidden state) hafıza tutarak çalışır."
+  },
+  {
+    "id": "g4_07",
+    "grade": "4",
+    "level": 4,
+    "category": "Düzenlileştirme Teknikleri",
+    "question": "Derin öğrenme eğitiminde modelin aşırı ezberlemesini (overfitting) engellemek amacıyla her eğitim adımında bazı nöronları rastgele geçici olarak devre dışı bırakma tekniğine ne ad verilir?",
+    "options": [
+      "Dropout",
+      "Batch Norm",
+      "Early Stopping",
+      "Data Augmentation"
+    ],
+    "answer": 0,
+    "explanation": "Geoffrey Hinton ve ekibinin bulduğu Dropout, nöronların birbirine aşırı bağımlı olmasını önleyerek bir topluluk (ensemble) etkisi yaratır."
+  },
+  {
+    "id": "g4_08",
+    "grade": "4",
+    "level": 4,
+    "category": "Eğitim Zorlukları",
+    "question": "Yapay sinir ağlarında ağırlıkların güncellenmesi sırasında eğimin (gradient) geriye doğru katmanlar geçtikçe sıfıra yaklaşarak öğrenmenin durmasına yol açan kronik probleme ne denir?",
+    "options": [
+      "Yok Olan Gradyan Problemi (Vanishing Gradient)",
+      "Aşırı Gradyan Patlaması",
+      "Deadlock",
+      "Memory Leak"
+    ],
+    "answer": 0,
+    "explanation": "Özellikle Sigmoid aktivasyonlarında türev 0.25'ten küçük olduğu için çok katmanlı ağlarda gradyanlar hızla sönümlenir."
+  },
+  {
+    "id": "g4_09",
+    "grade": "4",
+    "level": 5,
+    "category": "Modern LLM Mekanizmaları",
+    "question": "Büyük Dil Modellerinde (LLM) bir cümlenin içindeki her kelimenin cümledeki diğer tüm kelimelerle olan anlamsal bağını paralel hesaplayan mekanizma hangisidir?",
+    "options": [
+      "Self-Attention (Öz Dikkat Mekanizması)",
+      "Convolution",
+      "Max Pooling",
+      "Skipgram"
+    ],
+    "answer": 0,
+    "explanation": "Query, Key, Value matris çarpımlarıyla hesaplanan Self-Attention, bağlamdaki uzak mesafeli ilişkileri doğrudan yakalar."
+  },
+  {
+    "id": "g4_10",
+    "grade": "4",
+    "level": 5,
+    "category": "Çekişmeli Mimariler",
+    "question": "2014 yılında Ian Goodfellow tarafından icat edilen, biri sahte veri üreten diğeri sahteyi ayırt etmeye çalışan iki rakip ağın çekiştiği devrimsel model nedir?",
+    "options": [
+      "GAN (Üretken Çekişmeli Ağlar)",
+      "Autoencoder",
+      "Diffusion",
+      "Transformer"
+    ],
+    "answer": 0,
+    "explanation": "Generator ve Discriminator ağlarının minimax oyunu prensibiyle yarıştığı GAN'ler üretken yapay zekanın ilk büyük sıçramasını yaratmıştır."
+  },
+  {
+    "id": "g4_11",
+    "grade": "4",
+    "level": 6,
+    "category": "Model Adaptasyonu",
+    "question": "Devasa genel bir dil modelini (örneğin LLaMA veya Mistral) belirli bir tıp veya hukuk alanına adapte etmek için az miktarda uzman verisiyle yeniden eğitmeye ne ad verilir?",
+    "options": [
+      "İnce Ayar (Fine-Tuning)",
+      "Pre-Training",
+      "Prompt Injection",
+      "Pruning"
+    ],
+    "answer": 0,
+    "explanation": "Fine-Tuning, genel ön eğitimden geçmiş modelin hedef göreve özel ağırlıklarının küçük bir öğrenme oranıyla güncellenmesidir."
+  },
+  {
+    "id": "g4_12",
+    "grade": "4",
+    "level": 6,
+    "category": "Verimli İnce Ayar",
+    "question": "Büyük dil modellerinde modelin parametrelerinin çoğunu dondurup çok düşük rankli matrislerle parametre verimli hızlı ince ayar yapmayı sağlayan teknik nedir?",
+    "options": [
+      "LoRA (Low-Rank Adaptation)",
+      "Quantization",
+      "Distillation",
+      "Clipping"
+    ],
+    "answer": 0,
+    "explanation": "LoRA, devasa ağırlık matrislerine rankı düşük iki küçük çarpan matrisi ekleyerek bellek kullanımını %80 azaltır."
+  },
+  {
+    "id": "g4_13",
+    "grade": "4",
+    "level": 7,
+    "category": "Hesaplama Teorisi",
+    "question": "Bilgisayar biliminde bir algoritmanın çalıştırıldığında sonsuza kadar döngüde mi kalacağını yoksa bir noktada durup durmayacağını genel olarak tespit etmenin imkansız olduğunu kanıtlayan teorem nedir?",
+    "options": [
+      "Durma Problemi (Halting Problem)",
+      "P vs NP Problemi",
+      "Gödel Eksiklik Teoremi",
+      "Church Tezi"
+    ],
+    "answer": 0,
+    "explanation": "Alan Turing 1936'da durma probleminin karar verilemez (undecidable) olduğunu matematiksel olarak kanıtlamıştır."
+  },
+  {
+    "id": "g4_14",
+    "grade": "4",
+    "level": 7,
+    "category": "Kuantum Bilişim",
+    "question": "Klasik bilgisayarlardaki 0 ve 1 bitleri yerine süperpozisyon ve kuantum dolanıklık prensibiyle aynı anda sonsuz olasılık durumunda bulunabilen kuantum bilişim birimi nedir?",
+    "options": [
+      "Qubit (Kuantum Bit)",
+      "Kuantum Bayt",
+      "Foton",
+      "Glukon"
+    ],
+    "answer": 0,
+    "explanation": "Qubit, Bloch küresi üzerinde süperpozisyon halinde kalarak kuantum bilgisayarların üssel hesaplama gücünü oluşturur."
+  },
+  {
+    "id": "g4_15",
+    "grade": "4",
+    "level": 8,
+    "category": "Katman Normalizasyonu",
+    "question": "Derin öğrenme modellerinde eğitim sırasında katmanlar arası dağılım kaymasını (internal covariate shift) önlemek ve öğrenmeyi hızlandırmak için geliştirilen normalizasyon tekniği nedir?",
+    "options": [
+      "Batch Normalization (Yığın Normalizasyonu)",
+      "Min-Max Scaling",
+      "Robust Scaler",
+      "Standard Scaler"
+    ],
+    "answer": 0,
+    "explanation": "Batch Normalization, mini-batch bazında ortalamayı sıfır, varyansı bir yaparak daha yüksek öğrenme oranlarıyla eğitime izin verir."
+  },
+  {
+    "id": "g4_16",
+    "grade": "4",
+    "level": 8,
+    "category": "Derin Ağ Mimarileri",
+    "question": "2015 yılında Kaiming He ve ekibi tarafından geliştirilen ve 'atlama bağlantıları' (skip connections) sayesinde yüzlerce katmanlı çok derin ağların başarıyla eğitilmesini sağlayan efsanevi mimari hangisidir?",
+    "options": [
+      "ResNet (Residual Networks)",
+      "AlexNet",
+      "VGG16",
+      "InceptionNet"
+    ],
+    "answer": 0,
+    "explanation": "ResNet, artık (residual) bağlantılar ile katman girişini doğrudan çıktıya ekleyerek 152 katmanlı modellerin bile bozulmadan eğitilmesini sağlamıştır."
+  },
+  {
+    "id": "g4_17",
+    "grade": "4",
+    "level": 9,
+    "category": "Optimizasyon Algoritmaları",
+    "question": "Yapay sinir ağlarında model ağırlıklarını kayıp fonksiyonunun eğiminin ters yönünde adım adım optimize ederek minimum hata noktasına yaklaştıran temel algoritma hangisidir?",
+    "options": [
+      "Stokastik Gradyan İnişi (SGD)",
+      "Genetik Algoritma",
+      "Simulated Annealing",
+      "A* Arama Algoritması"
+    ],
+    "answer": 0,
+    "explanation": "SGD ve Adam optimizasyonu, kayıp fonksiyonunun gradyanını kullanarak ağırlıkları adım adım hatayı düşürecek yönde günceller."
+  },
+  {
+    "id": "g4_18",
+    "grade": "4",
+    "level": 9,
+    "category": "İlk Yapay Nöron",
+    "question": "1957 yılında Frank Rosenblatt tarafından geliştirilen ve modern yapay sinir ağlarının atası sayılan tarihteki ilk tek katmanlı yapay nöron modeli hangisidir?",
+    "options": [
+      "Perceptron",
+      "Neocognitron",
+      "Adaline",
+      "Hopfield Ağı"
+    ],
+    "answer": 0,
+    "explanation": "Perceptron, ağırlıklı girdi toplamını bir eşik değerle kıyaslayarak doğrusal sınıflandırma yapan ilk donanımsal yapay nörondur."
+  },
+  {
+    "id": "g4_19",
+    "grade": "4",
+    "level": 10,
+    "category": "Modern Derin Öğrenme Teorisi",
+    "question": "Yapay zeka modellerinin eğitiminde kullanılan kayıp fonksiyonunun belirli bir alt sınıra ulaştıktan sonra test hatasının önce düşüp, sonra overfitting ile artıp, aşırı parametreyle tekrar düşmesini açıklayan modern fenomen nedir?",
+    "options": [
+      "Çifte İniş Olgusu (Double Descent)",
+      "Overfitting",
+      "Bias-Variance Tradeoff",
+      "No Free Lunch Teoremi"
+    ],
+    "answer": 0,
+    "explanation": "Modern aşırı parametreli derin ağlarda interpolasyon eşiğinden sonra test hatasının yeniden düşmesi 'Double Descent' olarak adlandırılır."
+  },
+  {
+    "id": "g4_20",
+    "grade": "4",
+    "level": 10,
+    "category": "Ölçekleme Kuralları",
+    "question": "Büyük dil modellerinde parametre sayısı, veri boyutu ve işlem bütçesi arttıkça performansın tahmin edilebilir bir üslü fonksiyonla iyileştiğini gösteren kural hangisidir?",
+    "options": [
+      "Ölçekleme Yasaları (Scaling Laws)",
+      "Chinchilla Yasası",
+      "Zipf Yasası",
+      "Hebb Kuralı"
+    ],
+    "answer": 0,
+    "explanation": "Kaplan ve ekibi tarafından formüle edilen Scaling Laws, modeller büyüdükçe kaybın güç yasasına (power-law) göre azaldığını kanıtlamıştır."
+  },
+  {
+    "id": "g4_21",
+    "grade": "4",
+    "level": 11,
+    "category": "Biyomoleküler AI",
+    "question": "2020 yılında Google DeepMind tarafından geliştirilen ve biyolojide 50 yıldır çözülemeyen proteinlerin 3 boyutlu katlanma yapısını atomik hassasiyetle tahmin eden yapay zeka sistemi hangisidir?",
+    "options": [
+      "AlphaFold",
+      "AlphaStar",
+      "Watson Health",
+      "Rosetta"
+    ],
+    "answer": 0,
+    "explanation": "AlphaFold2, 200 milyondan fazla protein yapısını çözerek tıp ve biyoloji alanında Nobel ödülüne layık görülen bir devrim yapmıştır."
+  },
+  {
+    "id": "g4_22",
+    "grade": "4",
+    "level": 11,
+    "category": "Büyük Model Davranışları",
+    "question": "Yapay zeka modellerinde belirli bir parametre ve hesaplama eşiği aşıldığında modelde daha önce görülmeyen muhakeme veya kod yazma yeteneklerinin aniden ortaya çıkması durumuna ne ad verilir?",
+    "options": [
+      "Beliren Yetenekler (Emergent Abilities)",
+      "Transfer Learning",
+      "Catastrophic Forgetting",
+      "Zero-Shot Learning"
+    ],
+    "answer": 0,
+    "explanation": "Beliren yetenekler (Emergent Abilities), küçük modellerde olmayan yeteneklerin devasa ölçekte aniden kendini göstermesidir."
+  },
+  {
+    "id": "g4_23",
+    "grade": "4",
+    "level": 12,
+    "category": "Kayan Nokta Standartları",
+    "question": "IEEE 754 standardına göre standart tek duyarlıklı 32-bit kayan noktalı sayı formatında (float32), üs (exponent) değerini temsil etmek için kaç bit ayrılmıştır?",
+    "options": [
+      "8 bit (1 bit işaret, 8 bit üs, 23 bit mantis)",
+      "11 bit",
+      "16 bit",
+      "7 bit"
+    ],
+    "answer": 0,
+    "explanation": "float32 formatında 1 bit işaret, 8 bit üs (bias=127) ve 23 bit kesir/mantis bulunur."
+  },
+  {
+    "id": "g4_24",
+    "grade": "4",
+    "level": 12,
+    "category": "Bilgisayar Biliminin Temeli",
+    "question": "1936 yılında modern bilgisayar biliminin ve hesaplama teorisinin temelini atan Alan Turing'in sonsuz uzunlukta bir şerit ve okuma kafasıyla çalışan soyut hesaplama modeli nedir?",
+    "options": [
+      "Evrensel Turing Makinesi (Universal Turing Machine)",
+      "Von Neumann Mimarisi",
+      "Lambda Kalkülüs",
+      "Analitik Motor"
+    ],
+    "answer": 0,
+    "explanation": "Evrensel Turing Makinesi, herhangi bir algoritmayı simüle edebilen soyut matematiksel bilgisayar modelidir."
+  }
+]

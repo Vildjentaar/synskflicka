@@ -2,16 +2,40 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "includeFiles": "{data/**,config/**,public/**}"
+      "includeFiles": "{data/**,config/**,public/**,millioner/**}"
     },
     "api/*.js": {
-      "includeFiles": "{data/**,config/**,public/**}"
+      "includeFiles": "{data/**,config/**,public/**,millioner/**}"
     }
   },
   "rewrites": [
     {
       "source": "/stocks",
       "destination": "/stocks.html"
+    },
+    {
+      "source": "/millioner",
+      "destination": "/millioner/index.html"
+    },
+    {
+      "source": "/millioner/game",
+      "destination": "/millioner/game.html"
+    },
+    {
+      "source": "/millioner/leaderboard",
+      "destination": "/millioner/leaderboard.html"
+    },
+    {
+      "source": "/millioner/admin",
+      "destination": "/millioner/admin.html"
+    },
+    {
+      "source": "/milyoner/(.*)",
+      "destination": "/millioner/$1"
+    },
+    {
+      "source": "/milyoner",
+      "destination": "/millioner/index.html"
     },
     {
       "source": "/api/(.*)",

@@ -3,11 +3,15 @@ const { createGeminiProvider } = require('./gemini');
 const { createOpenAIProvider } = require('./openai');
 const { createGroqProvider } = require('./groq');
 const { createMockProvider } = require('./mock');
+const { createPipelineProvider } = require('./pipeline');
 
 function createProvider(llmConfig) {
   const { temperature, timeoutMs } = llmConfig;
   switch (llmConfig.provider) {
+    case 'pipeline':
     case 'groq':
+      return createPipelineProvider(llmConfig);
+    case 'groq-direct':
       return createGroqProvider({ ...llmConfig.groq, temperature, timeoutMs });
     case 'openai':
       return createOpenAIProvider({ ...llmConfig.openai, temperature, timeoutMs });
@@ -16,8 +20,8 @@ function createProvider(llmConfig) {
     case 'mock':
       return createMockProvider();
     default:
-      throw new Error(`Unknown LLM_PROVIDER "${llmConfig.provider}"`);
+      return createPipelineProvider(llmConfig);
   }
 }
 
-module.exports = { createProvider };
+module.exports = { createProvider, createPipelineProvider };

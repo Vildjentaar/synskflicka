@@ -10,7 +10,7 @@ function createMockProvider({ respond, delayMs = 600 } = {}) {
     name: 'mock',
     async generate({ user, schema }) {
       await new Promise((r) => setTimeout(r, delayMs));
-      if (respond) return typeof respond === 'function' ? respond({ user, schema }) : respond;
+      if (respond !== undefined) return typeof respond === 'function' ? respond({ user, schema }) : respond;
 
       const cards = [...user.matchAll(/^\d\. (.+?) \((upright|reversed)\)/gm)].map((m) => `${m[1]}${m[2] === 'reversed' ? ' (ters)' : ''}`);
       const categories = schema.properties.category_id.enum;

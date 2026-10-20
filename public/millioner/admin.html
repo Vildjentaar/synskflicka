@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stand Yönetim Paneli — Kim Veri Bilimci Olmak İster?</title>
+  <link rel="stylesheet" href="css/style.css?v=20261018_v6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-group">
+      <img src="assets/vbt_logo.png" alt="Akdeniz VBT" class="brand-logo">
+      <div class="brand-badge">STAND YÖNETİMİ</div>
+      <div class="brand-titles">
+        <h1>VBT MİLYONER ADMİN</h1>
+        <p>Soru Bankası & Katılımcı Verileri</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);" title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
+      <a href="index.html" class="btn btn-secondary">← Ana Sayfa</a>
+      <a href="leaderboard.html" class="btn btn-secondary">Liderlik Tablosu 🏆</a>
+    </div>
+  </header>
+
+  <main class="admin-page">
+
+    <!-- Yetkilendirme Kartı -->
+    <div class="glass-card" id="authCard">
+      <h3>🔐 Stand Yetkilendirmesi</h3>
+      <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">
+        Stand görevlileri için gizli anahtarı giriniz (Varsayılan: <code>akdeniz2026</code>).
+      </p>
+      <div class="admin-row">
+        <input type="password" class="input" id="adminKey" placeholder="Yetki Anahtarı" style="max-width:300px;">
+        <button class="btn btn-primary" id="loginBtn">Giriş Yap ⚡</button>
+      </div>
+    </div>
+
+    <!-- Yönetim İçeriği -->
+    <div id="adminContent" style="display:none; flex-direction:column; gap:1.5rem;">
+
+      <!-- Hızlı İşlemler & Ayarlar -->
+      <div class="admin-grid">
+        <!-- Katılım QR ve Link Ayarı -->
+        <div class="glass-card">
+          <h3>📱 Topluluğa Katıl (QR Kodu) Ayarı</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+            Oyun sonunda gösterilen QR kodunun yönlendireceği WhatsApp/Form linki:
+          </p>
+          <div class="form-group">
+            <input type="url" class="input" id="joinUrlInput" placeholder="https://chat.whatsapp.com/... veya Google Form linki">
+          </div>
+          <button class="btn btn-primary" id="saveJoinUrlBtn">Kaydet & QR Güncelle</button>
+        </div>
+
+        <!-- Stand Veri Yönetimi -->
+        <div class="glass-card">
+          <h3>📊 Katılımcı & Skor Yönetimi</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+            Etkinlik sonunda katılımcı e-postalarını indirin veya açılışta test skorlarını temizleyin.
+          </p>
+          <div class="admin-row">
+            <button class="btn btn-primary" id="exportBtn">📥 Katılımcıları İndir (Excel/CSV)</button>
+            <button class="btn btn-danger" id="resetLbBtn">⚠️ Skorları Sıfırla</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yeni Soru Ekleme Formu -->
+      <div class="glass-card">
+        <h3>➕ Soru Bankasına Yeni Soru Ekle</h3>
+        <form id="newQuestionForm" style="display:flex; flex-direction:column; gap:1rem;">
+          <div class="admin-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="form-group">
+              <label for="qGradeInput">Hedef Sınıf / Kategori</label>
+              <select class="input" id="qGradeInput" required>
+                <option value="hazirlik">🌱 Hazırlık</option>
+                <option value="1">1️⃣ 1. Sınıf</option>
+                <option value="2">2️⃣ 2. Sınıf</option>
+                <option value="3">3️⃣ 3. Sınıf</option>
+                <option value="4">4️⃣ 4. Sınıf</option>
+                <option value="all">🌐 Tüm Sınıflar (Ortak)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="qLevelInput">Soru Seviyesi (1 - 12)</label>
+              <select class="input" id="qLevelInput" required>
+                <option value="1">1. Soru (1K Parametre)</option>
+                <option value="2">2. Soru (2.5K Parametre)</option>
+                <option value="3">3. Soru (5K Parametre)</option>
+                <option value="4">4. Soru (10K Parametre - BARAJ 1)</option>
+                <option value="5">5. Soru (25K Parametre)</option>
+                <option value="6">6. Soru (50K Parametre)</option>
+                <option value="7">7. Soru (100K Parametre)</option>
+                <option value="8">8. Soru (250K Parametre - BARAJ 2)</option>
+                <option value="9">9. Soru (500K Parametre)</option>
+                <option value="10">10. Soru (1M Parametre)</option>
+                <option value="11">11. Soru (10M Parametre)</option>
+                <option value="12">12. Soru (1 MİLYAR Parametre - FİNAL)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="qCategoryInput">Kategori / Konu</label>
+              <input class="input" id="qCategoryInput" placeholder="Örn: Popüler Kültür, AI, Veri..." required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="qTextInput">Soru Metni</label>
+            <textarea class="input" id="qTextInput" rows="2" placeholder="Soruyu yazınız..." required></textarea>
+          </div>
+
+          <label style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">
+            Şıklar (Doğru şıkkı yanındaki radyo butonundan seçin)
+          </label>
+          <div class="opt-inputs">
+            <div class="opt-in">
+              <input type="radio" name="correctOpt" value="0" checked title="Doğru Şık A">
+              <input class="input" id="optA" placeholder="A Şıkkı" required>
+            </div>
+            <div class="opt-in">
+              <input type="radio" name="correctOpt" value="1" title="Doğru Şık B">
+              <input class="input" id="optB" placeholder="B Şıkkı" required>
+            </div>
+            <div class="opt-in">
+              <input type="radio" name="correctOpt" value="2" title="Doğru Şık C">
+              <input class="input" id="optC" placeholder="C Şıkkı" required>
+            </div>
+            <div class="opt-in">
+              <input type="radio" name="correctOpt" value="3" title="Doğru Şık D">
+              <input class="input" id="optD" placeholder="D Şıkkı" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="qExplainInput">Cevap Açıklaması (Doğru bildiğinde veya elendiğinde ekranda gösterilir)</label>
+            <input class="input" id="qExplainInput" placeholder="Örn: WhatsApp 2 milyardan fazla kullanıcıya sahiptir.">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Soruyu Kaydet 🚀</button>
+        </form>
+      </div>
+
+      <!-- Soru Bankası Listesi -->
+      <div class="glass-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:1rem;">
+          <h3>📚 Soru Bankası (<span id="totalQuestionsCount">0</span> Soru)</h3>
+          <div class="admin-row">
+            <select class="input" id="filterGradeSelect" style="max-width:180px;">
+              <option value="all">Tüm Sınıflar</option>
+              <option value="hazirlik">🌱 Hazırlık</option>
+              <option value="1">1️⃣ 1. Sınıf</option>
+              <option value="2">2️⃣ 2. Sınıf</option>
+              <option value="3">3️⃣ 3. Sınıf</option>
+              <option value="4">4️⃣ 4. Sınıf</option>
+            </select>
+            <select class="input" id="filterLevelSelect" style="max-width:180px;">
+              <option value="all">Tüm Seviyeler</option>
+              <option value="1">Seviye 1</option>
+              <option value="2">Seviye 2</option>
+              <option value="3">Seviye 3</option>
+              <option value="4">Seviye 4 (Baraj 1)</option>
+              <option value="5">Seviye 5</option>
+              <option value="6">Seviye 6</option>
+              <option value="7">Seviye 7</option>
+              <option value="8">Seviye 8 (Baraj 2)</option>
+              <option value="9">Seviye 9</option>
+              <option value="10">Seviye 10</option>
+              <option value="11">Seviye 11</option>
+              <option value="12">Seviye 12 (Final)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="lb-table q-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">Seviye</th>
+                <th style="width:110px;">Sınıf</th>
+                <th>Kategori</th>
+                <th>Soru</th>
+                <th>Doğru Cevap</th>
+                <th style="width:90px;">İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="questionsTableBody">
+              <tr><td colspan="6" style="text-align:center;">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Bildirim Toast'u -->
+  <div class="toast" id="adminToast">İşlem tamamlandı!</div>
+
+  <script src="js/api.js"></script>
+  <script>
+    let currentKey = localStorage.getItem('vbt_admin_key') || '';
+    let questionsCache = [];
+
+    const $ = (id) => document.getElementById(id);
+
+    function showToast(msg, isErr = false) {
+      const t = $('adminToast');
+      t.textContent = msg;
+      t.classList.toggle('err', isErr);
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    async function checkAuth() {
+      if (!currentKey) return;
+      try {
+        const [settings, qData] = await Promise.all([
+          API.get(`/api/admin/settings?secret_key=${encodeURIComponent(currentKey)}`),
+          API.get(`/api/admin/questions?secret_key=${encodeURIComponent(currentKey)}`)
+        ]);
+
+        $('authCard').style.display = 'none';
+        $('adminContent').style.display = 'flex';
+        $('joinUrlInput').value = settings.join_url || '';
+        questionsCache = qData.questions || [];
+        renderQuestions();
+      } catch (e) {
+        currentKey = '';
+        localStorage.removeItem('vbt_admin_key');
+        showToast('Yetki anahtarı geçersiz!', true);
+      }
+    }
+
+    $('loginBtn').addEventListener('click', () => {
+      const key = $('adminKey').value.trim();
+      if (!key) return showToast('Lütfen anahtar giriniz.', true);
+      currentKey = key;
+      localStorage.setItem('vbt_admin_key', key);
+      checkAuth();
+    });
+
+    $('adminKey').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') $('loginBtn').click();
+    });
+
+    $('saveJoinUrlBtn').addEventListener('click', async () => {
+      const join_url = $('joinUrlInput').value.trim();
+      try {
+        await API.post(`/api/admin/settings?secret_key=${encodeURIComponent(currentKey)}`, { join_url });
+        showToast('Katılım linki kaydedildi!');
+      } catch (e) {
+        showToast(e.message, true);
+      }
+    });
+
+    $('exportBtn').addEventListener('click', () => {
+      window.location.href = `/api/admin/export?secret_key=${encodeURIComponent(currentKey)}`;
+    });
+
+    $('resetLbBtn').addEventListener('click', async () => {
+      if (!confirm('DİKKAT: Tüm liderlik skorları ve katılımcı kayıtları SİLİNECEK! Emin misiniz?')) return;
+      try {
+        await API.post(`/api/admin/reset?secret_key=${encodeURIComponent(currentKey)}`);
+        showToast('Liderlik tablosu başarıyla sıfırlandı!');
+      } catch (e) {
+        showToast(e.message, true);
+      }
+    });
+
+    $('newQuestionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const grade = $('qGradeInput').value;
+      const level = parseInt($('qLevelInput').value);
+      const category = $('qCategoryInput').value.trim();
+      const question = $('qTextInput').value.trim();
+      const options = [
+        $('optA').value.trim(),
+        $('optB').value.trim(),
+        $('optC').value.trim(),
+        $('optD').value.trim()
+      ];
+      const answer = parseInt(document.querySelector('input[name="correctOpt"]:checked').value);
+      const explanation = $('qExplainInput').value.trim();
+
+      try {
+        const res = await API.post(`/api/admin/questions?secret_key=${encodeURIComponent(currentKey)}`, {
+          grade, level, category, question, options, answer, explanation
+        });
+        showToast('Yeni soru başarıyla eklendi!');
+        questionsCache.push(res.question);
+        renderQuestions();
+        $('qTextInput').value = '';
+        $('optA').value = '';
+        $('optB').value = '';
+        $('optC').value = '';
+        $('optD').value = '';
+        $('qExplainInput').value = '';
+      } catch (ex) {
+        showToast(ex.message, true);
+      }
+    });
+
+    async function deleteQuestion(qid) {
+      if (!confirm('Bu soruyu silmek istediğinize emin misiniz?')) return;
+      try {
+        await API.del(`/api/admin/questions/${qid}?secret_key=${encodeURIComponent(currentKey)}`);
+        questionsCache = questionsCache.filter(q => q.id !== qid);
+        renderQuestions();
+        showToast('Soru silindi.');
+      } catch (e) {
+        showToast(e.message, true);
+      }
+    }
+
+    const GRADE_MAP = {
+      hazirlik: '🌱 Hazırlık',
+      '1': '1️⃣ 1. Sınıf',
+      '2': '2️⃣ 2. Sınıf',
+      '3': '3️⃣ 3. Sınıf',
+      '4': '4️⃣ 4. Sınıf',
+      all: '🌐 Ortak'
+    };
+
+    function renderQuestions() {
+      const filterLvl = $('filterLevelSelect').value;
+      const filterGrd = $('filterGradeSelect').value;
+      let filtered = questionsCache;
+
+      if (filterGrd !== 'all') {
+        filtered = filtered.filter(q => q.grade === filterGrd || q.grade === 'all' || (Array.isArray(q.grades) && q.grades.includes(filterGrd)));
+      }
+      if (filterLvl !== 'all') {
+        filtered = filtered.filter(q => q.level === parseInt(filterLvl));
+      }
+
+      $('totalQuestionsCount').textContent = questionsCache.length;
+      const tbody = $('questionsTableBody');
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:#94a3b8;">Bu kriterde soru bulunamadı.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(q => {
+        const letters = ['A', 'B', 'C', 'D'];
+        const correctStr = `${letters[q.answer]}: ${escapeHtml(q.options[q.answer])}`;
+        const gradeText = GRADE_MAP[q.grade] || q.grade || 'Ortak';
+        return `
+          <tr>
+            <td class="td-mono" style="color:var(--accent-cyan); font-weight:800;">#${q.level}</td>
+            <td><span class="badge-grade" style="font-size:0.75rem;">${gradeText}</span></td>
+            <td><span class="q-badge">${escapeHtml(q.category)}</span></td>
+            <td><strong>${escapeHtml(q.question)}</strong></td>
+            <td class="ans">${correctStr}</td>
+            <td>
+              <button class="btn btn-danger" style="padding:0.3rem 0.6rem; font-size:0.8rem;" onclick="deleteQuestion('${q.id}')">Sil</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    $('filterLevelSelect').addEventListener('change', renderQuestions);
+    $('filterGradeSelect').addEventListener('change', renderQuestions);
+
+    if (currentKey) {
+      $('adminKey').value = currentKey;
+      checkAuth();
+    }
+  </script>
+</body>
+</html>

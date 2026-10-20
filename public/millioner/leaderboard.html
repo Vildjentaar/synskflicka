@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canlı Liderlik Tablosu — Kim Veri Bilimci Olmak İster? | Akdeniz VBT</title>
+  <meta name="description" content="Akdeniz VBT Topluluk Günü Canlı Liderlik Tablosu ve Milyarderler Duvarı.">
+  <link rel="stylesheet" href="css/style.css?v=20261018_v6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="app-header">
+    <div class="brand-group">
+      <img src="assets/vbt_logo.png" alt="Akdeniz VBT" class="brand-logo">
+      <div class="brand-badge">AKDENİZ VBT</div>
+      <div class="brand-titles">
+        <h1>CANLI STAND LİDERLİK TABLOSU</h1>
+        <p>Kim Veri Bilimci Olmak İster? — Büyük Ekran Görünümü</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);" title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
+      <a href="index.html" class="btn btn-secondary">← Ana Sayfa</a>
+      <a href="index.html" class="btn btn-primary">YARIŞMAYA KATIL ⚡</a>
+      <button class="btn btn-secondary" onclick="toggleFullscreen()" title="Büyük Ekran TV Modu (F)">⛶ Tam Ekran</button>
+    </div>
+  </header>
+
+  <div class="leaderboard-page">
+
+    <!-- Stand Banner -->
+    <div class="stand-banner">
+      <div class="stand-left">
+        <div style="font-size: 2.75rem;">🧠</div>
+        <div class="stand-title">
+          <h2>Günün Veri Bilimcileri</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            En çok doğru cevaba en kısa sürede ulaşan katılımcılar canlı olarak sıralanmaktadır.
+          </p>
+        </div>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-pill">
+          <div class="sp-val" id="statTotalGames">0</div>
+          <div class="sp-label">Toplam Oyun</div>
+        </div>
+        <div class="stat-pill">
+          <div class="sp-val" id="statMillionaires" style="color: var(--gold);">0</div>
+          <div class="sp-label">Milyarder 👑</div>
+        </div>
+        <div class="stat-pill">
+          <div class="sp-val" id="statAvgCorrect" style="color: var(--accent-green);">0</div>
+          <div class="sp-label">Ort. Doğru</div>
+        </div>
+        <div class="live-indicator">
+          <div class="live-dot"></div>
+          <span>CANLI (3sn)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lb-columns">
+      <!-- Sol Kolon: Podyum + Sıralama Tablosu -->
+      <div>
+        <!-- Podyum Top 3 -->
+        <div class="podium-container" id="podiumArea">
+          <!-- 2. Sıra -->
+          <div class="podium-slot podium-2nd" id="podium2">
+            <div class="podium-rank-badge">🥈</div>
+            <div class="podium-name" id="podium2Name">Henüz Yok</div>
+            <div class="podium-score" id="podium2Score">--</div>
+            <div class="podium-sub" id="podium2Sub">2. Sıra</div>
+          </div>
+
+          <!-- 1. Sıra (Lider) -->
+          <div class="podium-slot podium-1st" id="podium1">
+            <div class="podium-rank-badge">👑 🥇</div>
+            <div class="podium-name" id="podium1Name" style="color: var(--gold);">Henüz Yok</div>
+            <div class="podium-score" id="podium1Score" style="color: var(--gold); font-size: 2.1rem;">--</div>
+            <div class="podium-sub" id="podium1Sub" style="color: var(--gold); font-weight: 700;">LİDER</div>
+          </div>
+
+          <!-- 3. Sıra -->
+          <div class="podium-slot podium-3rd" id="podium3">
+            <div class="podium-rank-badge">🥉</div>
+            <div class="podium-name" id="podium3Name">Henüz Yok</div>
+            <div class="podium-score" id="podium3Score">--</div>
+            <div class="podium-sub" id="podium3Sub">3. Sıra</div>
+          </div>
+        </div>
+
+        <!-- Sınıf Filtreleri -->
+        <div class="lb-grade-filters" id="gradeFilters">
+          <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-right:0.3rem;">KATEGORİ:</span>
+          <button class="lb-filter-btn active" data-grade="">Tümü</button>
+          <button class="lb-filter-btn" data-grade="hazirlik">🌱 Hazırlık</button>
+          <button class="lb-filter-btn" data-grade="1">1️⃣ 1. Sınıf</button>
+          <button class="lb-filter-btn" data-grade="2">2️⃣ 2. Sınıf</button>
+          <button class="lb-filter-btn" data-grade="3">3️⃣ 3. Sınıf</button>
+          <button class="lb-filter-btn" data-grade="4">4️⃣ 4. Sınıf</button>
+        </div>
+
+        <!-- Sıralama Tablosu -->
+        <div class="table-card">
+          <table class="lb-table">
+            <thead>
+              <tr>
+                <th style="width: 70px;">Sıra</th>
+                <th>Yarışmacı</th>
+                <th>İlerleme (12 Soru)</th>
+                <th>Kazanılan Ödül</th>
+                <th>Toplam Süre</th>
+                <th>Sonuç</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+              <tr>
+                <td colspan="6" style="text-align: center; color: #94a3b8; padding: 3rem;">
+                  Liderlik tablosu yükleniyor...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sağ Kolon: 👑 Milyarderler Duvarı -->
+      <aside class="glass-card wall-card">
+        <h3>👑 Milyarderler Duvarı</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">
+          12 sorunun tamamını bilerek <strong class="gold-text">1 Milyar Parametre</strong>'ye ulaşan efsanevi zihinler!
+        </p>
+        <ul class="wall-list" id="wallList">
+          <li class="wall-empty">Henüz milyarder çıkmadı.<br>İlk sen ol ve stand ödülünü kap! 🎁</li>
+        </ul>
+      </aside>
+    </div>
+
+  </div>
+
+  <script src="js/api.js?v=20261018_v6"></script>
+  <script>
+    let pollInterval = null;
+    let currentGradeFilter = '';
+
+    document.querySelectorAll('.lb-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lb-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentGradeFilter = btn.dataset.grade || '';
+        fetchLeaderboard();
+      });
+    });
+
+    async function fetchLeaderboard() {
+      try {
+        const url = currentGradeFilter ? `/api/leaderboard?limit=50&grade=${encodeURIComponent(currentGradeFilter)}` : '/api/leaderboard?limit=50';
+        const [lbData, statsData] = await Promise.all([
+          API.get(url),
+          API.get('/api/stats')
+        ]);
+
+        renderStats(statsData);
+        renderPodium(lbData.scores || []);
+        renderTable(lbData.scores || []);
+        renderMillionaires(lbData.millionaires || []);
+      } catch (e) {
+        console.warn('Liderlik tablosu alınamadı:', e);
+      }
+    }
+
+    function renderStats(s) {
+      document.getElementById('statTotalGames').textContent = s.total_games || 0;
+      document.getElementById('statMillionaires').textContent = s.millionaires || 0;
+      document.getElementById('statAvgCorrect').textContent = (s.avg_correct || 0) + ' / 12';
+    }
+
+    function renderPodium(scores) {
+      updatePodiumSlot(1, scores[0]);
+      updatePodiumSlot(2, scores[1]);
+      updatePodiumSlot(3, scores[2]);
+    }
+
+    function updatePodiumSlot(rank, item) {
+      const nameEl = document.getElementById(`podium${rank}Name`);
+      const scoreEl = document.getElementById(`podium${rank}Score`);
+      const subEl = document.getElementById(`podium${rank}Sub`);
+
+      if (item) {
+        nameEl.innerHTML = `${escapeHtml(item.name)} <br><span class="badge-grade" style="font-size:0.75rem; margin-top:0.35rem;">${escapeHtml(item.grade_label || 'Hazırlık')}</span>`;
+        scoreEl.textContent = `${item.correct_count} / 12`;
+        subEl.textContent = `${item.prize_label} Param • ${formatDuration(item.total_time)}`;
+      } else {
+        nameEl.textContent = 'Boş Koltuk';
+        scoreEl.textContent = '--';
+        subEl.textContent = `${rank}. Sıra`;
+      }
+    }
+
+    function renderTable(scores) {
+      const tbody = document.getElementById('leaderboardBody');
+      if (scores.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; color: #94a3b8; padding: 3rem;">
+              Bu kategoride henüz tamamlanan yarışma yok. Standdaki ilk lider sen ol! ⚡
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = scores.map(item => {
+        let rankBadge = `#${item.rank}`;
+        if (item.rank === 1) rankBadge = '🥇 #1';
+        else if (item.rank === 2) rankBadge = '🥈 #2';
+        else if (item.rank === 3) rankBadge = '🥉 #3';
+
+        // 12 barlık mini ilerleme çubuğu
+        let bars = '';
+        for (let i = 1; i <= 12; i++) {
+          let cls = '';
+          if (i <= item.correct_count) {
+            cls = 'on';
+            if (i === 4 || i === 8) cls += ' safe';
+            if (i === 12) cls += ' final';
+          }
+          bars += `<span class="${cls}" title="${i}. Soru"></span>`;
+        }
+
+        const statusMap = {
+          won: '<span class="status-tag st-won">👑 MİLYARDER</span>',
+          lost: '<span class="status-tag st-lost">ELENDİ</span>',
+          timeout: '<span class="status-tag st-timeout">SÜRE BİTTİ</span>',
+          withdrawn: '<span class="status-tag st-withdrawn">ÇEKİLDİ</span>'
+        };
+
+        return `
+          <tr>
+            <td class="td-rank">${rankBadge}</td>
+            <td class="td-name">
+              ${escapeHtml(item.name)}
+              <span class="badge-grade" style="margin-left:0.4rem;">${escapeHtml(item.grade_label || 'Hazırlık')}</span>
+            </td>
+            <td>
+              <div style="display:flex; align-items:center; gap:0.6rem;">
+                <div class="progress-mini">${bars}</div>
+                <span class="td-mono" style="font-size:0.85rem; color:var(--text-muted);">${item.correct_count}/12</span>
+              </div>
+            </td>
+            <td class="td-mono" style="color:var(--gold); font-size:1.05rem;">${item.prize_label} Param</td>
+            <td class="td-mono" style="color:var(--accent-cyan);">${formatDuration(item.total_time)}</td>
+            <td>${statusMap[item.status] || item.status}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderMillionaires(list) {
+      const el = document.getElementById('wallList');
+      if (list.length === 0) {
+        el.innerHTML = '<li class="wall-empty">Henüz milyarder çıkmadı.<br>İlk sen ol ve stand ödülünü kap! 🎁</li>';
+        return;
+      }
+
+      el.innerHTML = list.map(m => `
+        <li>
+          <div>
+            <div class="wl-name gold-text">👑 ${escapeHtml(m.name)}</div>
+            <div class="wl-time">${formatDuration(m.total_time)} süreyle tamamladı</div>
+          </div>
+          <span style="font-size:1.3rem;">🎉</span>
+        </li>
+      `).join('');
+    }
+
+    // Klavye kısayolu F: Tam ekran
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'f') toggleFullscreen();
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchLeaderboard();
+      pollInterval = setInterval(fetchLeaderboard, 3500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarışma — Kim Veri Bilimci Olmak İster? | Akdeniz VBT</title>
+  <meta name="description" content="Kim Veri Bilimci Olmak İster? canlı yarışma ekranı. Soruları cevapla, jokerlerini kullan, 1 Milyar Parametre'ye ulaş.">
+  <link rel="stylesheet" href="css/style.css?v=20261018_v6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand-group">
+      <img src="assets/vbt_logo.png" alt="Akdeniz VBT" class="brand-logo">
+      <div class="brand-badge">AKDENİZ VBT</div>
+      <div class="brand-titles">
+        <h1>KİM VERİ BİLİMCİ OLMAK İSTER?</h1>
+        <p id="playerLabel">Yarışmacı yükleniyor...</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);" title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
+      <button class="btn btn-secondary" id="muteBtn" title="Sesi Aç/Kapat (M)">🔊</button>
+      <button class="btn btn-secondary" id="fullscreenBtn" title="Tam Ekran (F)">⛶</button>
+      <button class="btn btn-danger" id="withdrawBtn" title="Mevcut ödülle çekil">🏳️ ÇEKİL</button>
+    </nav>
+  </header>
+
+  <main class="game-layout">
+    <section class="stage">
+      <!-- Jokerler -->
+      <div class="joker-bar" id="jokerBar"></div>
+
+      <!-- Durum satırı -->
+      <div class="status-row">
+        <div class="status-chip left">
+          <span class="sc-label">🛡️ Garanti Ödül</span>
+          <span class="sc-val" id="guaranteedVal" style="color:var(--accent-cyan)">0</span>
+        </div>
+        <div class="timer-ring" id="timerRing">
+          <svg viewBox="0 0 120 120">
+            <circle class="tr-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="tr-fg" id="timerArc" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="tr-text"><span id="timerText">--</span><small>SANİYE</small></div>
+        </div>
+        <div class="status-chip right">
+          <span class="sc-label">🎯 Bu Sorunun Ödülü</span>
+          <span class="sc-val" id="questionPrizeVal" style="color:var(--accent-amber)">1K</span>
+        </div>
+      </div>
+
+      <!-- Soru -->
+      <div class="question-wrap">
+        <div class="hex question-box" id="questionBox">
+          <div class="hex-inner">
+            <div class="q-meta">
+              <span class="q-badge lvl" id="qLevel">SORU 1 / 12</span>
+              <span class="q-badge" id="qCategory">Kategori</span>
+            </div>
+            <h2 class="q-text" id="qText">Soru yükleniyor...</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Şıklar -->
+      <div class="options-grid" id="optionsGrid"></div>
+
+      <div class="action-row">
+        <div class="hint-text">
+          <span class="kbd">A</span><span class="kbd">B</span><span class="kbd">C</span><span class="kbd">D</span> seç
+          · <span class="kbd">Enter</span> onayla · <span class="kbd">Esc</span> vazgeç
+        </div>
+        <div class="hint-text" id="doubleHint" style="display:none; color:#fca5a5; font-weight:700;">🔁 Çift Cevap Hakkı aktif — bu soruda iki cevap hakkın var!</div>
+      </div>
+    </section>
+
+    <!-- Ödül merdiveni -->
+    <aside class="ladder">
+      <h3>💰 Ödül Merdiveni</h3>
+      <div class="ladder-list" id="ladderList"></div>
+      <div class="ladder-legend">
+        <span>🛡️ Baraj — yanlışta bile garanti</span>
+        <span>👑 Final — Milyarderler Duvarı</span>
+        <span>Birim: Parametre</span>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Hazır ekranı -->
+  <div class="ready-overlay" id="readyOverlay">
+    <div style="font-size:4rem;">🧠</div>
+    <h2>Hazır mısın, <span class="gradient-text" id="readyName">Yarışmacı</span>?</h2>
+    <div class="badge-grade" id="readyGradeBadge" style="margin-bottom:0.75rem; font-size:0.95rem; padding:0.4rem 1rem;">Hazırlık</div>
+    <p>12 soru seni bekliyor. İlk iki jokerin (%50 ve Seyirci) hazır; 5. soruda 'Yapay Zekaya Sor', 9. soruda 'Çift Cevap Hakkı' açılacak. Süre "BAŞLA"ya bastığında işlemeye başlar.</p>
+    <button class="btn btn-primary btn-lg" id="readyBtn">BAŞLA ⚡</button>
+  </div>
+
+  <!-- Onay modalı -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal-content">
+      <div class="modal-icon" id="confirmIcon">🤔</div>
+      <h3 class="modal-title" id="confirmTitle">Son kararın mı?</h3>
+      <p class="modal-desc" id="confirmDesc"></p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary btn-lg" id="confirmNo">Hayır <span class="kbd">Esc</span></button>
+        <button class="btn btn-primary btn-lg" id="confirmYes">Evet, kilitle <span class="kbd">Enter</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doğru cevap modalı -->
+  <div class="modal-overlay" id="correctModal">
+    <div class="modal-content">
+      <div class="modal-icon">✅</div>
+      <h3 class="modal-title" style="color:#6ee7b7;">Doğru Cevap!</h3>
+      <p class="modal-desc" id="correctDesc"></p>
+      <div class="explain-box" id="correctExplain"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary btn-lg" id="nextBtn">SONRAKİ SORU → <span class="kbd">Enter</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seyirci modalı -->
+  <div class="modal-overlay" id="audienceModal">
+    <div class="modal-content">
+      <div class="modal-icon">👥</div>
+      <h3 class="modal-title">Seyirciye Sor</h3>
+      <p class="modal-desc" style="margin-bottom:0;">Salondaki seyircilerin oy dağılımı:</p>
+      <div class="aud-chart" id="audChart"></div>
+      <div class="modal-actions"><button class="btn btn-primary" data-close="audienceModal">Tamam</button></div>
+    </div>
+  </div>
+
+  <!-- LLM modalı -->
+  <div class="modal-overlay" id="llmModal">
+    <div class="modal-content">
+      <div class="modal-icon">🤖</div>
+      <h3 class="modal-title">Yapay Zekaya Sor</h3>
+      <div class="llm-terminal" id="llmTerminal"></div>
+      <div id="llmConfWrap" style="display:none; text-align:left;">
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted);">
+          <span>Yapay zeka güven oranı</span><span id="llmConfVal" style="font-family:var(--font-mono); font-weight:800; color:#e9d5ff;"></span>
+        </div>
+        <div class="conf-bar"><div class="conf-fill" id="llmConfFill"></div></div>
+        <div class="disclaimer" id="llmDisclaimer"></div>
+      </div>
+      <div class="modal-actions"><button class="btn btn-primary" data-close="llmModal" id="llmCloseBtn" disabled>Tamam</button></div>
+    </div>
+  </div>
+
+  <!-- Oyun sonu modalı -->
+  <div class="modal-overlay" id="endModal">
+    <div class="modal-content" style="max-width:640px;">
+      <div class="modal-icon" id="endIcon">🏁</div>
+      <h3 class="modal-title" id="endTitle">Oyun Bitti</h3>
+      <p class="modal-desc" id="endDesc"></p>
+      <div class="result-grid">
+        <div class="result-cell"><div class="rc-label">Doğru</div><div class="rc-val" id="endCorrect" style="color:var(--accent-green)">0</div></div>
+        <div class="result-cell"><div class="rc-label">Ödül</div><div class="rc-val" id="endPrize" style="color:var(--gold)">0</div></div>
+        <div class="result-cell"><div class="rc-label">Süre</div><div class="rc-val" id="endTime" style="color:var(--accent-cyan)">0</div></div>
+      </div>
+      <div class="explain-box bad" id="endExplain" style="display:none;"></div>
+      <div class="qr-box" id="qrBox" style="display:none;">
+        <img id="qrImg" alt="Topluluğa katıl QR kodu">
+        <div>
+          <h4>🚀 Akdeniz VBT'ye Katıl!</h4>
+          <p>Yapay zeka, veri bilimi ve daha fazlası için topluluğumuza katıl. QR kodu telefonunla okut!</p>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <a href="leaderboard.html" class="btn btn-secondary btn-lg">🏆 Liderlik Tablosu</a>
+        <a href="index.html" class="btn btn-primary btn-lg" id="newPlayerBtn">Yeni Yarışmacı ⚡</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Joker açılma ekranı -->
+  <div class="unlock-splash" id="unlockSplash">
+    <div class="us-label">// YENİ YETENEK KAZANILDI</div>
+    <div class="us-title gradient-text">YENİ JOKER AÇILDI!</div>
+    <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1.5rem; max-width:600px; text-align:center;">
+      Tebrikler! Belirli aşamaları geçerek yeni bir yapay zeka jokerinin kilidini açtın. Aşağıdaki özelliği dikkatlice oku:
+    </p>
+    <div class="us-cards" id="unlockCards"></div>
+    <div style="margin-top:2.5rem; display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+      <button class="btn btn-primary btn-lg" id="unlockContinueBtn" style="padding:1.1rem 2.5rem; font-size:1.15rem; font-weight:800; box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);">
+        DEVAM ET (SORUYA GEÇ) ⚡
+      </button>
+      <span style="font-size:0.85rem; color:var(--text-dim);">veya klavyeden <span class="kbd">Enter</span> tuşuna basabilirsiniz</span>
+    </div>
+  </div>
+
+  <div class="flash-banner" id="flashBanner"></div>
+  <canvas id="confettiCanvas"></canvas>
+
+  <script src="js/api.js?v=20261018_v6"></script>
+  <script src="js/sound-synth.js?v=20261018_v6"></script>
+  <script src="js/game.js?v=20261018_v6"></script>
+</body>
+</html>

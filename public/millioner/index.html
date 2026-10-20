@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kim Veri Bilimci Olmak İster? — Akdeniz Veri Bilimi Topluluğu</title>
+  <meta name="description" content="Akdeniz VBT Topluluk Günü bilgi yarışması: 12 soruda yapay zeka bilgini kanıtla, jokerlerini akıllıca kullan, 1 Milyar Parametre'ye ulaş!">
+  <link rel="stylesheet" href="css/style.css?v=20261018_v6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand-group">
+      <img src="assets/vbt_logo.png" alt="Akdeniz VBT" class="brand-logo">
+      <div class="brand-badge">AKDENİZ VBT</div>
+      <div class="brand-titles">
+        <h1>KİM VERİ BİLİMCİ OLMAK İSTER?</h1>
+        <p>Topluluk Günü Canlı Stand Yarışması</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);" title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
+      <a href="leaderboard.html" class="btn btn-secondary" id="navLeaderboardBtn">LİDERLİK TABLOSU 🏆</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-container">
+      <div class="hero-pill">⚡ YAPAY ZEKA BİLGİ YARIŞMASI</div>
+      <h2 class="hero-title">Kim <span class="gradient-text">Veri Bilimci</span><br>Olmak İster?</h2>
+      <p class="hero-subtitle">
+        12 soru, 2 baraj, 4 güçlü joker. Son soruya kadar ulaş, <strong class="gold-text">1 Milyar Parametre</strong>'yi kazan ve ödülünü standdan al!
+      </p>
+    </section>
+
+    <section class="landing-grid">
+      <!-- Sol: Jokerler + kurallar -->
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div class="glass-card">
+          <h3>🃏 Jokerler — Aşama Aşama Açılır</h3>
+          <div class="joker-showcase" id="jokerShowcase">
+            <div class="joker-info" style="--j-color:#00f0ff">
+              <span class="ji-unlock">Başlangıç</span>
+              <div class="ji-icon">✂️</div>
+              <div class="ji-name">%50 Yarı Yarıya</div>
+              <div class="ji-desc">İki yanlış şıkkı eler, geriye 1 doğru 1 yanlış şık kalır.</div>
+            </div>
+            <div class="joker-info" style="--j-color:#10b981">
+              <span class="ji-unlock">Başlangıç</span>
+              <div class="ji-icon">👥</div>
+              <div class="ji-name">Seyirciye Sor</div>
+              <div class="ji-desc">Salondaki seyircilerin oylama dağılımını gösterir.</div>
+            </div>
+            <div class="joker-info" style="--j-color:#a855f7">
+              <span class="ji-unlock">5. Soru</span>
+              <div class="ji-icon">🤖</div>
+              <div class="ji-name">Yapay Zekaya Sor</div>
+              <div class="ji-desc">Yapay zeka asistanı en olası cevabı ve güven skorunu söyler.</div>
+            </div>
+            <div class="joker-info" style="--j-color:#ef4444">
+              <span class="ji-unlock">9. Soru</span>
+              <div class="ji-icon">🔁</div>
+              <div class="ji-name">Çift Cevap Hakkı</div>
+              <div class="ji-desc">Bu soruda iki kez cevap verme hakkı tanır. İlkinde yanılırsan ikinci şansın olur.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>📋 Yarışma Kuralları</h3>
+          <ul class="rules-list">
+            <li>🔹 <strong>12 soru</strong> — her soruda 4 şık, yalnızca biri doğru.</li>
+            <li>🔹 <strong>Süre:</strong> 1-4. sorular 30 sn, 5-8. sorular 45 sn, 9-11. sorular 60 sn, final 90 sn.</li>
+            <li>🛡️ <strong>Barajlar:</strong> 4. ve 8. soruları geçersen, yanlış cevapta bile o ödül garantidir.</li>
+            <li>🏳️ <strong>Çekilme:</strong> Emin değilsen çekilip o ana kadarki ödülü alabilirsin.</li>
+            <li>🏆 <strong>Ödül:</strong> Son soruyu bilen herkes <strong>Milyarderler Duvarı</strong>'na yazılır ve stand ödülünü kazanır!</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sağ: Katılım formu + merdiven -->
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <form class="glass-card join-card" id="joinForm" autocomplete="off">
+          <h3>🎮 Yarışmaya Katıl</h3>
+          <div class="form-group">
+            <label for="playerName">İsim / Takma Ad *</label>
+            <input class="input" id="playerName" maxlength="24" placeholder="Örn: Ada Lovelace" required>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Kaçıncı Sınıfsın? *</span>
+              <span style="font-size:0.75rem; font-weight:normal; color:var(--accent-cyan);">Sorular seviyene göre gelir</span>
+            </label>
+            <div class="grade-selector" id="gradeSelector" role="radiogroup">
+              <button type="button" class="grade-pill active" data-grade="hazirlik" title="Hazırlık Sınıfı">
+                <span class="gp-icon">🌱</span>
+                <span class="gp-title">Hazırlık</span>
+              </button>
+              <button type="button" class="grade-pill" data-grade="1" title="1. Sınıf">
+                <span class="gp-icon">1️⃣</span>
+                <span class="gp-title">1. Sınıf</span>
+              </button>
+              <button type="button" class="grade-pill" data-grade="2" title="2. Sınıf">
+                <span class="gp-icon">2️⃣</span>
+                <span class="gp-title">2. Sınıf</span>
+              </button>
+              <button type="button" class="grade-pill" data-grade="3" title="3. Sınıf">
+                <span class="gp-icon">3️⃣</span>
+                <span class="gp-title">3. Sınıf</span>
+              </button>
+              <button type="button" class="grade-pill" data-grade="4" title="4. Sınıf">
+                <span class="gp-icon">4️⃣</span>
+                <span class="gp-title">4. Sınıf</span>
+              </button>
+            </div>
+            <input type="hidden" id="selectedGrade" value="hazirlik">
+            <div class="grade-desc-box" id="gradeDescBox">
+              ✨ <strong>Hazırlık Seviyesi:</strong> Eğlenceli popüler kültür, dijital dünya ve genel teknoloji soruları. Ağır teknik soru yok!
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="playerEmail">E-posta (ödül iletişimi için)</label>
+            <input class="input" id="playerEmail" type="email" maxlength="120" placeholder="ornek@ogr.akdeniz.edu.tr">
+          </div>
+          <label class="check-row" for="wantsMembership">
+            <input type="checkbox" id="wantsMembership" checked>
+            <span>Akdeniz Veri Bilimi Topluluğu'na üye olmak ve etkinlik duyurularını almak istiyorum. 🚀</span>
+          </label>
+          <div class="form-error" id="formError"></div>
+          <button type="submit" class="btn btn-primary btn-lg" id="startGameBtn" style="width:100%;">OYUNA BAŞLA ⚡</button>
+          <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.75rem; text-align:center;">
+            E-posta yalnızca ödül ve topluluk iletişimi için kullanılır, ekranda gösterilmez.
+          </p>
+        </form>
+
+        <div class="glass-card">
+          <h3>💰 Ödül Merdiveni</h3>
+          <div class="mini-ladder" id="miniLadder"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js?v=20261018_v6"></script>
+  <script>
+    const UNLOCK_TEXT = { fifty: 'Başlangıç', audience: 'Başlangıç', llm: '5. Soru', double: '9. Soru' };
+    const GRADE_DESCRIPTIONS = {
+      hazirlik: '✨ <strong>Hazırlık Seviyesi:</strong> Eğlenceli popüler kültür, dijital dünya ve genel teknoloji soruları. Ağır teknik soru yok!',
+      '1': '🎮 <strong>1. Sınıf Seviyesi:</strong> Günlük teknoloji, internet trendleri ve temel bilişim genel kültürü.',
+      '2': '🚀 <strong>2. Sınıf Seviyesi:</strong> İlginç yapay zeka hikayeleri, robotik ve teknoloji tarihi genel kültürü.',
+      '3': '🧠 <strong>3. Sınıf Seviyesi:</strong> Popüler veri bilimi, algoritma mantığı ve dijital inovasyon kültürü.',
+      '4': '👑 <strong>4. Sınıf Seviyesi:</strong> Büyük teknoloji devrimleri, bilişim efsaneleri ve yapay zeka vizyonu.'
+    };
+
+    document.querySelectorAll('.grade-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.grade-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const g = btn.dataset.grade;
+        document.getElementById('selectedGrade').value = g;
+        document.getElementById('gradeDescBox').innerHTML = GRADE_DESCRIPTIONS[g] || '';
+      });
+    });
+
+    function renderJokers() {
+      document.getElementById('jokerShowcase').innerHTML = Object.entries(JOKER_META).map(([key, j]) => `
+        <div class="joker-info" style="--j-color:${j.color}">
+          <span class="ji-unlock">${UNLOCK_TEXT[key]}</span>
+          <div class="ji-icon">${j.icon}</div>
+          <div class="ji-name">${j.name}</div>
+          <div class="ji-desc">${j.desc}</div>
+        </div>`).join('');
+    }
+
+    async function renderLadder() {
+      let cfg;
+      try { cfg = await API.get('/api/config'); } catch (e) { return; }
+      document.getElementById('miniLadder').innerHTML = cfg.ladder.map((step, i) => {
+        const lvl = i + 1;
+        const cls = lvl === cfg.total_levels ? 'final' : (cfg.safe_levels.includes(lvl) ? 'safe' : '');
+        const icon = lvl === cfg.total_levels ? ' 👑' : (cfg.safe_levels.includes(lvl) ? ' 🛡️' : '');
+        return `<div class="${cls}"><span>${lvl}</span><span>${step.label} Param${icon}</span></div>`;
+      }).join('');
+    }
+
+    document.getElementById('joinForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('startGameBtn');
+      const err = document.getElementById('formError');
+      const name = document.getElementById('playerName').value.trim();
+      const email = document.getElementById('playerEmail').value.trim();
+      const grade = document.getElementById('selectedGrade').value || 'hazirlik';
+
+      if (name.length < 2) { err.textContent = 'Lütfen en az 2 karakterlik bir isim gir.'; return; }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'E-posta adresi geçerli görünmüyor.'; return; }
+      err.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Sorular hazırlanıyor...';
+      try {
+        const state = await API.post('/api/game/start', {
+          name, email, grade, wants_membership: document.getElementById('wantsMembership').checked,
+        });
+        sessionStorage.setItem('vbt_milyoner_sid', state.session_id);
+        window.location.href = `game.html?sid=${state.session_id}`;
+      } catch (ex) {
+        err.textContent = 'Sunucuya bağlanılamadı: ' + ex.message;
+        btn.disabled = false;
+        btn.textContent = 'OYUNA BAŞLA ⚡';
+      }
+    });
+
+    renderJokers();
+    renderLadder();
+    document.getElementById('playerName').focus();
+  </script>
+</body>
+</html>

@@ -180,6 +180,9 @@ function createReadingService({ catalog: baseCatalog, provider, limits, inventor
       const checked = checkModelOutput(raw, catalog, limits);
 
       if (!checked.reading || !checked.category) {
+        if (typeof provider.reportFailure === 'function') {
+          provider.reportFailure(`invalid model output: ${checked.issues.join('; ')}`);
+        }
         result = fallbackResult(catalog, draw, `invalid model output: ${checked.issues.join('; ')}`, 'invalid_model_output');
       } else {
         let { sticker } = checked;

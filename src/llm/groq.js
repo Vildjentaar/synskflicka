@@ -17,7 +17,7 @@ function toGroqSchema(schema) {
  * json_object mode with the schema described in the system prompt.
  * Returns the parsed JSON object; throws on transport, timeout or parse failure.
  */
-function createGroqProvider({ apiKey, model, temperature, timeoutMs }) {
+function createGroqProvider({ apiKey, model, temperature, timeoutMs, tracker }) {
   if (!apiKey) throw new Error('GROQ_API_KEY is not set');
   const supportsSchema = JSON_SCHEMA_MODELS.test(model);
   const reasoning = REASONING_MODELS.test(model);
@@ -51,9 +51,20 @@ function createGroqProvider({ apiKey, model, temperature, timeoutMs }) {
         signal: AbortSignal.timeout(timeoutMs),
       });
 
+      if (tracker && res.headers) {
+        tracker.updateFromHeaders(res.headers, res.status);
+      }
+
       if (!res.ok) {
-        const detail = (await res.text().catch(() => '')).slice(0, 300);
-        throw new Error(`Groq HTTP ${res.status}: ${detail}`);
+        const detail = (await res.text().catch(() => '')).slice(0, 500);
+        if (tracker) {
+          tracker.updateFromHeaders(res.headers, res.status, detail);
+        }
+        const err = new Error(`Groq HTTP ${res.status}: ${detail}`);
+        err.status = res.status;
+        err.headers = res.headers;
+        err.detail = detail;
+        throw err;
       }
       const data = await res.json();
       const choice = data.choices && data.choices[0];

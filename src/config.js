@@ -24,14 +24,15 @@ const config = {
   },
   strictAssets: bool(env.STRICT_ASSETS, false),
   llm: {
-    // "groq" | "openai" | "gemini" | "mock". Defaults to whichever provider has an API key (Groq, OpenAI, Gemini).
+    // "pipeline" | "groq" | "openai" | "gemini" | "mock". Defaults to pipeline when API keys exist.
     provider: (
       env.LLM_PROVIDER ||
-      (env.GROQ_API_KEY ? 'groq' : env.OPENAI_API_KEY ? 'openai' : env.GEMINI_API_KEY ? 'gemini' : 'mock')
+      (env.GROQ_API_KEY || env.OPENAI_API_KEY || env.GEMINI_API_KEY ? 'pipeline' : 'mock')
     ).toLowerCase(),
     groq: {
       apiKey: env.GROQ_API_KEY || '',
       model: env.GROQ_MODEL || 'openai/gpt-oss-20b',
+      llamaModel: env.LLAMA_MODEL || env.GROQ_LLAMA_MODEL || 'llama-3.3-70b-versatile',
     },
     openai: {
       apiKey: env.OPENAI_API_KEY || '',

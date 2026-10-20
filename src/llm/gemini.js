@@ -11,7 +11,9 @@ function createGeminiProvider({ apiKey, model, temperature, timeoutMs }) {
   return {
     name: `gemini:${model}`,
     async generate({ system, user, schema }) {
-      const body = {
+      const effectiveTimeout = Number(process.env.GEMINI_TIMEOUT_MS) || Math.max(timeoutMs || 15000, 75000);
+
+      const makeBody = (withThinkingBudget = true) => ({
         systemInstruction: { parts: [{ text: system }] },
         contents: [{ role: 'user', parts: [{ text: user }] }],
         generationConfig: {
@@ -19,15 +21,31 @@ function createGeminiProvider({ apiKey, model, temperature, timeoutMs }) {
           responseMimeType: 'application/json',
           responseSchema: schema,
           maxOutputTokens: 2048,
+          ...(withThinkingBudget ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
         },
-      };
+      });
 
-      const res = await fetch(`${ENDPOINT}/${encodeURIComponent(model)}:generateContent`, {
+      let res = await fetch(`${ENDPOINT}/${encodeURIComponent(model)}:generateContent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(timeoutMs),
+        body: JSON.stringify(makeBody(true)),
+        signal: AbortSignal.timeout(effectiveTimeout),
       });
+
+      // If thinkingConfig is not supported/accepted (HTTP 400), retry cleanly without it
+      if (!res.ok && res.status === 400) {
+        const errText = await res.text().catch(() => '');
+        if (/thinking/i.test(errText)) {
+          res = await fetch(`${ENDPOINT}/${encodeURIComponent(model)}:generateContent`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+            body: JSON.stringify(makeBody(false)),
+            signal: AbortSignal.timeout(effectiveTimeout),
+          });
+        } else {
+          throw new Error(`Gemini HTTP 400: ${errText.slice(0, 300)}`);
+        }
+      }
 
       if (!res.ok) {
         const detail = (await res.text().catch(() => '')).slice(0, 300);

@@ -7,6 +7,7 @@ const { loadCatalog } = require('./catalog');
 const { createProvider } = require('./llm');
 const { createReadingService } = require('./readingService');
 const { createInventory } = require('./inventory');
+const { createMillionerRouter } = require('./millioner/router');
 
 /** Tiny fixed-window in-memory rate limiter (per IP). Fine for a single-instance kiosk/festival deployment. */
 function rateLimit({ perMinute }) {
@@ -212,6 +213,33 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
   app.get('/stocks', (req, res) => {
     res.sendFile(path.join(config.paths.public, 'stocks.html'));
   });
+
+  // Millioner mini-project integration
+  const millionerApi = createMillionerRouter();
+  apiRouter.use(millionerApi);
+
+  const millionerFrontendDir = fs.existsSync(path.join(config.paths.public, 'millioner'))
+    ? path.join(config.paths.public, 'millioner')
+    : path.join(config.root, 'millioner', 'frontend');
+
+  // Millioner page routes
+  app.use('/milyoner', (req, res) => {
+    const sub = req.url === '/' ? '/' : req.url;
+    res.redirect('/millioner' + sub);
+  });
+
+  app.get('/millioner/game', (req, res) => {
+    res.sendFile(path.join(millionerFrontendDir, 'game.html'));
+  });
+  app.get('/millioner/leaderboard', (req, res) => {
+    res.sendFile(path.join(millionerFrontendDir, 'leaderboard.html'));
+  });
+  app.get('/millioner/admin', (req, res) => {
+    res.sendFile(path.join(millionerFrontendDir, 'admin.html'));
+  });
+
+  app.use('/millioner/api', millionerApi);
+  app.use('/millioner', express.static(millionerFrontendDir, { maxAge: config.isProduction ? '1h' : 0 }));
 
   // Mount router at both /api and / so both direct and rewritten serverless requests match
   app.use('/api', apiRouter);

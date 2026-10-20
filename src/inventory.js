@@ -1,6 +1,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const kv = require('./kv');
 
 /**
  * Physical sticker stock and availability manager.
@@ -11,6 +12,7 @@ const path = require('path');
  * If `filePath` is given, stock counts and disabled states are loaded from / saved to that JSON file
  * so settings survive restarts. If the primary file cannot be written (e.g. read-only serverless filesystem),
  * it falls back to /tmp/sticker_stock.json and memory.
+ * If Vercel KV is connected, state persists permanently across all Vercel instances.
  */
 function createInventory({ stickers, initialStock = 20, filePath = null, categoryLabel = (id) => id, logger = console }) {
   const counts = new Map(stickers.map((s) => [s.id, initialStock]));
@@ -40,12 +42,52 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
     }
   }
 
-  // Try primary filePath first, then fallback to /tmp
-  if (!tryLoad(filePath)) {
-    tryLoad(fallbackPath);
+  // If filePath is provided, try primary filePath first, then fallback to /tmp
+  if (filePath) {
+    if (!tryLoad(filePath)) {
+      tryLoad(fallbackPath);
+    }
+  }
+
+  // Sync with Vercel KV if configured
+  if (kv.isEnabled) {
+    kv.get('synskflicka:sticker_stock')
+      .then((data) => {
+        if (data && data.counts && typeof data.counts === 'object') {
+          for (const [id, n] of Object.entries(data.counts)) {
+            if (counts.has(id) && Number.isInteger(n) && n >= 0) counts.set(id, n);
+          }
+          if (Array.isArray(data.disabled)) {
+            disabled.clear();
+            for (const id of data.disabled) {
+              if (counts.has(id)) disabled.add(id);
+            }
+          }
+        } else {
+          kv.set('synskflicka:sticker_stock', {
+            updated_at: new Date().toISOString(),
+            counts: Object.fromEntries(counts),
+            disabled: [...disabled],
+          }).catch(() => {});
+        }
+      })
+      .catch((err) => {
+        logger.warn(JSON.stringify({ event: 'kv_stock_load_failed', message: err.message }));
+      });
   }
 
   function persist() {
+    if (kv.isEnabled) {
+      kv.set('synskflicka:sticker_stock', {
+        updated_at: new Date().toISOString(),
+        counts: Object.fromEntries(counts),
+        disabled: [...disabled],
+      }).catch((err) => {
+        logger.warn(JSON.stringify({ event: 'kv_stock_persist_failed', message: err.message }));
+      });
+    }
+
+    if (!filePath) return;
     const payload = JSON.stringify(
       {
         updated_at: new Date().toISOString(),
