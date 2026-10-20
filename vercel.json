@@ -8,14 +8,22 @@
       "includeFiles": "{data/**,config/**,public/**,millioner/**}"
     }
   },
+  "redirects": [
+    {
+      "source": "/millioner",
+      "destination": "/millioner/",
+      "permanent": false
+    },
+    {
+      "source": "/milyoner",
+      "destination": "/millioner/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/stocks",
       "destination": "/stocks.html"
-    },
-    {
-      "source": "/millioner",
-      "destination": "/millioner/index.html"
     },
     {
       "source": "/millioner/game",
@@ -34,8 +42,12 @@
       "destination": "/millioner/$1"
     },
     {
-      "source": "/milyoner",
-      "destination": "/millioner/index.html"
+      "source": "/css/(.*)",
+      "destination": "/millioner/css/$1"
+    },
+    {
+      "source": "/js/(.*)",
+      "destination": "/millioner/js/$1"
     },
     {
       "source": "/api/(.*)",
