@@ -164,6 +164,10 @@ function createReadingService({ catalog: baseCatalog, provider, limits, inventor
   async function generate(body) {
     const draw = validateDrawRequest(body, baseCatalog); // throws RequestError -> 400
 
+    if (inventory && typeof inventory.ensureLoaded === 'function') {
+      await inventory.ensureLoaded();
+    }
+
     // Only offer stickers that are still in stock; sold-out categories drop out of the prompt.
     const catalog = inventory ? baseCatalog.withStock(inventory.isInStock) : baseCatalog;
     if (!catalog.enabledCategories.length || !catalog.eligibleStickers.length) {

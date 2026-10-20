@@ -11,14 +11,15 @@ const kv = require('./kv');
  *
  * If `filePath` is given, stock counts and disabled states are loaded from / saved to that JSON file
  * so settings survive restarts. If the primary file cannot be written (e.g. read-only serverless filesystem),
- * it falls back to /tmp/sticker_stock.json and memory.
- * If Vercel KV is connected, state persists permanently across all Vercel instances.
+ * it falls back to /tmp/sticker_stock.json and data/sticker_stock.json.
+ * If Vercel KV is connected, state persists permanently across all Vercel instances and deployments.
  */
 function createInventory({ stickers, initialStock = 20, filePath = null, categoryLabel = (id) => id, logger = console }) {
   const counts = new Map(stickers.map((s) => [s.id, initialStock]));
   const disabled = new Set();
 
   const fallbackPath = path.join('/tmp', 'sticker_stock.json');
+  const repoBaselinePath = path.join(__dirname, '..', 'data', 'sticker_stock.json');
 
   function tryLoad(file) {
     if (!file || !fs.existsSync(file)) return false;
@@ -42,17 +43,25 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
     }
   }
 
-  // If filePath is provided, try primary filePath first, then fallback to /tmp
+  // Load from primary path, or fallback to /tmp, or fallback to repo baseline
   if (filePath) {
     if (!tryLoad(filePath)) {
-      tryLoad(fallbackPath);
+      if (!tryLoad(fallbackPath)) {
+        tryLoad(repoBaselinePath);
+      }
     }
+  } else {
+    tryLoad(repoBaselinePath);
   }
 
-  // Sync with Vercel KV if configured
-  if (kv.isEnabled) {
-    kv.get('synskflicka:sticker_stock')
-      .then((data) => {
+  let loadPromise = null;
+  async function ensureLoaded(force = false) {
+    if (!kv.isEnabled) return Promise.resolve();
+    if (loadPromise && !force) return loadPromise;
+
+    loadPromise = (async () => {
+      try {
+        const data = await kv.get('synskflicka:sticker_stock');
         if (data && data.counts && typeof data.counts === 'object') {
           for (const [id, n] of Object.entries(data.counts)) {
             if (counts.has(id) && Number.isInteger(n) && n >= 0) counts.set(id, n);
@@ -64,27 +73,31 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
             }
           }
         } else {
-          kv.set('synskflicka:sticker_stock', {
+          // Initialize KV with current baseline stock
+          await kv.set('synskflicka:sticker_stock', {
             updated_at: new Date().toISOString(),
             counts: Object.fromEntries(counts),
             disabled: [...disabled],
-          }).catch(() => {});
+          });
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         logger.warn(JSON.stringify({ event: 'kv_stock_load_failed', message: err.message }));
-      });
+      }
+    })();
+    return loadPromise;
   }
 
-  function persist() {
+  async function persist() {
     if (kv.isEnabled) {
-      kv.set('synskflicka:sticker_stock', {
-        updated_at: new Date().toISOString(),
-        counts: Object.fromEntries(counts),
-        disabled: [...disabled],
-      }).catch((err) => {
+      try {
+        await kv.set('synskflicka:sticker_stock', {
+          updated_at: new Date().toISOString(),
+          counts: Object.fromEntries(counts),
+          disabled: [...disabled],
+        });
+      } catch (err) {
         logger.warn(JSON.stringify({ event: 'kv_stock_persist_failed', message: err.message }));
-      });
+      }
     }
 
     if (!filePath) return;
@@ -127,83 +140,92 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
     remaining,
     isEnabled,
     isInStock,
+    ensureLoaded,
 
     /** Takes one copy. Returns { ok, remaining } or { ok: false, reason: 'unknown' | 'out_of_stock' | 'disabled' }. */
-    take(id) {
+    async take(id) {
+      await ensureLoaded();
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       if (!isEnabled(id)) return { ok: false, reason: 'disabled', remaining: remaining(id) };
       const n = counts.get(id);
       if (n <= 0) return { ok: false, reason: 'out_of_stock', remaining: 0 };
       counts.set(id, n - 1);
-      persist();
+      await persist();
       return { ok: true, remaining: n - 1 };
     },
 
     /** Explicitly set remaining stock for a sticker. */
-    setStock(id, count) {
+    async setStock(id, count) {
+      await ensureLoaded();
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       const n = Math.max(0, parseInt(count, 10) || 0);
       counts.set(id, n);
-      persist();
+      await persist();
       return { ok: true, id, remaining: n, enabled: isEnabled(id), disabled: !isEnabled(id) || n === 0 };
     },
 
     /** Increase or decrease stock by delta. */
-    adjustStock(id, delta) {
+    async adjustStock(id, delta) {
+      await ensureLoaded();
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       const current = counts.get(id);
       const next = Math.max(0, current + (parseInt(delta, 10) || 0));
       counts.set(id, next);
-      persist();
+      await persist();
       return { ok: true, id, remaining: next, enabled: isEnabled(id), disabled: !isEnabled(id) || next === 0 };
     },
 
     /** Set enabled/disabled state for a sticker. */
-    setEnabled(id, enabled) {
+    async setEnabled(id, enabled) {
+      await ensureLoaded();
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       if (enabled) {
         disabled.delete(id);
       } else {
         disabled.add(id);
       }
-      persist();
+      await persist();
       return { ok: true, id, remaining: remaining(id), enabled: isEnabled(id), disabled: !isEnabled(id) || remaining(id) === 0 };
     },
 
     /** Toggle enabled/disabled state for a sticker. */
-    toggleEnabled(id) {
+    async toggleEnabled(id) {
+      await ensureLoaded();
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       return this.setEnabled(id, !isEnabled(id));
     },
 
     /** Bulk enable or disable all stickers. */
-    setAllEnabled(enabled) {
+    async setAllEnabled(enabled) {
+      await ensureLoaded();
       disabled.clear();
       if (!enabled) {
         for (const s of stickers) disabled.add(s.id);
       }
-      persist();
+      await persist();
       return { ok: true };
     },
 
     /** Reset all counts to initialStock and enable everything. */
-    resetStock(customInitial = initialStock) {
+    async resetStock(customInitial = initialStock) {
+      await ensureLoaded();
       const n = Math.max(0, parseInt(customInitial, 10) || initialStock);
       for (const s of stickers) {
         counts.set(s.id, n);
       }
       disabled.clear();
-      persist();
+      await persist();
       return { ok: true };
     },
 
     /** Adjust all sticker stocks by a delta. */
-    adjustAllStock(delta) {
+    async adjustAllStock(delta) {
+      await ensureLoaded();
       const d = parseInt(delta, 10) || 0;
       for (const s of stickers) {
         counts.set(s.id, Math.max(0, counts.get(s.id) + d));
       }
-      persist();
+      await persist();
       return { ok: true };
     },
 

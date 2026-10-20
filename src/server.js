@@ -80,6 +80,9 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     async (req, res) => {
       const started = Date.now();
       try {
+        if (inventory && typeof inventory.ensureLoaded === 'function') {
+          await inventory.ensureLoaded();
+        }
         const result = await readings.generate(req.body);
         logger.info(
           JSON.stringify({
@@ -101,9 +104,9 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
   );
 
   // "Sticker'ı al!": hand out one physical copy and log the whole inventory.
-  apiRouter.post('/stickers/:id/take', rateLimit({ perMinute: config.rateLimitPerMinute }), (req, res) => {
+  apiRouter.post('/stickers/:id/take', rateLimit({ perMinute: config.rateLimitPerMinute }), async (req, res) => {
     const id = String(req.params.id).slice(0, 128);
-    const taken = inventory.take(id);
+    const taken = await inventory.take(id);
     if (!taken.ok && taken.reason === 'unknown') return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
 
     const sticker = catalog.getEligibleSticker(id);
@@ -127,7 +130,10 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
   });
 
   // Stock management API endpoints
-  apiRouter.get('/stocks', (req, res) => {
+  apiRouter.get('/stocks', async (req, res) => {
+    if (inventory && typeof inventory.ensureLoaded === 'function') {
+      await inventory.ensureLoaded(true);
+    }
     res.json({
       ok: true,
       stock: inventory.snapshot(),
@@ -137,10 +143,10 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     });
   });
 
-  apiRouter.post('/stocks/:id/adjust', express.json(), (req, res) => {
+  apiRouter.post('/stocks/:id/adjust', express.json(), async (req, res) => {
     const id = String(req.params.id).slice(0, 128);
     const delta = parseInt(req.body && req.body.delta, 10) || 0;
-    const result = inventory.adjustStock(id, delta);
+    const result = await inventory.adjustStock(id, delta);
     if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
     res.json({
       ...result,
@@ -150,10 +156,10 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     });
   });
 
-  apiRouter.post('/stocks/:id/set', express.json(), (req, res) => {
+  apiRouter.post('/stocks/:id/set', express.json(), async (req, res) => {
     const id = String(req.params.id).slice(0, 128);
     const count = req.body && req.body.count;
-    const result = inventory.setStock(id, count);
+    const result = await inventory.setStock(id, count);
     if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
     res.json({
       ...result,
@@ -163,9 +169,9 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     });
   });
 
-  apiRouter.post('/stocks/:id/toggle', (req, res) => {
+  apiRouter.post('/stocks/:id/toggle', async (req, res) => {
     const id = String(req.params.id).slice(0, 128);
-    const result = inventory.toggleEnabled(id);
+    const result = await inventory.toggleEnabled(id);
     if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
     res.json({
       ...result,
@@ -175,10 +181,10 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     });
   });
 
-  apiRouter.post('/stocks/:id/enable', express.json(), (req, res) => {
+  apiRouter.post('/stocks/:id/enable', express.json(), async (req, res) => {
     const id = String(req.params.id).slice(0, 128);
     const enabled = Boolean(req.body && req.body.enabled);
-    const result = inventory.setEnabled(id, enabled);
+    const result = await inventory.setEnabled(id, enabled);
     if (!result.ok) return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
     res.json({
       ...result,
@@ -188,16 +194,16 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
     });
   });
 
-  apiRouter.post('/stocks/bulk', express.json(), (req, res) => {
+  apiRouter.post('/stocks/bulk', express.json(), async (req, res) => {
     const action = req.body && req.body.action;
     if (action === 'enable_all') {
-      inventory.setAllEnabled(true);
+      await inventory.setAllEnabled(true);
     } else if (action === 'disable_all') {
-      inventory.setAllEnabled(false);
+      await inventory.setAllEnabled(false);
     } else if (action === 'reset') {
-      inventory.resetStock(req.body && req.body.initialStock);
+      await inventory.resetStock(req.body && req.body.initialStock);
     } else if (action === 'adjust_all') {
-      inventory.adjustAllStock(req.body && req.body.delta);
+      await inventory.adjustAllStock(req.body && req.body.delta);
     } else {
       return res.status(400).json({ error: 'Geçersiz işlem.' });
     }
