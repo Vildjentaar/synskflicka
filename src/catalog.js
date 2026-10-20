@@ -40,20 +40,52 @@ function loadCatalog(overrides = {}) {
   const eligibleStickers = stickers.filter(
     (s) => isEligible(s, { assetRoot, strictAssets }) && [...enabledIds].some((id) => isCompatible(s, id))
   );
-  const eligibleById = new Map(eligibleStickers.map((s) => [s.id, s]));
 
-  return {
+  const base = {
     vocabVersion: vocab.version,
     warnings,
     deck,
-    enabledCategories,
-    eligibleStickers,
     getCard: (id) => cardsById.get(id),
-    getEligibleSticker: (id) => eligibleById.get(id),
-    isEnabledCategory: (id) => enabledIds.has(id),
     isCompatible,
     categoryLabel: (id) => (vocab.categories.find((c) => c.id === id) || {}).label || id,
     hasAsset: (s) => assetExists(assetRoot, s.asset_path),
+    /** Enabled categories whose stickers have all run out (only non-empty on stock-aware views). */
+    exhaustedCategories: [],
+  };
+
+  const catalog = {
+    ...base,
+    ...makeView(enabledCategories, eligibleStickers, isCompatible),
+    /**
+     * Returns a copy of the catalog limited to stickers that are still in stock.
+     * A category is exhausted when every sticker with that primary_category has run out; it is then
+     * removed from the enabled categories so the model picks the next best fitting one.
+     */
+    withStock(isInStock) {
+      const inStock = eligibleStickers.filter((s) => isInStock(s.id));
+      const exhausted = enabledCategories.filter((c) => !inStock.some((s) => s.primary_category === c.id));
+      const available = enabledCategories.filter((c) => !exhausted.includes(c));
+      const stickersLeft = inStock.filter((s) => available.some((c) => isCompatible(s, c.id)));
+      return {
+        ...catalog,
+        ...makeView(available, stickersLeft, isCompatible),
+        exhaustedCategories: exhausted,
+      };
+    },
+  };
+  return catalog;
+}
+
+/** Lookup helpers over a given set of enabled categories and eligible stickers. */
+function makeView(enabledCategories, eligibleStickers, isCompatible) {
+  const enabledIds = new Set(enabledCategories.map((c) => c.id));
+  const eligibleById = new Map(eligibleStickers.map((s) => [s.id, s]));
+  return {
+    enabledCategories,
+    eligibleStickers,
+    getEligibleSticker: (id) => eligibleById.get(id),
+    isEnabledCategory: (id) => enabledIds.has(id),
+    isCompatible,
     /** Stickers for a category: primary matches first, else secondary matches (plan 3.4). */
     stickersForCategory(categoryId) {
       const primary = eligibleStickers.filter((s) => s.primary_category === categoryId);

@@ -6,6 +6,7 @@ const config = require('./config');
 const { loadCatalog } = require('./catalog');
 const { createProvider } = require('./llm');
 const { createReadingService } = require('./readingService');
+const { createInventory } = require('./inventory');
 
 /** Tiny fixed-window in-memory rate limiter (per IP). Fine for a single-instance kiosk/festival deployment. */
 function rateLimit({ perMinute }) {
@@ -20,10 +21,14 @@ function rateLimit({ perMinute }) {
   };
 }
 
-function createApp({ catalog, provider, logger = console } = {}) {
+function createApp({ catalog, provider, inventory, logger = console } = {}) {
   catalog = catalog || loadCatalog();
   provider = provider || createProvider(config.llm);
-  const readings = createReadingService({ catalog, provider, limits: config.reading, logger });
+  // In-memory by default (tests); getDefaultApp() passes a file-backed inventory.
+  inventory =
+    inventory ||
+    createInventory({ stickers: catalog.eligibleStickers, initialStock: config.stock.perSticker, categoryLabel: catalog.categoryLabel, logger });
+  const readings = createReadingService({ catalog, provider, inventory, limits: config.reading, logger });
 
   const app = express();
   app.disable('x-powered-by');
@@ -61,12 +66,38 @@ function createApp({ catalog, provider, logger = console } = {}) {
         );
         res.json(result);
       } catch (err) {
-        if (err.status === 400) return res.status(400).json({ error: err.message });
+        if (err.status === 400 || err.status === 503) return res.status(err.status).json({ error: err.message });
         logger.error(JSON.stringify({ event: 'reading_error', message: err.message }));
         res.status(500).json({ error: 'Kristal küre içinde bir şeyler ters gitti.' });
       }
     }
   );
+
+  // "Sticker'ı al!": hand out one physical copy and log the whole inventory.
+  apiRouter.post('/stickers/:id/take', rateLimit({ perMinute: config.rateLimitPerMinute }), (req, res) => {
+    const id = String(req.params.id).slice(0, 128);
+    const taken = inventory.take(id);
+    if (!taken.ok && taken.reason === 'unknown') return res.status(404).json({ error: 'Böyle bir çıkartma yok.' });
+
+    const sticker = catalog.getEligibleSticker(id);
+    const stock = inventory.snapshot();
+    const categories = inventory.categoryTotals();
+    logger.info(
+      JSON.stringify({
+        event: taken.ok ? 'sticker_taken' : 'sticker_take_rejected',
+        sticker: id,
+        category: sticker.primary_category,
+        remaining: taken.remaining,
+        total_remaining: inventory.total(),
+        categories,
+        stock: stock.map(({ id: sid, character, category, remaining, disabled }) => ({ id: sid, character, category, remaining, disabled })),
+      })
+    );
+
+    const body = { sticker_id: id, remaining: taken.remaining, disabled: taken.remaining === 0, total_remaining: inventory.total(), categories, stock };
+    if (!taken.ok) return res.status(409).json({ ...body, error: 'Bu çıkartma tükendi.' });
+    res.json(body);
+  });
 
   // Mount router at both /api and / so both direct and rewritten serverless requests match
   app.use('/api', apiRouter);
@@ -100,7 +131,13 @@ function getDefaultApp() {
       throw e;
     }
     catalog.warnings.forEach((w) => console.warn(`[data] ${w}`));
-    defaultApp = createApp({ catalog });
+    const inventory = createInventory({
+      stickers: catalog.eligibleStickers,
+      initialStock: config.stock.perSticker,
+      filePath: config.paths.stock,
+      categoryLabel: catalog.categoryLabel,
+    });
+    defaultApp = createApp({ catalog, inventory });
   }
   return defaultApp;
 }

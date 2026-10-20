@@ -43,6 +43,9 @@ const els = {
   badge: $('#category-badge'),
   credit: $('#sticker-credit'),
   replayBtn: $('#replay-btn'),
+  takeBtn: $('#take-btn'),
+  takeBtnLabel: $('#take-btn-label'),
+  stock: $('#sticker-stock'),
 };
 
 const state = {
@@ -52,6 +55,8 @@ const state = {
   busy: false,
   currentStage: 'intro',
   loaderTimer: null,
+  stickerId: null,
+  taking: false,
 };
 
 /* ---------------- Utilities ---------------- */
@@ -319,6 +324,8 @@ async function showResult(data) {
   els.badge.textContent = data.category_label;
   els.sticker.classList.remove('is-in');
   setSticker(data.sticker);
+  resetTakeButton(data.sticker.id, data.sticker_remaining);
+  if (data.exhausted_categories?.length) console.info('[Stok] Tükenen kategoriler:', data.exhausted_categories);
   els.result.hidden = false;
 
   const sentenceCount = els.readingText.children.length;
@@ -326,7 +333,63 @@ async function showResult(data) {
   els.sticker.classList.add('is-in');
   await wait(1100);
   els.result.classList.add('is-done');
-  els.replayBtn.focus({ preventScroll: true });
+  (els.takeBtn.disabled ? els.replayBtn : els.takeBtn).focus({ preventScroll: true });
+}
+
+/* ---------------- Sticker stock ---------------- */
+function renderStock(remaining) {
+  if (typeof remaining !== 'number') {
+    els.stock.textContent = '';
+    return;
+  }
+  els.stock.textContent = remaining > 0 ? `Kalan: ${remaining}` : 'Tükendi';
+  els.stock.classList.toggle('is-low', remaining > 0 && remaining <= 5);
+  els.stock.classList.toggle('is-out', remaining === 0);
+}
+
+function resetTakeButton(stickerId, remaining) {
+  state.stickerId = stickerId;
+  els.takeBtn.classList.remove('is-taken', 'is-out');
+  els.takeBtn.disabled = remaining === 0;
+  els.takeBtnLabel.textContent = remaining === 0 ? 'Tükendi' : "Sticker'ı al!";
+  renderStock(remaining);
+}
+
+function logInventory(data) {
+  console.groupCollapsed(`[Stok] ${data.sticker_id} → kalan ${data.remaining} · toplam ${data.total_remaining}`);
+  console.table(data.stock.map(({ id, character, category_label, remaining, disabled }) => ({ id, character, kategori: category_label, kalan: remaining, devre_dışı: disabled })));
+  console.table(data.categories);
+  console.groupEnd();
+}
+
+async function takeSticker() {
+  if (!state.stickerId || state.taking || els.takeBtn.disabled) return;
+  state.taking = true;
+  els.takeBtn.disabled = true;
+  try {
+    const res = await fetch(`/api/stickers/${encodeURIComponent(state.stickerId)}/take`, {
+      method: 'POST',
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (data.stock) logInventory(data);
+    if (res.status === 409) {
+      els.takeBtn.classList.add('is-out');
+      els.takeBtnLabel.textContent = 'Tükendi';
+      renderStock(0);
+      return;
+    }
+    if (!res.ok) throw new Error(data.error || `İstek başarısız oldu (${res.status})`);
+    els.takeBtn.classList.add('is-taken');
+    els.takeBtnLabel.textContent = 'Alındı! ✓';
+    renderStock(data.remaining);
+  } catch (err) {
+    console.error('[Stok] Sticker alınamadı:', err);
+    els.takeBtn.disabled = false;
+    els.takeBtnLabel.textContent = 'Tekrar dene';
+  } finally {
+    state.taking = false;
+  }
 }
 
 async function newDraw() {
@@ -342,6 +405,7 @@ async function boot() {
   els.spread.addEventListener('click', onSpreadClick);
   els.startBtn.addEventListener('click', newDraw);
   els.replayBtn.addEventListener('click', newDraw);
+  els.takeBtn.addEventListener('click', takeSticker);
   els.errorNewBtn.addEventListener('click', newDraw);
   els.retryBtn.addEventListener('click', () => {
     if (state.busy) return;

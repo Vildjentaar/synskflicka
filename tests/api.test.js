@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 const { test, describe, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { createApp } = require('../src/server');
@@ -156,4 +156,83 @@ describe('misc endpoints', () => {
       const res = await fetch(`${base}/stickers/does_not_exist.png`);
       assert.equal(res.status, 404);
     }));
+});
+
+describe('sticker stock', () => {
+  const { createInventory } = require('../src/inventory');
+  const { buildSystemPrompt } = require('../src/prompt');
+
+  async function withStockApp(provider, inventory, fn) {
+    const app = createApp({ catalog, provider, inventory, logger: silent });
+    const server = await new Promise((r) => {
+      const s = app.listen(0, () => r(s));
+    });
+    const base = `http://127.0.0.1:${server.address().port}`;
+    try {
+      await fn(base);
+    } finally {
+      server.close();
+    }
+  }
+  const newInventory = (initialStock = 20) => createInventory({ stickers: catalog.eligibleStickers, initialStock, categoryLabel: catalog.categoryLabel });
+  const take = (base, id) => fetch(`${base}/api/stickers/${id}/take`, { method: 'POST' }).then(async (r) => ({ status: r.status, json: await r.json() }));
+
+  test('take decrements and reports full inventory incl. categories', () => {
+    const inv = newInventory();
+    return withStockApp(respond({}), inv, async (base) => {
+      const { status, json } = await take(base, goodSticker.id);
+      assert.equal(status, 200);
+      assert.equal(json.remaining, 19);
+      assert.equal(json.stock.length, catalog.eligibleStickers.length);
+      assert.ok(json.stock.every((s) => typeof s.category === 'string' && typeof s.remaining === 'number'));
+      assert.equal(json.total_remaining, catalog.eligibleStickers.length * 20 - 1);
+    });
+  });
+
+  test('sticker at 0 is disabled (409) and no longer offered', () => {
+    const inv = newInventory(1);
+    return withStockApp(respond({}), inv, async (base) => {
+      assert.equal((await take(base, goodSticker.id)).status, 200);
+      const again = await take(base, goodSticker.id);
+      assert.equal(again.status, 409);
+      assert.equal(again.json.stock.find((s) => s.id === goodSticker.id).disabled, true);
+      assert.equal(catalog.withStock(inv.isInStock).getEligibleSticker(goodSticker.id), undefined);
+    });
+  });
+
+  test('unknown sticker -> 404', () =>
+    withStockApp(respond({}), newInventory(), async (base) => {
+      assert.equal((await take(base, 'nope')).status, 404);
+    }));
+
+  test('exhausted category is removed and announced in the system prompt', () => {
+    const inv = newInventory(1);
+    catalog.stickersForCategory('chaotic_energy').forEach((s) => inv.take(s.id));
+    const view = catalog.withStock(inv.isInStock);
+    assert.equal(view.isEnabledCategory('chaotic_energy'), false);
+    assert.deepEqual(view.exhaustedCategories.map((c) => c.id), ['chaotic_energy']);
+    assert.match(buildSystemPrompt(view), /SOLD OUT[^\n]*chaotic_energy/);
+    assert.ok(view.eligibleStickers.every((s) => s.primary_category !== 'chaotic_energy'));
+  });
+
+  test('reading for a sold-out category falls back to an available one', () => {
+    const inv = newInventory(1);
+    catalog.stickersForCategory('chaotic_energy').forEach((s) => inv.take(s.id));
+    return withStockApp(respond({ reading_text: READING, category_id: 'chaotic_energy', sticker_id: goodSticker.id }), inv, async (base) => {
+      const res = await fetch(`${base}/api/generate-reading`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(DRAW) });
+      const json = await res.json();
+      assert.notEqual(json.category_id, 'chaotic_energy');
+      assert.deepEqual(json.exhausted_categories, ['chaotic_energy']);
+      assert.equal(json.sticker_remaining, 1);
+    });
+  });
+
+  test('everything sold out -> 503', () => {
+    const inv = newInventory(1);
+    catalog.eligibleStickers.forEach((s) => inv.take(s.id));
+    return withStockApp(respond({}), inv, async (base) => {
+      const res = await fetch(`${base}/api/generate-reading`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(DRAW) });
+      assert.equal(res.status, 503);
+    });
+  });
 });

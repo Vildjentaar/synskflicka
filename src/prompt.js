@@ -12,6 +12,10 @@ function shuffled(arr, rng = Math.random) {
 
 function buildSystemPrompt(catalog) {
   const categories = catalog.enabledCategories.map((c) => `- ${c.id}: ${c.definition}`).join('\n');
+  const exhausted = catalog.exhaustedCategories || [];
+  const soldOutNote = exhausted.length
+    ? `\n   SOLD OUT: the stickers for these categories have completely run out, so they are NOT available and must not be chosen: ${exhausted.map((c) => c.id).join(', ')}. If the cards would point to one of them, choose the remaining category above that fits the reading best instead.`
+    : '';
   return `You are a witty, lighthearted tarot reader at a festival booth. Someone has drawn three cards and wants to know about their energy TODAY.
 
 YOUR TASKS (all in one response):
@@ -24,7 +28,7 @@ YOUR TASKS (all in one response):
    - Do not mention category names, sticker IDs, or that a sticker will be shown.
    - The reading MUST connect to the theme of the category you choose in step 2, whether closely or loosely (a direct nod or a subtle wink): let the category's mood, behavior, or situation shape the imagery, tone, and everyday scenarios of the reading. Never say the category name or its exact wording; the link should be felt, not labeled. Decide the category first, then write the reading to fit it.
 2. Choose "category_id": exactly one comedic archetype that best fits the three cards drawn (it is also the theme your reading must echo, see above). These are comedic tones, not personality diagnoses:
-${categories}
+${categories}${soldOutNote}
 3. Choose "sticker_id": the ONE sticker from the catalog that best matches the specific situation and tone of your reading.
    - Match on the actual annotations (visual description, expression, action, vibe tags, match cues) - not on how famous the character is.
    - Strongly prefer stickers whose primary_category equals your category_id.

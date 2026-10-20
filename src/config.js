@@ -17,6 +17,8 @@ const config = {
     deck: path.join(ROOT, 'data', 'tarot_cards.json'),
     stickers: path.join(ROOT, 'data', 'stickers.json'),
     vocabulary: path.join(ROOT, 'config', 'vocabulary.json'),
+    // Remaining sticker counts (runtime state). Delete this file to restock everything.
+    stock: env.STICKER_STOCK_FILE || path.join(ROOT, 'data', 'sticker_stock.json'),
     // asset_path values look like "/stickers/foo.png" and resolve against this directory.
     assetRoot: ROOT,
     public: path.join(ROOT, 'public'),
@@ -44,6 +46,10 @@ const config = {
     timeoutMs: int(env.LLM_TIMEOUT_MS, 15000),
   },
   rateLimitPerMinute: int(env.RATE_LIMIT_PER_MINUTE, 20),
+  stock: {
+    // Physical copies available per sticker design.
+    perSticker: int(env.STICKER_STOCK_PER_STICKER, 20),
+  },
   reading: {
     // Prompt targets 40-60 words (~280-450 characters).
     // Validation allows generous buffer so valid readings are never discarded to fallback.

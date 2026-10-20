@@ -655,15 +655,40 @@ main {
   box-shadow: 0 6px 20px -6px hsl(330 80% 60% / 0.7);
 }
 .sticker__credit { font-size: 0.82rem; color: var(--muted); }
+.sticker__stock {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-hi);
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  transition: color 0.3s, border-color 0.3s;
+}
+.sticker__stock:empty { display: none; }
+.sticker__stock.is-low { color: var(--rose); border-color: hsl(330 75% 66% / 0.4); }
+.sticker__stock.is-out { color: var(--danger); border-color: hsl(355 80% 68% / 0.5); }
 
 .result__actions {
   grid-column: 1 / -1;
   display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.6s;
 }
 .result.is-done .result__actions { opacity: 1; }
+.btn--take.is-taken {
+  color: var(--bg-0);
+  background: linear-gradient(135deg, hsl(176 70% 72%), var(--teal) 55%, hsl(190 60% 45%));
+  box-shadow: 0 10px 30px -8px hsl(176 70% 50% / 0.6);
+  opacity: 1;
+  animation: take-pop 0.5s var(--ease-spring);
+}
+.btn--take.is-taken .btn__shine,
+.btn--take.is-out .btn__shine { display: none; }
+@keyframes take-pop { 0% { transform: scale(0.92); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
 
 /* =========================================================
    Responsive

@@ -5,9 +5,9 @@ const ORIENTATIONS = new Set(['upright', 'reversed']);
 const pick = (arr, rng = Math.random) => arr[Math.floor(rng() * arr.length)];
 
 class RequestError extends Error {
-  constructor(message) {
+  constructor(message, status = 400) {
     super(message);
-    this.status = 400;
+    this.status = status;
   }
 }
 
@@ -115,8 +115,8 @@ function publicSticker(s) {
   };
 }
 
-function createReadingService({ catalog, provider, limits, logger = console, rng = Math.random }) {
-  function fallbackResult(draw, reason, fallbackType = 'full_fallback') {
+function createReadingService({ catalog: baseCatalog, provider, limits, inventory = null, logger = console, rng = Math.random }) {
+  function fallbackResult(catalog, draw, reason, fallbackType = 'full_fallback') {
     const category = pick(catalog.enabledCategories, rng).id;
     const sticker = pick(catalog.stickersForCategory(category), rng);
     const names = draw.map((d) => (d.orientation === 'reversed' ? `${d.card.name} (ters)` : d.card.name));
@@ -125,7 +125,13 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
   }
 
   async function generate(body) {
-    const draw = validateDrawRequest(body, catalog); // throws RequestError -> 400
+    const draw = validateDrawRequest(body, baseCatalog); // throws RequestError -> 400
+
+    // Only offer stickers that are still in stock; sold-out categories drop out of the prompt.
+    const catalog = inventory ? baseCatalog.withStock(inventory.isInStock) : baseCatalog;
+    if (!catalog.enabledCategories.length || !catalog.eligibleStickers.length) {
+      throw new RequestError('Tüm çıkartmalar tükendi! Ruhlar yeni stok bekliyor.', 503);
+    }
 
     let result;
     try {
@@ -137,7 +143,7 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
       const checked = checkModelOutput(raw, catalog, limits);
 
       if (!checked.reading || !checked.category) {
-        result = fallbackResult(draw, `invalid model output: ${checked.issues.join('; ')}`, 'invalid_model_output');
+        result = fallbackResult(catalog, draw, `invalid model output: ${checked.issues.join('; ')}`, 'invalid_model_output');
       } else {
         let { sticker } = checked;
         let source = 'llm';
@@ -153,7 +159,7 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
       const isTimeout = err.name === 'TimeoutError' || err.name === 'AbortError';
       const fallbackType = isTimeout ? 'timeout' : 'provider_error';
       const reason = isTimeout ? 'llm timeout' : `llm error: ${err.message}`;
-      result = fallbackResult(draw, reason, fallbackType);
+      result = fallbackResult(catalog, draw, reason, fallbackType);
     }
 
     return {
@@ -162,6 +168,8 @@ function createReadingService({ catalog, provider, limits, logger = console, rng
       category_id: result.category,
       category_label: catalog.categoryLabel(result.category),
       sticker: publicSticker(result.sticker),
+      sticker_remaining: inventory ? inventory.remaining(result.sticker.id) : null,
+      exhausted_categories: catalog.exhaustedCategories.map((c) => c.id),
       source: result.source,
       fallback_type: result.fallback_type || null,
       fallback_reason: result.fallback_reason || null,
