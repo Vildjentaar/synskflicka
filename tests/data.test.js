@@ -70,7 +70,8 @@ test('unapproved stickers are excluded and can break coverage', () => {
 });
 
 test('strict mode: missing assets become errors; present assets pass', () => {
-  assert.ok(validateData({ ...base, strictAssets: true }).errors.some((e) => e.includes('asset file not found')));
+  const missingSticker = { ...stickers[0], id: 'missing_test', asset_path: '/stickers/nonexistent.png' };
+  assert.ok(validateData({ ...base, stickers: [...stickers, missingSticker], strictAssets: true }).errors.some((e) => e.includes('asset file not found')));
 
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'stickers-'));
   fs.mkdirSync(path.join(tmp, 'stickers'));

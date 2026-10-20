@@ -51,14 +51,11 @@ const config = {
     perSticker: int(env.STICKER_STOCK_PER_STICKER, 20),
   },
   reading: {
-    // Prompt targets 40-60 words (~280-450 characters).
-    // Validation allows generous buffer so valid readings are never discarded to fallback.
-    minWords: 25,
-    maxWords: 85,
-    minChars: 150,
-    maxChars: 650,
-    minSentences: 2,
-    maxSentences: 6,
+    // Generous upper bounds so valid readings are never discarded to fallback.
+    // Minimum word limits removed to allow natural, concise Turkish responses.
+    maxWords: 150,
+    maxChars: 1000,
+    maxSentences: 10,
   },
 };
 

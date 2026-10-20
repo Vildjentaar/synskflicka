@@ -80,14 +80,23 @@ function checkModelOutput(raw, catalog, limits) {
   } else {
     const sentences = countSentences(reading);
     const words = countWords(reading);
-    if (limits.minWords && limits.maxWords && (words < limits.minWords || words > limits.maxWords)) {
-      issues.push(`reading_text has ${words} words, expected ${limits.minWords}-${limits.maxWords}`);
+    if (limits.minWords && words < limits.minWords) {
+      issues.push(`reading_text has ${words} words, expected at least ${limits.minWords}`);
       reading = null;
-    } else if (limits.minChars && limits.maxChars && (reading.length < limits.minChars || reading.length > limits.maxChars)) {
-      issues.push(`reading_text length ${reading.length} outside ${limits.minChars}-${limits.maxChars}`);
+    } else if (limits.maxWords && words > limits.maxWords) {
+      issues.push(`reading_text has ${words} words, expected at most ${limits.maxWords}`);
       reading = null;
-    } else if (sentences < limits.minSentences || sentences > limits.maxSentences) {
-      issues.push(`reading_text has ${sentences} sentences, expected ${limits.minSentences}-${limits.maxSentences}`);
+    } else if (limits.minChars && reading.length < limits.minChars) {
+      issues.push(`reading_text length ${reading.length} below ${limits.minChars}`);
+      reading = null;
+    } else if (limits.maxChars && reading.length > limits.maxChars) {
+      issues.push(`reading_text length ${reading.length} exceeds ${limits.maxChars}`);
+      reading = null;
+    } else if (limits.minSentences && sentences < limits.minSentences) {
+      issues.push(`reading_text has ${sentences} sentences, expected at least ${limits.minSentences}`);
+      reading = null;
+    } else if (limits.maxSentences && sentences > limits.maxSentences) {
+      issues.push(`reading_text has ${sentences} sentences, expected at most ${limits.maxSentences}`);
       reading = null;
     }
   }

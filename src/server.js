@@ -42,6 +42,10 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
   const publicDeck = catalog.deck.map(({ id, name, arcana, suit, rank }) => ({ id, name, arcana, suit, rank }));
 
   const apiRouter = express.Router();
+  apiRouter.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    next();
+  });
   apiRouter.get('/deck', (req, res) => res.json({ cards: publicDeck }));
   apiRouter.get('/health', (req, res) =>
     res.json({ ok: true, provider: provider.name, eligible_stickers: catalog.eligibleStickers.length })
