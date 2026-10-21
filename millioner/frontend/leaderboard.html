@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
   <title>Canlı Liderlik Tablosu — Kim Veri Bilimci Olmak İster? | Akdeniz VBT</title>
   <meta name="description" content="Akdeniz VBT Topluluk Günü Canlı Liderlik Tablosu ve Milyarderler Duvarı.">
   <link rel="stylesheet" href="css/style.css?v=20261018_v6">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
 </head>
+
 <body>
 
   <!-- Top Navigation -->
@@ -22,10 +25,12 @@
       </div>
     </div>
     <div class="nav-links">
-      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);" title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
+      <a href="/" class="btn btn-secondary" style="border-color: rgba(168, 85, 247, 0.4);"
+        title="Synskflicka Tarot'a Dön">☾ Synskflicka</a>
       <a href="index.html" class="btn btn-secondary">← Ana Sayfa</a>
       <a href="index.html" class="btn btn-primary">YARIŞMAYA KATIL ⚡</a>
-      <button class="btn btn-secondary" onclick="toggleFullscreen()" title="Büyük Ekran TV Modu (F)">⛶ Tam Ekran</button>
+      <button class="btn btn-secondary" onclick="toggleFullscreen()" title="Büyük Ekran TV Modu (F)">⛶ Tam
+        Ekran</button>
     </div>
   </header>
 
@@ -94,7 +99,8 @@
 
         <!-- Sınıf Filtreleri -->
         <div class="lb-grade-filters" id="gradeFilters">
-          <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-right:0.3rem;">KATEGORİ:</span>
+          <span
+            style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-right:0.3rem;">KATEGORİ:</span>
           <button class="lb-filter-btn active" data-grade="">Tümü</button>
           <button class="lb-filter-btn" data-grade="hazirlik">🌱 Hazırlık</button>
           <button class="lb-filter-btn" data-grade="1">1️⃣ 1. Sınıf</button>
@@ -284,8 +290,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       fetchLeaderboard();
-      pollInterval = setInterval(fetchLeaderboard, 3500);
+      pollInterval = setInterval(fetchLeaderboard, 300000);
     });
   </script>
 </body>
+
 </html>
