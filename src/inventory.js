@@ -50,13 +50,13 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
         tryLoad(repoBaselinePath);
       }
     }
-  } else {
-    tryLoad(repoBaselinePath);
   }
+
+  const useCloud = Boolean(kv.isEnabled && (filePath || process.env.NODE_ENV === 'production' || process.env.VERCEL));
 
   let loadPromise = null;
   async function ensureLoaded(force = false) {
-    if (!kv.isEnabled) return Promise.resolve();
+    if (!useCloud) return Promise.resolve();
     if (loadPromise && !force) return loadPromise;
 
     loadPromise = (async () => {
@@ -88,7 +88,7 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
   }
 
   async function persist() {
-    if (kv.isEnabled) {
+    if (useCloud) {
       try {
         await kv.set('synskflicka:sticker_stock', {
           updated_at: new Date().toISOString(),
@@ -144,13 +144,17 @@ function createInventory({ stickers, initialStock = 20, filePath = null, categor
 
     /** Takes one copy. Returns { ok, remaining } or { ok: false, reason: 'unknown' | 'out_of_stock' | 'disabled' }. */
     async take(id) {
-      await ensureLoaded();
+      if (useCloud) {
+        await ensureLoaded();
+      }
       if (!counts.has(id)) return { ok: false, reason: 'unknown' };
       if (!isEnabled(id)) return { ok: false, reason: 'disabled', remaining: remaining(id) };
       const n = counts.get(id);
       if (n <= 0) return { ok: false, reason: 'out_of_stock', remaining: 0 };
       counts.set(id, n - 1);
-      await persist();
+      if (useCloud || filePath) {
+        await persist();
+      }
       return { ok: true, remaining: n - 1 };
     },
 

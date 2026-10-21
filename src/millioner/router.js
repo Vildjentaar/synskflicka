@@ -34,8 +34,8 @@ function checkAdmin(req, res, next) {
   next();
 }
 
-function getSessionOr404(sid, res) {
-  const s = store.get(sid);
+async function getSessionOr404(sid, res) {
+  const s = await store.get(sid);
   if (!s) {
     res.status(404).json({ detail: 'Oturum bulunamadı' });
     return null;
@@ -71,7 +71,7 @@ function createMillionerRouter() {
   });
 
   // Game Start
-  router.post('/game/start', (req, res) => {
+  router.post('/game/start', async (req, res) => {
     let name = sanitizeName(req.body && req.body.name);
     if (name.length < 2) name = 'Gizli Yarışmacı';
     const email = String((req.body && req.body.email) || '').trim().toLowerCase().slice(0, 120);
@@ -80,7 +80,7 @@ function createMillionerRouter() {
     const wantsMembership = Boolean(req.body && req.body.wants_membership);
 
     try {
-      const s = store.create(name, email, wantsMembership, grade);
+      const s = await store.create(name, email, wantsMembership, grade);
       res.json(s.publicState());
     } catch (err) {
       res.status(500).json({ detail: err.message });
@@ -88,14 +88,14 @@ function createMillionerRouter() {
   });
 
   // Game State
-  router.get('/game/:sid', (req, res) => {
-    const s = getSessionOr404(req.params.sid, res);
+  router.get('/game/:sid', async (req, res) => {
+    const s = await getSessionOr404(req.params.sid, res);
     if (s) res.json(s.publicState());
   });
 
   // Answer
   router.post('/game/:sid/answer', async (req, res) => {
-    const s = getSessionOr404(req.params.sid, res);
+    const s = await getSessionOr404(req.params.sid, res);
     if (!s) return;
 
     const choice = typeof req.body?.choice === 'number' ? req.body.choice : -1;
@@ -106,6 +106,7 @@ function createMillionerRouter() {
       } else {
         result.state = result.result === 'retry' ? s.publicState() : null;
       }
+      await store.save(s);
       res.json(result);
     } catch (err) {
       res.status(400).json({ detail: err.message });
@@ -113,24 +114,26 @@ function createMillionerRouter() {
   });
 
   // Next Question
-  router.post('/game/:sid/next', (req, res) => {
-    const s = getSessionOr404(req.params.sid, res);
+  router.post('/game/:sid/next', async (req, res) => {
+    const s = await getSessionOr404(req.params.sid, res);
     if (!s) return;
 
     if (s.status === 'playing' && !s.timer_armed) {
       s.question_started = Date.now() / 1000;
       s.timer_armed = true;
     }
+    await store.save(s);
     res.json(s.publicState());
   });
 
   // Joker
-  router.post('/game/:sid/joker/:key', (req, res) => {
-    const s = getSessionOr404(req.params.sid, res);
+  router.post('/game/:sid/joker/:key', async (req, res) => {
+    const s = await getSessionOr404(req.params.sid, res);
     if (!s) return;
 
     try {
       const payload = s.useJoker(req.params.key);
+      await store.save(s);
       res.json(payload);
     } catch (err) {
       res.status(400).json({ detail: err.message });
@@ -139,12 +142,13 @@ function createMillionerRouter() {
 
   // Withdraw
   router.post('/game/:sid/withdraw', async (req, res) => {
-    const s = getSessionOr404(req.params.sid, res);
+    const s = await getSessionOr404(req.params.sid, res);
     if (!s) return;
 
     try {
       const result = s.withdraw();
       result.rank = await persistScore(s);
+      await store.save(s);
       res.json(result);
     } catch (err) {
       res.status(400).json({ detail: err.message });

@@ -393,6 +393,39 @@ describe('Vercel routing compatibility', () => {
       const json = await res.json();
       assert.equal(json.cards.length, 78);
     }));
+
+  test('Vercel rewrite to /api/index.js?path=config with generic x-matched-path /api/index resolves config', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js?path=config`, {
+        headers: { 'x-matched-path': '/api/index' },
+      });
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.total_levels, 12);
+      assert.ok(json.ladder);
+    }));
+
+  test('Vercel rewrite to /api/index.js?path=game/start creates game session', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/api/index.js?path=game/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-matched-path': '/api/index' },
+        body: JSON.stringify({ name: 'VercelTester', grade: '1' }),
+      });
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.ok(json.session_id);
+      assert.equal(json.level, 1);
+      assert.ok(json.question);
+    }));
+
+  test('Millioner direct API endpoints resolve properly', () =>
+    withRoutingApp(async (base) => {
+      const res = await fetch(`${base}/millioner/api/config`);
+      assert.equal(res.status, 200);
+      const json = await res.json();
+      assert.equal(json.total_levels, 12);
+    }));
 });
 
 describe('fallback weighted category determination', () => {

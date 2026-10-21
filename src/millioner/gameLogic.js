@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const kv = require('../kv');
 
 const TOTAL_LEVELS = 12;
 const SAFE_LEVELS = [4, 8];
@@ -461,15 +462,84 @@ class SessionStore {
     this.sessions = new Map();
   }
 
-  create(name, email, wantsMembership, grade = 'hazirlik') {
+  async create(name, email, wantsMembership, grade = 'hazirlik') {
     this._cleanup();
     const s = new GameSession(name, email, wantsMembership, grade);
     this.sessions.set(s.id, s);
+    if (kv.isEnabled) {
+      try {
+        await kv.set(`synskflicka:session:${s.id}`, this._serialize(s));
+      } catch (err) {
+        console.warn('[kv] Failed to save session:', err.message);
+      }
+    }
     return s;
   }
 
-  get(sid) {
-    return this.sessions.get(sid) || null;
+  async get(sid) {
+    if (!sid) return null;
+    let s = this.sessions.get(sid);
+    if (!s && kv.isEnabled) {
+      try {
+        const raw = await kv.get(`synskflicka:session:${sid}`);
+        if (raw) {
+          s = this._deserialize(raw);
+          this.sessions.set(s.id, s);
+        }
+      } catch (err) {
+        console.warn('[kv] Failed to load session from KV:', err.message);
+      }
+    }
+    return s || null;
+  }
+
+  async save(s) {
+    if (!s || !s.id) return;
+    this.sessions.set(s.id, s);
+    if (kv.isEnabled) {
+      try {
+        await kv.set(`synskflicka:session:${s.id}`, this._serialize(s));
+      } catch (err) {
+        console.warn('[kv] Failed to sync session to KV:', err.message);
+      }
+    }
+  }
+
+  _serialize(s) {
+    return {
+      id: s.id,
+      name: s.name,
+      email: s.email,
+      grade: s.grade,
+      wants_membership: s.wants_membership,
+      level: s.level,
+      status: s.status,
+      used_ids: Array.from(s.used_ids || []),
+      jokers_used: s.jokers_used || [],
+      started_at: s.started_at,
+      finished_at: s.finished_at,
+      prize_value: s.prize_value,
+      prize_label: s.prize_label,
+      saved: s.saved,
+      question: s.question,
+      order: s.order,
+      correct_display: s.correct_display,
+      removed: s.removed || [],
+      double_active: Boolean(s.double_active),
+      double_wrong: s.double_wrong,
+      question_started: s.question_started,
+      timer_armed: Boolean(s.timer_armed),
+      time_limit: s.time_limit,
+    };
+  }
+
+  _deserialize(raw) {
+    const s = Object.assign(
+      new GameSession(raw.name, raw.email, raw.wants_membership, raw.grade),
+      raw
+    );
+    s.used_ids = new Set(raw.used_ids || []);
+    return s;
   }
 
   _cleanup() {

@@ -22,6 +22,41 @@ function rateLimit({ perMinute }) {
   };
 }
 
+/** Normalize Vercel serverless rewritten paths and query parameters to standard Express routes. */
+function normalizeVercelUrl(req) {
+  if (!req || !req.url) return;
+
+  // 1. Vercel rewrites like /api/(.*) -> /api/index.js?path=$1 or /api/index.js?0=$1
+  if (req.url.startsWith('/api/index') || req.url.startsWith('/api?') || req.url.startsWith('/?path=')) {
+    try {
+      const parsed = new URL(req.url, 'http://localhost');
+      const captured = parsed.searchParams.get('0') || parsed.searchParams.get('path');
+      if (captured) {
+        parsed.searchParams.delete('0');
+        parsed.searchParams.delete('path');
+        const remaining = parsed.searchParams.toString();
+        req.url = '/api/' + captured.replace(/^\/+/, '') + (remaining ? '?' + remaining : '');
+        return;
+      }
+    } catch (_) {}
+  }
+
+  // 2. Vercel header-based matched path: x-matched-path or x-vercel-matched-path
+  const matchedPath = req.headers && (req.headers['x-matched-path'] || req.headers['x-vercel-matched-path']);
+  if (
+    matchedPath &&
+    !matchedPath.endsWith('/api/index') &&
+    !matchedPath.endsWith('/api/index.js') &&
+    matchedPath !== '/api' &&
+    matchedPath !== '/' &&
+    (req.url.startsWith('/api/index') || req.url === '/' || req.url.startsWith('/api?'))
+  ) {
+    const queryIdx = req.url.indexOf('?');
+    const search = queryIdx !== -1 ? req.url.slice(queryIdx) : '';
+    req.url = matchedPath + search;
+  }
+}
+
 function createApp({ catalog, provider, inventory, logger = console } = {}) {
   catalog = catalog || loadCatalog();
   provider = provider || createProvider(config.llm);
@@ -40,24 +75,8 @@ function createApp({ catalog, provider, inventory, logger = console } = {}) {
   });
 
   // Support Vercel serverless rewrites and direct handlers:
-  // When running behind Vercel rewrites (e.g. /api/(.*) -> /api/index.js), Vercel passes the original
-  // request path in x-matched-path or query parameters. Restore it so Express routing matches seamlessly.
   app.use((req, res, next) => {
-    const matchedPath = req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'];
-    if (matchedPath && (req.url.startsWith('/api/index') || req.url === '/' || req.url.startsWith('/api?'))) {
-      const queryIdx = req.url.indexOf('?');
-      const search = queryIdx !== -1 ? req.url.slice(queryIdx) : '';
-      req.url = matchedPath + search;
-    } else if (req.url.startsWith('/api/index.js') || req.url.startsWith('/api/index')) {
-      const parsed = new URL(req.url, 'http://localhost');
-      const captured = parsed.searchParams.get('0') || parsed.searchParams.get('path');
-      if (captured) {
-        parsed.searchParams.delete('0');
-        parsed.searchParams.delete('path');
-        const remaining = parsed.searchParams.toString();
-        req.url = '/api/' + captured.replace(/^\/+/, '') + (remaining ? '?' + remaining : '');
-      }
-    }
+    normalizeVercelUrl(req);
     next();
   });
 
@@ -298,12 +317,7 @@ if (require.main === module) {
 }
 
 const serverlessHandler = (req, res) => {
-  const matchedPath = req.headers && (req.headers['x-matched-path'] || req.headers['x-vercel-matched-path']);
-  if (matchedPath && (req.url.startsWith('/api/index') || req.url === '/' || req.url.startsWith('/api?'))) {
-    const queryIdx = req.url.indexOf('?');
-    const search = queryIdx !== -1 ? req.url.slice(queryIdx) : '';
-    req.url = matchedPath + search;
-  }
+  normalizeVercelUrl(req);
   return getDefaultApp()(req, res);
 };
 serverlessHandler.createApp = createApp;
